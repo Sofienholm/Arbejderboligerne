@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Unica+One&display=swap");
+
+:root {
+  /* ===== FONTS ===== */
+  --font-heading: "Abril Fatface", serif;
+  --font-body: "Unica One", cursive;
+
+  /* ===== FARVER - PRIMÆR ===== */
+  --autumn-orange: #d85f24;
+  --apple-juice: #ee9b3e;
+  --sweet-grey: #d9d9d9;
+  --silver-coin: #bababa;
+  --dark-stone: #877c6a;
+  --vintage-navy-blue: #113356;
+
+  /* ===== FARVER - BAGGRUND ===== */
+  --color-bg: #d9d9d9;
+
+  /* ===== FARVER - TEKST ===== */
+  --heading: #d85f24;
+  --text-body: #ee9b3e;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  color: var(--autumn-orange);
+}
