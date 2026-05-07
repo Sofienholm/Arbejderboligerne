@@ -8,13 +8,16 @@ import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Sidequest from "./screens/Sidequest/Sidequest";
 import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
+import DevMenu from "./components/DevMenu/DevMenu";
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [subScreen, setSubScreen] = useState(null); // midlertidig — bruges af DevMenu
 
   const goToScreen = (screen) => {
     setCurrentScreen(screen);
+    setSubScreen(null);
     window.scrollTo(0, 0);
   };
 
@@ -23,13 +26,24 @@ export default function App() {
     goToScreen("characterDetails");
   };
 
+  // DevMenu kan hoppe direkte til en specifik skærm + underskærm + karakter
+  const handleDevGoTo = ({ screen, character, subScreen: sub }) => {
+    if (character) setSelectedCharacter(character);
+    setCurrentScreen(screen);
+    setSubScreen(sub);
+    window.scrollTo(0, 0);
+  };
+
   const renderScreen = () => {
     switch (currentScreen) {
       case "start":
         return <Start onNext={() => goToScreen("familyIntroScreens")} />;
       case "familyIntroScreens":
         return (
-          <FamilyIntroScreens onNext={() => goToScreen("characterSelect")} />
+          <FamilyIntroScreens
+            startAt={subScreen}
+            onNext={() => goToScreen("characterSelect")}
+          />
         );
       case "characterSelect":
         return <CharacterSelect onSelectCharacter={handleCharacterSelect} />;
@@ -37,6 +51,7 @@ export default function App() {
         return (
           <CharacterDetails
             character={selectedCharacter}
+            startAt={subScreen}
             onNext={() => goToScreen("sidequest")}
             onBack={() => goToScreen("characterSelect")}
           />
@@ -45,6 +60,7 @@ export default function App() {
         return (
           <Sidequest
             character={selectedCharacter}
+            startAt={subScreen}
             onNext={() => goToScreen("guide")}
             onBack={() => goToScreen("characterDetails")}
           />
@@ -61,13 +77,22 @@ export default function App() {
         return (
           <QRScreen
             character={selectedCharacter}
-            onReset={() => goToScreen("splash")}
+            onReset={() => goToScreen("start")}
           />
         );
       default:
-        return <Start onNext={() => goToScreen("familyIntro")} />;
+        return <Start onNext={() => goToScreen("familyIntroScreens")} />;
     }
   };
 
-  return <div className={styles.appContainer}>{renderScreen()}</div>;
+  return (
+    <div className={styles.appContainer}>
+      {renderScreen()}
+      <DevMenu
+        onGoTo={handleDevGoTo}
+        currentScreen={currentScreen}
+        currentSubScreen={subScreen}
+      />
+    </div>
+  );
 }
