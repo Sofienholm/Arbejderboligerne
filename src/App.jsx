@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 
-import Splash from "./screens/Splash/Splash";
-import FamilyIntro from "./screens/FamilyIntro/FamilyIntro";
+import Start from "./screens/Start/start";
+import FamilyIntroScreens from "./screens/FamilyIntro/FamilyIntroScreens";
 import CharacterSelect from "./screens/CharacterSelect/CharacterSelect";
 import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Sidequest from "./screens/Sidequest/Sidequest";
@@ -10,7 +10,7 @@ import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState("splash");
+  const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const goToScreen = (screen) => {
@@ -25,10 +25,12 @@ export default function App() {
 
   const renderScreen = () => {
     switch (currentScreen) {
-      case "splash":
-        return <Splash onNext={() => goToScreen("familyIntro")} />;
-      case "familyIntro":
-        return <FamilyIntro onNext={() => goToScreen("characterSelect")} />;
+      case "start":
+        return <Start onNext={() => goToScreen("familyIntroScreens")} />;
+      case "familyIntroScreens":
+        return (
+          <FamilyIntroScreens onNext={() => goToScreen("characterSelect")} />
+        );
       case "characterSelect":
         return <CharacterSelect onSelectCharacter={handleCharacterSelect} />;
       case "characterDetails":
@@ -63,7 +65,7 @@ export default function App() {
           />
         );
       default:
-        return <Splash onNext={() => goToScreen("familyIntro")} />;
+        return <Start onNext={() => goToScreen("familyIntro")} />;
     }
   };
 
