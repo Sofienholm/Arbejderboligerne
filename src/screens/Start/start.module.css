@@ -15,9 +15,9 @@
 /* "ARBEJDERBOLIG" */
 .arbejderbolig {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 5vw, 1.6rem);
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-size: clamp(2.8rem, 5vw, 1.6rem);
+  font-weight: 200;
+  letter-spacing: 0.1em;
   color: #e8a030;
   text-transform: uppercase;
 }
@@ -35,7 +35,7 @@
 /* ── Familie-billede ────────────────────────────────── */
 .familieWrapper {
   position: absolute;
-  bottom: 50%;
+  bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
   width: 88%;
