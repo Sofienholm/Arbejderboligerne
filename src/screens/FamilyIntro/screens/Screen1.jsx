@@ -1,30 +1,31 @@
+import { familyIntroScreens } from "../../../data/screens";
+import styles from "./styles/Screen1.module.css";
+import starStyles from "../FamilyIntroScreens.module.css";
 import jytte1a from "../../../assets/images/familie/fam-intro1a.svg";
 import jytte1b from "../../../assets/images/familie/fam-intro1b.svg";
 
-import star2  from "../../../assets/images/illustrations/star2.svg";
-import star4  from "../../../assets/images/illustrations/star4.svg";
-import star8  from "../../../assets/images/illustrations/star8.svg";
+import star2 from "../../../assets/images/illustrations/star2.svg";
+import star4 from "../../../assets/images/illustrations/star4.svg";
+import star8 from "../../../assets/images/illustrations/star8.svg";
 import star13 from "../../../assets/images/illustrations/star13.svg";
 import star16 from "../../../assets/images/illustrations/star16.svg";
 
-export default function Screen1({ styles }) {
+export default function Screen1() {
+  const content = familyIntroScreens.screen1;
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star8}  alt="" className={`${styles.bg} ${styles.s1_s8}`}  />
-      <img src={star2}  alt="" className={`${styles.bg} ${styles.s1_s2}`}  />
-      <img src={star13} alt="" className={`${styles.bg} ${styles.s1_s13}`} />
-      <img src={star16} alt="" className={`${styles.bg} ${styles.s1_s16}`} />
-      <img src={star4}  alt="" className={`${styles.bg} ${styles.s1_s4}`}  />
+      <img src={star8} alt="" className={`${starStyles.bg} ${styles.s1_s8} floatC`} />
+      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s1_s2} floatA`} />
+      <img src={star13} alt="" className={`${starStyles.bg} ${styles.s1_s13} floatB`} />
+      <img src={star16} alt="" className={`${starStyles.bg} ${styles.s1_s16} floatA`} />
+      <img src={star4} alt="" className={`${starStyles.bg} ${styles.s1_s4} floatC`} />
 
       {/* ── Tekst ── */}
       <div className={styles.s1_textBlock}>
-        <h1 className={styles.s1_title}>LIVET SOM<br />HUSMOR</h1>
-        <p className={styles.s1_body}>
-          EN TRAVL HVERDAG MED BØRN I HUSSET OG MANGE
-          HUSLIGE PLIGTER GIVER JYTTE RIGELIGT AT SE TIL,
-          MEN ER DE LYKKELIGE SOM FAMILIE?
-        </p>
+        <h1 className={styles.s1_title}>{content.title}</h1>
+
+        <p className={styles.s1_body}>{content.body}</p>
       </div>
 
       {/* ── Jytte – stående (højre) ── */}

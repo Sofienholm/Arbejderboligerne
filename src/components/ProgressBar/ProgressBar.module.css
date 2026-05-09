@@ -1,0 +1,44 @@
+.progressBar {
+  position: absolute;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--silver-coin);
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* linje mellem prikkerne */
+.dot:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 78px;
+  background-color: var(--silver-coin);
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.dotPast {
+  background-color: var(--autumn-orange);
+}
+
+.dotPast:not(:last-child)::after {
+  background-color: var(--autumn-orange);
+}
+
+.dotActive {
+  background-color: var(--autumn-orange);
+  transform: scale(1.35);
+}
