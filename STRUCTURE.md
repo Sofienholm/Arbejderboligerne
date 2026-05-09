@@ -14,7 +14,7 @@ Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels,
 
 ## Skærm-flow (lineært)
 
-`start` → `familyIntroScreens` (5 underskærme) → `characterSelect` → `characterDetails` (2 underskærme per karakter) → `sidequest` (1 per karakter) → `guide` → `qrScreen`
+`start` → `familyIntroScreens` (6 underskærme: Screen0–Screen5) → `characterSelect` → `characterDetails` (2 underskærme per karakter) → `sidequest` (1 per karakter) → `guide` → `qrScreen`
 
 ## Folder-struktur
 
@@ -26,6 +26,7 @@ Status-markører:
 ```
 arbejderboligerne/
 ├── README.md                                ✅
+├── STRUCTURE.md                             ✅  (denne fil)
 ├── eslint.config.js                         ✅
 ├── index.html                               ✅  (peger på /src/index.jsx)
 ├── package.json                             ✅
@@ -86,12 +87,12 @@ arbejderboligerne/
     │   │   ├── DevMenu.jsx                  ✅  (midlertidig nav-menu, fjernes før release)
     │   │   └── DevMenu.module.css           ✅
     │   └── ProgressBar/
-    │       ├── ProgressBar.jsx              ⚪
-    │       └── ProgressBar.module.css       ⚪
+    │       ├── ProgressBar.jsx              ✅
+    │       └── ProgressBar.module.css       ✅
     │
     ├── data/
     │   ├── characters.js                    ⚪  (skal indeholde de 4 karakterer: navn, alder, rolle, billed-stier)
-    │   ├── screens.js                       ⚪  (skal indeholde tekster til Family Intro Screen 1-5)
+    │   ├── screens.js                       ✅  (tekster til Family Intro Screen 0–5)
     │   └── sideQuests.js                    ⚪  (skal indeholde opgave-definitioner per karakter)
     │
     ├── screens/
@@ -100,16 +101,18 @@ arbejderboligerne/
     │   │   └── start.module.css             ✅
     │   │
     │   ├── FamilyIntro/
-    │   │   ├── FamilyIntroScreens.jsx       🟡  (wrapper — skal route mellem Screen1-5; modtager prop `startAt`)
+    │   │   ├── FamilyIntroScreens.jsx       🟡  (wrapper — skal route mellem Screen0–5; modtager prop `startAt`)
     │   │   ├── FamilyIntroScreens.module.css ✅
     │   │   └── screens/
+    │   │       ├── Screen0.jsx              ✅
     │   │       ├── Screen1.jsx              ✅
     │   │       ├── Screen2.jsx              ✅
     │   │       ├── Screen3.jsx              ✅
     │   │       ├── Screen4.jsx              ✅
     │   │       ├── Screen5.jsx              ✅
     │   │       └── styles/
-    │   │           ├── Screen1.module.css   ⚪
+    │   │           ├── Screen0.module.css   ✅
+    │   │           ├── Screen1.module.css   ✅
     │   │           ├── Screen2.module.css   ⚪
     │   │           ├── Screen3.module.css   ⚪
     │   │           ├── Screen4.module.css   ⚪
@@ -180,6 +183,6 @@ subScreen: string | null   // sættes af DevMenu, passes til wrappers som prop `
 ## Konventioner
 
 - Wrapper-komponenter (FamilyIntroScreens, CharacterDetails, Sidequest) modtager `startAt`-prop som valgfri override af initial underskærm.
-- Underskærme kaldes ved camelCase ID: `screen1`, `hanneDetail2`, `sidequestNiels` osv.
+- Underskærme kaldes ved camelCase ID: `screen0`, `screen1`, `hanneDetail2`, `sidequestNiels` osv.
 - CSS Modules: alle styles importeres som `import styles from "./X.module.css"`.
 - Filnavn-konvention: PascalCase for komponenter, undtagen `Start/start.jsx` (lille s) som er en undtagelse.
