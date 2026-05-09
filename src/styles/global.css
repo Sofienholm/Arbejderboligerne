@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Unica+One&display=swap");
-
+* {
+  margin: 0;
+}
 :root {
   /* ===== FONTS ===== */
   --font-heading: "Abril Fatface", serif;
@@ -24,4 +26,73 @@
 h1 {
   font-family: var(--font-heading);
   color: var(--autumn-orange);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+p {
+  font-family: var(--font-body);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--apple-juice);
+  line-height: 1.15;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* fælles svæve-animationer */
+@keyframes floatA {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes floatB {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  45% {
+    transform: translateY(7px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes floatC {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  60% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.floatA {
+  animation-name: floatA;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.floatB {
+  animation-name: floatB;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.floatC {
+  animation-name: floatC;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }

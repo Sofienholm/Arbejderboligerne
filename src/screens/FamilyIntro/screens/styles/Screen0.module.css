@@ -1,0 +1,123 @@
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--soft-grey);
+  color: var(--autumn-orange);
+}
+
+.title {
+  text-align: center;
+  font-size: 4.5rem;
+  font-family: var(--font-body);
+  color: var(--apple-juice);
+  letter-spacing: 0.08em;
+  margin-top: 3rem;
+}
+
+.familyList {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+  margin-inline: auto;
+
+  gap: 2.4rem;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.person img {
+  width: 8rem;
+  height: 8rem;
+}
+
+.person h2 {
+  font-size: 3rem;
+  line-height: 0.9;
+  margin: 0;
+  letter-spacing: -3px;
+  font-weight: 900;
+}
+
+.person h3 {
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0;
+}
+
+.person p {
+  font-size: 1.2rem;
+  color: var(--autumn-orange);
+  margin-top: 0.6rem;
+}
+
+.swipeText {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: row;
+
+  width: fit-content;
+  margin-inline: auto;
+
+  gap: 2.4rem;
+}
+
+.swipeText p {
+  font-size: 2.6rem;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  margin: 0;
+  color: var(--autumn-orange);
+}
+
+.swipeText span {
+  font-size: 5rem;
+}
+
+/* stjerne-placeringer for screen 1 */
+.s1_s8 {
+  width: clamp(44px, 9vw, 64px);
+  left: 6%;
+  top: 38%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s1_s2 {
+  width: clamp(30px, 6vw, 46px);
+  left: 38%;
+  top: 34%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s1_s13 {
+  width: clamp(36px, 7vw, 52px);
+  left: 52%;
+  top: 48%;
+  animation-duration: 6s;
+  animation-delay: -0.5s;
+}
+
+.s1_s16 {
+  width: clamp(24px, 4.5vw, 36px);
+  left: 18%;
+  bottom: 22%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s1_s4 {
+  width: clamp(20px, 3.5vw, 30px);
+  left: 42%;
+  bottom: 14%;
+  animation-duration: 6s;
+  animation-delay: -4s;
+}
