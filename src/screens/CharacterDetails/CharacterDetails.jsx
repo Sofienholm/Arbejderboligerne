@@ -9,7 +9,7 @@ import styles from "./CharacterDetails.module.css";
 // import NielsDetail1 from "./screens/NielsDetail1";
 // import NielsDetail2 from "./screens/NielsDetail2";
 import HolgerDetail1 from "./screens/HolgerDetail1";
-// import HolgerDetail2 from "./screens/HolgerDetail2";
+import HolgerDetail2 from "./screens/HolgerDetail2";
 // import JytteDetail1 from "./screens/JytteDetail1";
 // import JytteDetail2 from "./screens/JytteDetail2";
 
@@ -17,7 +17,7 @@ import HolgerDetail1 from "./screens/HolgerDetail1";
 const CHARACTER_SCREENS = {
   // hanne: [HanneDetail1, HanneDetail2],
   // niels: [NielsDetail1, NielsDetail2],
-  holger: [HolgerDetail1],
+  holger: [HolgerDetail1, HolgerDetail2],
   // jytte: [JytteDetail1, JytteDetail2],
 };
 
