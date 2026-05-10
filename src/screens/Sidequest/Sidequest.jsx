@@ -5,7 +5,7 @@ import { sideQuests } from "../../data/sideQuests";
 import Guide from "../Guide/Guide";
 import QRScreen from "../QRScreen/QRScreen";
 
-export default function Sidequest({ character, onNext }) {
+export default function Sidequest({ character }) {
   const [showGuide, setShowGuide] = useState(false);
   const [showQrBehindGuide, setShowQrBehindGuide] = useState(false);
 
@@ -42,11 +42,6 @@ export default function Sidequest({ character, onNext }) {
       )}
 
       <AnimatePresence
-        onExitComplete={() => {
-          if (showQrBehindGuide) {
-            onNext();
-          }
-        }}
       >
         {showGuide && (
           <motion.div
