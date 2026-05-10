@@ -10,9 +10,10 @@ import Screen2 from "./screens/Screen2";
 import Screen3 from "./screens/Screen3";
 import Screen4 from "./screens/Screen4";
 import Screen5 from "./screens/Screen5";
+import Screen6 from "../CharacterSelect/CharacterSelect";
 
 // alle intro screens samlet, så vi kan skifte mellem dem med index
-const SCREENS = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5];
+const SCREENS = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5, Screen6];
 
 export default function FamilyIntroScreens({ onNext, startAt = 0 }) {
   const [index, setIndex] = useState(startAt ?? 0); // hvilken screen der vises
