@@ -6,7 +6,6 @@ import FamilyIntroScreens from "./screens/FamilyIntro/FamilyIntroScreens";
 import CharacterSelect from "./screens/CharacterSelect/CharacterSelect";
 import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Sidequest from "./screens/Sidequest/Sidequest";
-import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
 import DevMenu from "./components/DevMenu/DevMenu";
 
@@ -68,14 +67,7 @@ export default function App() {
             onBack={() => goToScreen("characterDetails")}
           />
         );
-      case "guide":
-        return (
-          <Guide
-            character={selectedCharacter}
-            onNext={() => goToScreen("qrScreen")}
-            onBack={() => goToScreen("sidequest")}
-          />
-        );
+
       case "qrScreen":
         return (
           <QRScreen
