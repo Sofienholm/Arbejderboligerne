@@ -3,7 +3,7 @@
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  background-color: var(--soft-grey);
+  background-color: var(--color-bg);
   color: var(--autumn-orange);
 }
 
@@ -83,7 +83,7 @@
 
 /* stjerne-placeringer for screen 1 */
 .s1_s8 {
-  width: clamp(44px, 9vw, 64px);
+  width: 9dvh;
   left: 6%;
   top: 38%;
   animation-duration: 6s;
@@ -91,7 +91,7 @@
 }
 
 .s1_s2 {
-  width: clamp(30px, 6vw, 46px);
+  width: 6dvh;
   left: 38%;
   top: 34%;
   animation-duration: 6s;
@@ -99,7 +99,7 @@
 }
 
 .s1_s13 {
-  width: clamp(36px, 7vw, 52px);
+  width: 7dvh;
   left: 52%;
   top: 48%;
   animation-duration: 6s;
@@ -107,7 +107,7 @@
 }
 
 .s1_s16 {
-  width: clamp(24px, 4.5vw, 36px);
+  width: 5dvh;
   left: 18%;
   bottom: 22%;
   animation-duration: 6s;
@@ -115,7 +115,7 @@
 }
 
 .s1_s4 {
-  width: clamp(20px, 3.5vw, 30px);
+  width: 4dvh;
   left: 42%;
   bottom: 14%;
   animation-duration: 6s;

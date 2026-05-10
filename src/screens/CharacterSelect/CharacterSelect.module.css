@@ -1,0 +1,57 @@
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.title {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+  font-family: var(--font-body);
+  color: var(--apple-juice);
+  font-size: 3rem;
+}
+
+.characterButton {
+  position: absolute;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.characterButton img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.holger {
+  top: 24%;
+  left: 15%;
+  width: 30dvw;
+}
+
+.niels {
+  top: 33%;
+  right: 15%;
+  width: 35dvw;
+}
+
+.jytte {
+  top: 49%;
+  left: 15%;
+  width: 35dvw;
+}
+
+.hanne {
+  bottom: 15%;
+  right: 15%;
+  width: 30dvw;
+}
