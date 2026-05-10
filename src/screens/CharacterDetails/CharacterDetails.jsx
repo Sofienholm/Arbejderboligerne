@@ -12,12 +12,13 @@ import HolgerDetail1 from "./screens/HolgerDetail1";
 import HolgerDetail2 from "./screens/HolgerDetail2";
 // import JytteDetail1 from "./screens/JytteDetail1";
 // import JytteDetail2 from "./screens/JytteDetail2";
+import Sidequest from "../Sidequest/Sidequest";
 
 // vælger hvilke 2 screens der hører til hver person
 const CHARACTER_SCREENS = {
   // hanne: [HanneDetail1, HanneDetail2],
   // niels: [NielsDetail1, NielsDetail2],
-  holger: [HolgerDetail1, HolgerDetail2],
+  holger: [HolgerDetail1, HolgerDetail2, Sidequest],
   // jytte: [JytteDetail1, JytteDetail2],
 };
 
@@ -36,8 +37,6 @@ export default function CharacterDetails({
 
     if (index < screens.length - 1) {
       setIndex(index + 1); // næste detail screen
-    } else {
-      onNext(); // videre til sidequest
     }
   };
 
@@ -87,7 +86,12 @@ export default function CharacterDetails({
           transition={{ duration: 0.35, ease: "easeInOut" }}
           className={styles.screen}
         >
-          <CurrentScreen styles={styles} character={character} />
+          <CurrentScreen
+            styles={styles}
+            character={character}
+            onNext={onNext}
+            onBack={onBack}
+          />
         </motion.div>
       </AnimatePresence>
 

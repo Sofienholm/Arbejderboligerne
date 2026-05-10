@@ -6,7 +6,7 @@ import Guide from "../Guide/Guide";
 
 export default function Sidequest({ character, onNext }) {
   const [showGuide, setShowGuide] = useState(false);
-  const [goToQrAfterClose, setGoToQrAfterClose] = useState(false);
+
 
   const content = sideQuests[character];
 
@@ -17,8 +17,8 @@ export default function Sidequest({ character, onNext }) {
   };
 
   const closeGuideAndOpenQr = () => {
-    setGoToQrAfterClose(true);
-    setShowGuide(false);
+    onNext(); // skifter baggrunden til QRScreen med det samme
+    setShowGuide(false); // guide slider ned ovenpå
   };
 
   return (
@@ -35,11 +35,6 @@ export default function Sidequest({ character, onNext }) {
       </button>
 
       <AnimatePresence
-        onExitComplete={() => {
-          if (goToQrAfterClose) {
-            onNext();
-          }
-        }}
       >
         {showGuide && (
           <motion.div
