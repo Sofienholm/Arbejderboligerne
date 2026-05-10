@@ -1,9 +1,58 @@
-export default function Sidequest({ character, onNext, onBack }) {
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import styles from "./Sidequest.module.css";
+import { sideQuests } from "../../data/sideQuests";
+import Guide from "../Guide/Guide";
+
+export default function Sidequest({ character, onNext }) {
+  const [showGuide, setShowGuide] = useState(false);
+  const [goToQrAfterClose, setGoToQrAfterClose] = useState(false);
+
+  const content = sideQuests[character];
+
+  if (!content) return null;
+
+  const openGuide = () => {
+    setShowGuide(true);
+  };
+
+  const closeGuideAndOpenQr = () => {
+    setGoToQrAfterClose(true);
+    setShowGuide(false);
+  };
+
   return (
-    <div>
-      <h1>Sidequest - {character}</h1>
-      <button onClick={onBack}>Tilbage</button>
-      <button onClick={onNext}>Næste</button>
-    </div>
+    <section className={styles.screen}>
+      <h1 className={styles.title}>{content.title}</h1>
+      <h2 className={styles.subtitle}>{content.subtitle}</h2>
+
+      <div className={styles.note}>
+        <p>{content.noteText}</p>
+      </div>
+
+      <button className={styles.button} onClick={openGuide}>
+        {content.buttonText}
+      </button>
+
+      <AnimatePresence
+        onExitComplete={() => {
+          if (goToQrAfterClose) {
+            onNext();
+          }
+        }}
+      >
+        {showGuide && (
+          <motion.div
+            className={styles.guideOverlay}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+          >
+            <Guide character={character} onNext={closeGuideAndOpenQr} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 }
