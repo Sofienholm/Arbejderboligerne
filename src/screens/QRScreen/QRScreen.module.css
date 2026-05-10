@@ -1,0 +1,34 @@
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.title {
+  position: absolute;
+  top: 7%;
+  right: 7%;
+  z-index: 2;
+
+  font-size: 5.5rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.characterImage {
+  position: absolute;
+  left: -6%;
+  bottom: -2%;
+  width: 58%;
+  z-index: 1;
+}
+
+.qrCode {
+  position: absolute;
+  right: 10%;
+  bottom: 13%;
+  width: 23%;
+  z-index: 2;
+}
