@@ -5,6 +5,8 @@ import { sideQuests } from "../../data/sideQuests";
 import Guide from "../Guide/Guide";
 import QRScreen from "../QRScreen/QRScreen";
 
+
+
 export default function Sidequest({ character }) {
   const [showGuide, setShowGuide] = useState(false);
   const [showQrBehindGuide, setShowQrBehindGuide] = useState(false);
@@ -31,9 +33,11 @@ export default function Sidequest({ character }) {
           <h1 className={styles.title}>{content.title}</h1>
           <h2 className={styles.subtitle}>{content.subtitle}</h2>
 
-          <div className={styles.note}>
-            <p>{content.noteText}</p>
-          </div>
+          <img
+            className={styles.dilemmaImage}
+            src={content.dilemmaImage}
+            alt={content.title}
+          />
 
           <button className={styles.button} onClick={openGuide}>
             {content.buttonText}
