@@ -42,7 +42,10 @@ export default function App() {
         return (
           <FamilyIntroScreens
             startAt={subScreen}
-            onNext={() => goToScreen("characterSelect")}
+            onSelectCharacter={(characterId) => {
+              setSelectedCharacter(characterId);
+              setCurrentScreen("characterDetails");
+            }}
           />
         );
       case "characterSelect":

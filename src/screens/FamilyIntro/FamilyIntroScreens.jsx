@@ -15,7 +15,11 @@ import Screen6 from "../CharacterSelect/CharacterSelect";
 // alle intro screens samlet, så vi kan skifte mellem dem med index
 const SCREENS = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5, Screen6];
 
-export default function FamilyIntroScreens({ onNext, startAt = 0 }) {
+export default function FamilyIntroScreens({
+  onNext,
+  onSelectCharacter,
+  startAt = 0,
+}) {
   const [index, setIndex] = useState(startAt ?? 0); // hvilken screen der vises
   const [direction, setDirection] = useState(1); // 1 = frem, -1 = tilbage
 
@@ -72,7 +76,10 @@ export default function FamilyIntroScreens({ onNext, startAt = 0 }) {
           transition={{ duration: 0.35, ease: "easeInOut" }}
           className={styles.screen}
         >
-          <CurrentScreen styles={styles} />
+          <CurrentScreen
+            styles={styles}
+            onSelectCharacter={onSelectCharacter}
+          />
         </motion.div>
       </AnimatePresence>
 
