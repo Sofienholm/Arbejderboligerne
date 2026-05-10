@@ -4,22 +4,22 @@ import { useSwipeable } from "react-swipeable";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import styles from "./CharacterDetails.module.css";
 
-// import HanneDetail1 from "./screens/HanneDetail1";
-// import HanneDetail2 from "./screens/HanneDetail2";
-// import NielsDetail1 from "./screens/NielsDetail1";
-// import NielsDetail2 from "./screens/NielsDetail2";
+import HanneDetail1 from "./screens/HanneDetail1";
+import HanneDetail2 from "./screens/HanneDetail2";
+import NielsDetail1 from "./screens/NielsDetail1";
+import NielsDetail2 from "./screens/NielsDetail2";
 import HolgerDetail1 from "./screens/HolgerDetail1";
 import HolgerDetail2 from "./screens/HolgerDetail2";
-// import JytteDetail1 from "./screens/JytteDetail1";
-// import JytteDetail2 from "./screens/JytteDetail2";
+import JytteDetail1 from "./screens/JytteDetail1";
+import JytteDetail2 from "./screens/JytteDetail2";
 import Sidequest from "../Sidequest/Sidequest";
 
 // vælger hvilke 2 screens der hører til hver person
 const CHARACTER_SCREENS = {
-  // hanne: [HanneDetail1, HanneDetail2],
-  // niels: [NielsDetail1, NielsDetail2],
+  hanne: [HanneDetail1, HanneDetail2, Sidequest],
+  niels: [NielsDetail1, NielsDetail2, Sidequest],
   holger: [HolgerDetail1, HolgerDetail2, Sidequest],
-  // jytte: [JytteDetail1, JytteDetail2],
+  jytte: [JytteDetail1, JytteDetail2, Sidequest],
 };
 
 export default function CharacterDetails({
