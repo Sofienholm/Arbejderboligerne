@@ -1,0 +1,44 @@
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.title {
+  position: absolute;
+  top: 8%;
+  left: 9%;
+  font-size: 6.5rem;
+}
+
+.textBlockTop {
+  position: absolute;
+  top: 24%;
+  left: 42%;
+  z-index: 2;
+}
+
+.textBlockBottom {
+  position: absolute;
+  top: 41%;
+  left: 42%;
+  z-index: 2;
+}
+
+.holgerWork {
+  position: absolute;
+  left: -4%;
+  bottom: -2%;
+  width: 85%;
+  z-index: 1;
+}
+
+.holgerSmoke {
+  position: absolute;
+  right: -2%;
+  bottom: -1%;
+  width: 60%;
+  z-index: 1;
+}
