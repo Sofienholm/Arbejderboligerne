@@ -14,7 +14,7 @@
   width: 90%;
 
   text-align: center;
-  font-size: 4.5rem;
+  font-size: 4rem;
 }
 
 .subtitle {
@@ -35,10 +35,9 @@
 
 .dilemmaImage {
   position: absolute;
-  top: 22%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 88%;
+  top: 25%;
+  left: 0;
+  width: 100%;
   z-index: 1;
 }
 

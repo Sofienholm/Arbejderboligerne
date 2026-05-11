@@ -6,45 +6,157 @@
   background-color: var(--color-bg);
 }
 
-.title {
+.header {
   position: absolute;
-  top: 8%;
-  left: 8%;
-  width: 85%;
-  font-size: 4rem;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80%;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
 }
 
 .subtitle {
-  position: absolute;
-  top: 15%;
-  left: 8%;
+  margin-top: 0.4rem;
 
   font-family: var(--font-body);
-  font-size: 2.4rem;
-  font-weight: 400;
+  font-size: 2.3rem;
   color: var(--apple-juice);
-  letter-spacing: 0.08em;
 }
 
-.steps {
+.stepImage1,
+.stepImage2,
+.stepImage3,
+.stepImage4 {
   position: absolute;
-  top: 25%;
-  left: 35%;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  left: 11%;
+  width: 5.5rem;
+  z-index: 2;
 }
 
-.step h3 {
+.stepImage1 {
+  top: 24%;
+}
+
+.stepImage2 {
+  top: 42%;
+}
+
+.stepImage3 {
+  top: 60%;
+}
+
+.stepImage4 {
+  top: 77%;
+}
+
+.arrowRight1,
+.arrowRight2,
+.arrowLeft {
+  position: absolute;
+  width: 2.3rem;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.arrowRight1 {
+  top: 33%;
+  left: 25%;
+}
+
+.arrowLeft {
+  top: 52%;
+  left: 3%;
+}
+
+.arrowRight2 {
+  top: 70%;
+  left: 25%;
+}
+
+.stepText1,
+.stepText2,
+.stepText3,
+.stepText4 {
+  position: absolute;
+  left: 35%;
+  z-index: 2;
+  width: 40%;
+}
+
+.stepText1 {
+  top: 27%;
+}
+
+.stepText2 {
+  top: 43%;
+}
+
+.stepText3 {
+  top: 60%;
+}
+
+.stepText4 {
+  top: 78%;
+}
+
+.stepText1 h2,
+.stepText2 h2,
+.stepText3 h2,
+.stepText4 h2 {
   font-family: var(--font-heading);
   color: var(--autumn-orange);
-  font-size: 2rem;
-  margin: 0;
+  font-size: 1.8rem;
+  margin: 0 0 0.4rem 0;
 }
 
-.step p {
-  font-size: 1.2rem;
-  letter-spacing: 0.08em;
+.stepText1 p,
+.stepText2 p,
+.stepText3 p,
+.stepText4 p {
+  font-size: 1.25rem;
+
+  color: var(--autumn-orange);
+}
+
+.timeline {
+  position: absolute;
+  right: 10%;
+  top: 27.5%;
+  width: 3px;
+  height: 53%;
+  background-color: var(--autumn-orange);
+}
+
+.timeline span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--autumn-orange);
+}
+
+.timeline span:nth-child(1) {
+  top: 0;
+}
+
+.timeline span:nth-child(2) {
+  top: 31%;
+}
+
+.timeline span:nth-child(3) {
+  top: 62%;
+}
+
+.timeline span:nth-child(4) {
+  bottom: 0;
 }
 
 .button {
