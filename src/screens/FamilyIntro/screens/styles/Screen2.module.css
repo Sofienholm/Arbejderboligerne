@@ -1,0 +1,85 @@
+/* ══════════════════════════════════════════════════════
+   SCREEN 2 — Holger / En travl men håbefuld tid
+   ══════════════════════════════════════════════════════ */
+
+.s2_textBlock {
+  position: absolute;
+  top: 6dvh;
+  right: 8dvw;
+  width: 64dvw;
+  z-index: 2;
+}
+
+.s2_title {
+  position: relative;
+  display: inline-block;
+  font-size: 5.4rem;
+  line-height: 0.82;
+  margin-bottom: 2rem;
+}
+
+.s2_title::before,
+.s2_title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.8dvh;
+  background-color: #0b89dc;
+  z-index: -1;
+}
+
+.s2_title::before {
+  top: 47%;
+}
+
+.s2_title::after {
+  bottom: 2%;
+}
+
+.s2_body {
+  width: 64%;
+}
+
+.s2_holger {
+  position: absolute;
+  left: -7%;
+  bottom: -1%;
+  height: 66dvh;
+  width: auto;
+  z-index: 3;
+  object-fit: contain;
+}
+
+/* stjerne-placeringer for screen 2 */
+.s2_s8 {
+  width: 8dvh;
+  left: 3%;
+  bottom: 31%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s2_s9 {
+  width: 5dvh;
+  left: 7%;
+  bottom: 18%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s2_s3 {
+  width: 5dvh;
+  left: 19%;
+  bottom: 38%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s2_s15 {
+  width: 22dvh;
+  right: 9%;
+  top: 33%;
+  animation-duration: 6s;
+  animation-delay: -0.5s;
+}
