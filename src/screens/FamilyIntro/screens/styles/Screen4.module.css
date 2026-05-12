@@ -5,14 +5,15 @@
 .s4_textBlock {
   position: absolute;
   top: 10dvh;
-  left: 50dvw;
+  left: 40dvw;
   z-index: 4;
 }
 
 .s4_title {
   font-size: 5rem;
   line-height: 0.9;
-  margin-bottom: 5rem;
+  margin-bottom: 9rem;
+  margin-left:4rem;
 }
 
 .s4_body {
@@ -41,50 +42,37 @@
 .s4_holgerLomme {
   position: absolute;
   left: 0;
-  bottom: 0;
-  height: 100dvh;
+  top: 0;
+  height: 90dvh;
   width: auto;
   z-index: 3;
   object-fit: contain;
 }
 
 /* stjerne-placeringer for screen 1 */
-.s4_s8 {
-  width: 9dvh;
-  left: 6%;
-  top: 38%;
+.s4_s2 {
+  width: 3dvh;
+  left: 33%;
+  top: 35%;
   animation-duration: 6s;
   animation-delay: -1s;
 }
-
-.s4_s2 {
-  width: 6dvh;
-  left: 38%;
-  top: 34%;
+.s4_s3 {
+  width: 3dvh;
+  left: 31%;
+  top: 38%;
   animation-duration: 6s;
-  animation-delay: -2.5s;
-}
-
-.s4_s13 {
-  width: 7dvh;
-  left: 52%;
-  top: 48%;
-  animation-duration: 6s;
-  animation-delay: -0.5s;
-}
-
-.s4_s16 {
-  width: 5dvh;
-  left: 18%;
-  bottom: 22%;
-  animation-duration: 6s;
-  animation-delay: -3s;
+  animation-delay: -2s;
+  rotate: 180deg;
 }
 
 .s4_s4 {
-  width: 4dvh;
-  left: 42%;
-  bottom: 14%;
+    width: 3dvh;
+  left: 33%;
+  top: 42%;
   animation-duration: 6s;
-  animation-delay: -4s;
+  animation-delay: -1s;
+  rotate: 0deg;
 }
+
+
