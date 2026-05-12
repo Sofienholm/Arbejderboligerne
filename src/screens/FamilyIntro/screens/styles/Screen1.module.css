@@ -4,13 +4,13 @@
 
 .s1_textBlock {
   position: absolute;
-  top: 3dvh;
+  top: 5dvh;
   left: 3dvw;
   z-index: 2;
 }
 
 .s1_title {
-  font-size: 4rem;
+  font-size: 4.5rem;
   margin-bottom: 1rem;
 }
 
