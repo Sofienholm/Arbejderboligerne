@@ -121,3 +121,8 @@
   animation-duration: 6s;
   animation-delay: -4s;
 }
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}

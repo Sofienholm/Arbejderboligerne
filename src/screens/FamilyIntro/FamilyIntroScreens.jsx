@@ -65,12 +65,12 @@ export default function FamilyIntroScreens({
   return (
     <div className={styles.wrapper} {...handlers}>
       {/* animationen omkring intro screen */}
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence custom={direction}>
         <motion.div
           key={index} // gør at framer motion opdager screen-skift
           custom={direction} // sender direction ind i animationen
           variants={slideVariants}
-          initial="enter"
+          initial={index === 0 ? false : "enter"}
           animate="center"
           exit="exit"
           transition={{ duration: 0.35, ease: "easeInOut" }}
