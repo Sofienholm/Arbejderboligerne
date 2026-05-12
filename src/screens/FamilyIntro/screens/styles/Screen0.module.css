@@ -23,7 +23,7 @@
 
   width: fit-content;
   margin-inline: auto;
-
+  z-index: 100;
   gap: 2.4rem;
 }
 
@@ -125,4 +125,6 @@
   width: 100%;
   height: auto;
   display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
 }
