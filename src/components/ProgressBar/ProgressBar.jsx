@@ -6,10 +6,8 @@ export default function ProgressBar({ total, currentIndex }) {
             {Array.from({ length: total }).map((_, i) => (
                 <div
                     key={i}
-                    className={`${styles.dot} 
-            ${i === currentIndex ? styles.dotActive : ""} 
-            ${i < currentIndex ? styles.dotPast : ""}
-          `}
+                    className={`${styles.circle} ${i <= currentIndex ? styles.circleFilled : ""
+                        } ${i === currentIndex ? styles.circleActive : ""}`}
                 />
             ))}
         </div>

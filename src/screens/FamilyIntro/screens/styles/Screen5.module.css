@@ -4,25 +4,44 @@
 
 .s5_textBlock {
   position: absolute;
-  bottom: 6dvh;
-  right: 3dvw;
-  z-index: 2;
+  top: 6dvh;
+  right: 8dvw;
+  width: 55dvw;
+  z-index: 4;
 }
 
 .s5_title {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 7rem;
+  line-height: 0.8;
+  text-align: center;
+}
+
+.s5_titleBig {
+  font-family: var(--font-heading);
+  font-size: 7rem;
+  color: var(--autumn-orange);
+}
+
+.s5_titleSmall {
+  font-family: var(--font-heading);
+  font-size: 3.8rem;
+  color: var(--autumn-orange);
 }
 .s5_body {
-  font-size: 2.2rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  margin-left: 5rem;
 }
 
 .s5_JytteKokken {
   position: absolute;
-  width: 70dvh;
+  height: 100dvh;
   left: -5%;
-  bottom: 15%;
+  bottom: 0;
 }
 /* stjerne-placeringer for screen 1 */
 .s5_s1 {

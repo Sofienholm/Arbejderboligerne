@@ -1,5 +1,5 @@
 import { familyIntroScreens } from "../../../data/screens";
-import styles from "./styles/Screen3.module.css";
+import styles from "./styles/Screen5.module.css";
 import starStyles from "../FamilyIntroScreens.module.css";
 import JytteKokken from "../../../assets/images/familie/fam-intro5.svg";
 
@@ -31,7 +31,10 @@ export default function Screen5() {
 
       {/* ── Tekst ── */}
       <div className={styles.s5_textBlock}>
-        <h1 className={styles.s5_title}>{content.title}</h1>
+        <h1 className={styles.s5_title}>
+          <span className={styles.s5_titleBig}>ET MERE</span>
+          <span className={styles.s5_titleSmall}>MODERNE HJEM</span>
+        </h1>
         <p className={styles.s5_body}>{content.body}</p>
       </div>
 

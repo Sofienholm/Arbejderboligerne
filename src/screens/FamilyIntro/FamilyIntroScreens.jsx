@@ -84,7 +84,9 @@ export default function FamilyIntroScreens({
       </AnimatePresence>
 
       {/* progressionbar */}
-      <ProgressBar total={SCREENS.length} currentIndex={index} />
+      {index > 0 && index < SCREENS.length - 1 && (
+        <ProgressBar total={SCREENS.length - 2} currentIndex={index - 1} />
+      )}
     </div>
   );
 }
