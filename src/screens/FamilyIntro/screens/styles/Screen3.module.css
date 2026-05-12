@@ -4,7 +4,7 @@
 
 .s3_textBlock {
   position: absolute;
-  bottom: 3dvh;
+  bottom: 6dvh;
   left: 3dvw;
   z-index: 2;
 }
@@ -22,7 +22,7 @@
   position:absolute;
   width: 70dvh;
   left: -5%;
-  bottom: 10%;
+  bottom: 15%;
 }
 
 /* stjerne-placeringer for screen 1 */
@@ -33,6 +33,15 @@
   animation-duration: 6s;
   animation-delay: -1s;
 }
+
+.s3_s5 {
+  width: 14.5dvh;
+  right: 6%;
+  top: 10%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
 
 .s3_s8 {
   width: 3dvh;
@@ -60,9 +69,9 @@
 
 
 .s3_s14 {
-  width: 4dvh;
-  left: 42%;
-  bottom: 14%;
+  width: 20dvh;
+  left: 50%;
+  top: -5%;
   animation-duration: 6s;
   animation-delay: -4s;
 }
