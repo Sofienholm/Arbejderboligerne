@@ -47,7 +47,7 @@ export default function Screen0() {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
         initial={{ x: "-120%", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        animate={{ x: 0, opacity: 0.4 }}
         transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star8} alt="" className={`${styles.starImg} floatC`} />
@@ -56,7 +56,7 @@ export default function Screen0() {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s2}`}
         initial={{ y: "-120%", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 0.4 }}
         transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star2} alt="" className={`${styles.starImg} floatA`} />
@@ -65,7 +65,7 @@ export default function Screen0() {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s13}`}
         initial={{ x: "120%", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        animate={{ x: 0, opacity: 0.4 }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star13} alt="" className={`${styles.starImg} floatB`} />
@@ -74,7 +74,7 @@ export default function Screen0() {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s16}`}
         initial={{ x: "-120%", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        animate={{ x: 0, opacity: 0.4 }}
         transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star16} alt="" className={`${styles.starImg} floatA`} />
@@ -83,7 +83,7 @@ export default function Screen0() {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s4}`}
         initial={{ y: "120%", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 0.4 }}
         transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star4} alt="" className={`${styles.starImg} floatC`} />
