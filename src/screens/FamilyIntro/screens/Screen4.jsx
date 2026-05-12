@@ -4,10 +4,10 @@ import styles from "./styles/Screen4.module.css";
 import starStyles from "../FamilyIntroScreens.module.css";
 import holgerLomme from "../../../assets/images/familie/fam-intro4.svg";
 
-import star3 from "../../../assets/images/illustrations/star3.svg";
+import star2 from "../../../assets/images/illustrations/star2.svg";
 import star8 from "../../../assets/images/illustrations/star8.svg";
 import star9 from "../../../assets/images/illustrations/star9.svg";
-import star15 from "../../../assets/images/illustrations/star15.svg";
+
 
 export default function Screen4() {
   const content = familyIntroScreens.screen4;
@@ -15,11 +15,9 @@ export default function Screen4() {
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star8} alt="" className={`${starStyles.bg} ${styles.s4_s8} floatC`} />
-      <img src={star9} alt="" className={`${starStyles.bg} ${styles.s4_s9} floatA`} />
-      <img src={star3} alt="" className={`${starStyles.bg} ${styles.s4_s3} floatB`} />
-      <img src={star15} alt="" className={`${starStyles.bg} ${styles.s4_s15} floatC`} />
-
+      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s4_s2} floatC`} />
+      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s4_s3} floatA`} />
+      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s4_s4} floatC`} />
       {/* ── børnen ── */}
       <img
         src={holgerLomme}
