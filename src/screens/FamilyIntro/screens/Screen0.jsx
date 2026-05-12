@@ -44,12 +44,50 @@ export default function Screen0() {
   return (
     <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
-      {/* ── Baggrundsstjerner ── */}
-      <img src={star8} alt="" className={`${starStyles.bg} ${styles.s1_s8} floatC`} />
-      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s1_s2} floatA`} />
-      <img src={star13} alt="" className={`${starStyles.bg} ${styles.s1_s13} floatB`} />
-      <img src={star16} alt="" className={`${starStyles.bg} ${styles.s1_s16} floatA`} />
-      <img src={star4} alt="" className={`${starStyles.bg} ${styles.s1_s4} floatC`} />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s8}`}
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star8} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s2}`}
+        initial={{ y: "-120%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s13}`}
+        initial={{ x: "120%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star13} alt="" className={`${styles.starImg} floatB`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s16}`}
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star16} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s4}`}
+        initial={{ y: "120%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star4} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
 
       <motion.h1
         className={styles.title}
