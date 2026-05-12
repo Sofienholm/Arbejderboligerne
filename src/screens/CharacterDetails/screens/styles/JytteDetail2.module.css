@@ -1,0 +1,45 @@
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.title {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  font-size: 5.6rem;
+}
+
+.textBlock {
+  position: absolute;
+  top: 22%;
+  left: 8%;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.textBlock p {
+  font-size: 2rem;
+}
+
+.jytteSitting {
+  position: absolute;
+  left: -8%;
+  bottom: -2%;
+  width: 68%;
+  z-index: 1;
+}
+
+.jytteStanding {
+  position: absolute;
+  right: -3%;
+  bottom: 8%;
+  width: 43%;
+  z-index: 2;
+}

@@ -1,0 +1,51 @@
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.title {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  font-size: 6.5rem;
+}
+
+.textBlockTop {
+  position: absolute;
+  top: 21%;
+  left: 44%;
+  z-index: 3;
+}
+
+.textBlockMiddle {
+  position: absolute;
+  top: 42%;
+  left: 44%;
+  z-index: 3;
+}
+
+.textBlockBottom {
+  position: absolute;
+  left: 6%;
+  bottom: 7%;
+  z-index: 3;
+}
+
+.nielsPlaying {
+  position: absolute;
+  left: 6%;
+  top: 18%;
+  width: 36%;
+  z-index: 1;
+}
+
+.nielsHomework {
+  position: absolute;
+  right: -5%;
+  bottom: 2%;
+  width: 63%;
+  z-index: 1;
+}
