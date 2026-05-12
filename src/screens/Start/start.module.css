@@ -31,10 +31,10 @@
 
 .year {
   font-family: var(--font-heading);
-  font-size: 12rem;
+  font-size: 14rem;
   font-weight: 100;
   color: #c8541e;
-  line-height: 0.7;
+  line-height: 0.6;
 }
 
 .familieWrapper {
@@ -69,31 +69,31 @@
 /* placeringer + animation timing */
 .radio {
   width: 18dvh;
-  left: 2%;
-  top: 32%;
+  left: 12%;
+  top: 37%;
   animation-duration: 6s;
   animation-delay: 0s;
 }
 
 .tv {
   width: 16dvh;
-  right: 3%;
+  right: 9%;
   top: 42%;
   animation-duration: 7.5s;
   animation-delay: -2s;
 }
 
 .star1 {
-  width: 8dvh;
-  left: 8%;
-  top: 12%;
+  width: 18dvh;
+  left: -8%;
+  top: 5%;
   animation-duration: 5.5s;
   animation-delay: -1s;
 }
 
 .star2 {
   width: 5dvh;
-  right: 10%;
+  right: 8%;
   top: 8%;
   animation-duration: 6s;
   animation-delay: -3.5s;
@@ -101,32 +101,48 @@
 
 .star3 {
   width: 6dvh;
-  left: 18%;
+  left: 8%;
   bottom: 28%;
   animation-duration: 7.5s;
   animation-delay: -0.5s;
 }
 
 .star4 {
-  width: 4dvh;
-  right: 16%;
-  bottom: 30%;
+  width: 3dvh;
+  right: 19%;
+  bottom: 20%;
+  animation-duration: 5.5s;
+  animation-delay: -4s;
+}
+
+.star5 {
+  width: 10dvh;
+  right: 5%;
+  bottom: 5%;
   animation-duration: 5.5s;
   animation-delay: -4s;
 }
 
 .star6 {
   width: 7dvh;
-  right: 22%;
+  right: 10%;
   top: 20%;
   animation-duration: 6s;
   animation-delay: -2.5s;
 }
 
 .star11 {
-  width: 5dvh;
-  left: 5%;
-  bottom: 16%;
+  width: 15dvh;
+  left: -5%;
+  bottom: -5%;
+  animation-duration: 7.5s;
+  animation-delay: -1.5s;
+}
+
+.star12 {
+  width: 14dvh;
+  Right: 20%;
+  Top: -5%;
   animation-duration: 7.5s;
   animation-delay: -1.5s;
 }
