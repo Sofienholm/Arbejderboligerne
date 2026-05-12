@@ -6,6 +6,7 @@ import jytte1b from "../../../assets/images/familie/fam-intro1b.svg";
 
 import star2 from "../../../assets/images/illustrations/star2.svg";
 import star4 from "../../../assets/images/illustrations/star4.svg";
+import star5 from "../../../assets/images/illustrations/star5.svg";
 import star8 from "../../../assets/images/illustrations/star8.svg";
 import star13 from "../../../assets/images/illustrations/star13.svg";
 import star16 from "../../../assets/images/illustrations/star16.svg";
@@ -20,6 +21,7 @@ export default function Screen1() {
       <img src={star13} alt="" className={`${starStyles.bg} ${styles.s1_s13} floatB`} />
       <img src={star16} alt="" className={`${starStyles.bg} ${styles.s1_s16} floatA`} />
       <img src={star4} alt="" className={`${starStyles.bg} ${styles.s1_s4} floatC`} />
+      <img src={star5} alt="" className={`${starStyles.bg} ${styles.s1_s5} floatC`} />
 
       {/* ── Tekst ── */}
       <div className={styles.s1_textBlock}>

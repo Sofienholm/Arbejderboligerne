@@ -5,22 +5,20 @@
 .s2_textBlock {
   position: absolute;
   top: 6dvh;
-  right: 7dvw;
-  width: 68dvw;
+  left: 27dvw;
+  width: 95dvw;
   z-index: 2;
 }
 
 .s2_title {
   position: relative;
-  display: inline-block;
   font-size: 4.25rem;
   line-height: 0.9;
   margin-bottom: 1.8rem;
 }
 
 .s2_body {
-  width: 98%;
-  font-size: 1.9rem;
+  font-size: 2.2rem;
   line-height: 1.2;
 }
 
