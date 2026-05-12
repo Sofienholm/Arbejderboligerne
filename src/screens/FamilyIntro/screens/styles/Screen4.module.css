@@ -1,0 +1,71 @@
+/* ══════════════════════════════════════════════════════
+   SCREEN 3 — børnene i skolen
+   ══════════════════════════════════════════════════════ */
+
+.s4_textBlock {
+  position: absolute;
+  top: 3dvh;
+  left: 3dvw;
+  z-index: 2;
+}
+
+.s4_title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.s4_holgerLomme {
+  position: absolute;
+  right: -2%;
+  bottom: 0;
+  height: 95dvh;
+  width: auto;
+  z-index: 3;
+  object-fit: contain;
+}
+.s4_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* stjerne-placeringer for screen 1 */
+.s4_s8 {
+  width: 9dvh;
+  left: 6%;
+  top: 38%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s4_s2 {
+  width: 6dvh;
+  left: 38%;
+  top: 34%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s4_s13 {
+  width: 7dvh;
+  left: 52%;
+  top: 48%;
+  animation-duration: 6s;
+  animation-delay: -0.5s;
+}
+
+.s4_s16 {
+  width: 5dvh;
+  left: 18%;
+  bottom: 22%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s4_s4 {
+  width: 4dvh;
+  left: 42%;
+  bottom: 14%;
+  animation-duration: 6s;
+  animation-delay: -4s;
+}
