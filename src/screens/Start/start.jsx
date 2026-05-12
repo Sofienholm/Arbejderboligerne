@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./start.module.css";
 
 import familieImg from "../../assets/images/familie/start-fam.svg";
@@ -15,31 +16,103 @@ import star11 from "../../assets/images/illustrations/star11.svg";
 import star12 from "../../assets/images/illustrations/star12.svg";
 
 export default function Start({ onNext }) {
-  return (
-    <div className={styles.container} onClick={onNext}>
-      {/* svævende baggrundselementer */}
-      <div className={styles.bgLayer}>
-        <img src={radio} alt="" className={`${styles.bg} ${styles.radio} floatC`} />
-        <img src={tv} alt="" className={`${styles.bg} ${styles.tv} floatB`} />
+  const [isLeaving, setIsLeaving] = useState(false);
 
-        <img src={star1} alt="" className={`${styles.bg} ${styles.star1} floatC`} />
-        <img src={star2} alt="" className={`${styles.bg} ${styles.star2} floatA`} />
-        <img src={star3} alt="" className={`${styles.bg} ${styles.star3} floatB`} />
-        <img src={star4} alt="" className={`${styles.bg} ${styles.star4} floatC`} />
-        <img src={star5} alt="" className={`${styles.bg} ${styles.star5} floatA`} />
-        <img src={star6} alt="" className={`${styles.bg} ${styles.star6} floatA`} />
-        <img src={star11} alt="" className={`${styles.bg} ${styles.star11} floatB`} />
-        <img src={star12} alt="" className={`${styles.bg} ${styles.star12} floatC`} />
+  const handleStartClick = () => {
+    if (isLeaving) return;
+
+    setIsLeaving(true);
+
+    setTimeout(() => {
+      onNext();
+    }, 850);
+  };
+
+  return (
+    <div className={styles.container} onClick={handleStartClick}>
+      <div className={styles.bgLayer}>
+        <img
+          src={radio}
+          alt=""
+          className={`${styles.bg} ${styles.radio} floatC ${isLeaving ? styles.leaveLeft : ""
+            }`}
+        />
+
+        <img
+          src={tv}
+          alt=""
+          className={`${styles.bg} ${styles.tv} floatB ${isLeaving ? styles.leaveRight : ""
+            }`}
+        />
+
+        <img
+          src={star1}
+          alt=""
+          className={`${styles.bg} ${styles.star1} floatC ${isLeaving ? styles.leaveTop : ""
+            }`}
+        />
+
+        <img
+          src={star2}
+          alt=""
+          className={`${styles.bg} ${styles.star2} floatA ${isLeaving ? styles.leaveTop : ""
+            }`}
+        />
+
+        <img
+          src={star3}
+          alt=""
+          className={`${styles.bg} ${styles.star3} floatB ${isLeaving ? styles.leaveLeft : ""
+            }`}
+        />
+
+        <img
+          src={star4}
+          alt=""
+          className={`${styles.bg} ${styles.star4} floatC ${isLeaving ? styles.leaveRight : ""
+            }`}
+        />
+
+        <img
+          src={star5}
+          alt=""
+          className={`${styles.bg} ${styles.star5} floatA ${isLeaving ? styles.leaveBottom : ""
+            }`}
+        />
+
+        <img
+          src={star6}
+          alt=""
+          className={`${styles.bg} ${styles.star6} floatA ${isLeaving ? styles.leaveRight : ""
+            }`}
+        />
+
+        <img
+          src={star11}
+          alt=""
+          className={`${styles.bg} ${styles.star11} floatB ${isLeaving ? styles.leaveBottom : ""
+            }`}
+        />
+
+        <img
+          src={star12}
+          alt=""
+          className={`${styles.bg} ${styles.star12} floatC ${isLeaving ? styles.leaveTop : ""
+            }`}
+        />
       </div>
 
-      {/* overskrift */}
-      <header className={styles.header}>
+      <header
+        className={`${styles.header} ${isLeaving ? styles.leaveTop : ""}`}
+      >
         <span className={styles.arbejderbolig}>ARBEJDERBOLIG</span>
         <h1 className={styles.year}>1955</h1>
       </header>
 
-      {/* familiebillede */}
-      <div className={styles.familieWrapper}>
+      <div
+        className={`${styles.familieWrapper} ${isLeaving ? styles.fadeOut : ""
+          }`}
+      >
         <img
           src={familieImg}
           alt="Familien Hansen"
