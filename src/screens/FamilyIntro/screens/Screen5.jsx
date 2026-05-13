@@ -3,12 +3,11 @@ import styles from "./styles/Screen5.module.css";
 import starStyles from "../FamilyIntroScreens.module.css";
 import JytteKokken from "../../../assets/images/familie/fam-intro5.svg";
 
-import star1 from "../../../assets/images/illustrations/star1.svg";
-import star5 from "../../../assets/images/illustrations/star5.svg";
+import star7 from "../../../assets/images/illustrations/star7.svg";
+import star9 from "../../../assets/images/illustrations/star9.svg";
 import star8 from "../../../assets/images/illustrations/star8.svg";
-import star11 from "../../../assets/images/illustrations/star11.svg";
-import star12 from "../../../assets/images/illustrations/star12.svg";
-import star14 from "../../../assets/images/illustrations/star14.svg";
+import star3 from "../../../assets/images/illustrations/star3.svg";
+import star2 from "../../../assets/images/illustrations/star2.svg";
 
 export default function Screen5() {
   const content = familyIntroScreens.screen5;
@@ -16,12 +15,12 @@ export default function Screen5() {
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star1} alt="" className={`${starStyles.bg} ${styles.s5_s1} floatC`} />
-      <img src={star5} alt="" className={`${starStyles.bg} ${styles.s5_s5} floatB`} />
+      <img src={star7} alt="" className={`${starStyles.bg} ${styles.s5_s7} floatC`} />
+      <img src={star9} alt="" className={`${starStyles.bg} ${styles.s5_s9} floatB`} />
       <img src={star8} alt="" className={`${starStyles.bg} ${styles.s5_s8} floatC`} />
-      <img src={star11} alt="" className={`${starStyles.bg} ${styles.s5_s11} floatA`} />
-      <img src={star12} alt="" className={`${starStyles.bg} ${styles.s5_s12} floatC`} />
-      <img src={star14} alt="" className={`${starStyles.bg} ${styles.s5_s14} floatB`} />
+      <img src={star3} alt="" className={`${starStyles.bg} ${styles.s5_s3} floatA`} />
+      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s5_s2} floatC`} />
+     
       {/* ── børnen ── */}
       <img
         src={JytteKokken}

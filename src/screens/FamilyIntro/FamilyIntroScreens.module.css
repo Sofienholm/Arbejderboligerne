@@ -19,7 +19,6 @@
   inset: 0;
 }
 
-/* fælles styling for baggrundsstjerner */
 .bg {
   position: absolute;
   opacity: 0.4;
@@ -27,3 +26,5 @@
   pointer-events: none;
   z-index: 1;
 }
+
+/* fælles styling for baggrundsstjerner */
