@@ -9,25 +9,21 @@ const characterIntro = {
     holger: {
         name: "HOLGER",
         role: "FAR I FAMILIEN HANSEN",
-        text: "DU SKAL NU FØLGE HOLGER OG SE HVERDAGEN GENNEM HANS ØJNE.",
         image: holger,
     },
     jytte: {
         name: "JYTTE",
         role: "MOR I FAMILIEN HANSEN",
-        text: "DU SKAL NU FØLGE JYTTE OG SE HVERDAGEN GENNEM HENDES ØJNE.",
         image: jytte,
     },
     niels: {
         name: "NIELS",
         role: "FAMILIENS ÆLDSTE BARN",
-        text: "DU SKAL NU FØLGE NIELS OG SE HVERDAGEN GENNEM HANS ØJNE.",
         image: niels,
     },
     hanne: {
         name: "HANNE",
         role: "FAMILIENS YNGSTE BARN",
-        text: "DU SKAL NU FØLGE HANNE OG SE HVERDAGEN GENNEM HENDES ØJNE.",
         image: hanne,
     },
 };
@@ -48,11 +44,10 @@ export default function CharacterIntro({ character }) {
             <div className={styles.textBlock}>
                 <h1>{content.name}</h1>
                 <p className={styles.role}>{content.role}</p>
-                <p className={styles.text}>{content.text}</p>
             </div>
 
             <div className={styles.swipeText}>
-                <p>SWIPE FOR AT GÅ VIDERE</p>
+                <p>SWIPE FOR AT LÆRE MERE</p>
                 <span>↑</span>
             </div>
         </section>

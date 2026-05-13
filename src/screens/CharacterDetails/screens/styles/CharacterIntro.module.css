@@ -8,12 +8,11 @@
 
 .characterImage {
   position: absolute;
-  top: 23%;
+  top: 10%;
   left: 28%;
   width: 44dvw;
   z-index: 2;
 }
-
 .textBlock {
   position: absolute;
   top: 49%;
@@ -32,12 +31,6 @@
   font-size: 2rem;
   margin-top: 0.5rem;
 }
-
-.text {
-  font-size: 2rem;
-  margin-top: 2.5rem;
-}
-
 .swipeText {
   position: absolute;
   bottom: 6%;
@@ -45,6 +38,8 @@
   transform: translateX(-50%);
   text-align: center;
   z-index: 3;
+
+  animation: swipeBounce 1.4s ease-in-out infinite;
 }
 
 .swipeText p {
@@ -56,4 +51,16 @@
   margin-top: 0.2rem;
   font-size: 3rem;
   color: var(--apple-juice);
+}
+
+@keyframes swipeBounce {
+  0% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -0.8rem;
+  }
+  100% {
+    translate: 0 0;
+  }
 }
