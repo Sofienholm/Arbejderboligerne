@@ -4,9 +4,9 @@
 
 .s5_textBlock {
   position: absolute;
-  top: 6dvh;
-  right: 8dvw;
-  width: 55dvw;
+  top: 8dvh;
+  right: 6dvw;
+  width: 75dvw;
   z-index: 4;
 }
 
@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  margin-left:6rem;
   margin-bottom: 7rem;
   line-height: 0.8;
   text-align: center;
@@ -22,19 +22,18 @@
 
 .s5_titleBig {
   font-family: var(--font-heading);
-  font-size: 7rem;
+  font-size: 6.3rem;
   color: var(--autumn-orange);
 }
 
 .s5_titleSmall {
   font-family: var(--font-heading);
-  font-size: 3.8rem;
+  font-size: 3.3rem;
   color: var(--autumn-orange);
 }
 .s5_body {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  margin-left: 5rem;
+  font-size: 2.5rem;
+  margin-left: 16rem;
 }
 
 .s5_JytteKokken {
@@ -44,50 +43,45 @@
   bottom: 0;
 }
 /* stjerne-placeringer for screen 1 */
-.s5_s1 {
-  width: 4.5dvh;
-  left: 6%;
-  top: 18%;
+.s5_s7 {
+  width: 9.5dvh;
+  right: 14%;
+  bottom: 13%;
   animation-duration: 6s;
-  animation-delay: -1s;
+  animation-delay: -3s;
 }
 
-.s5_s5 {
-  width: 14.5dvh;
+.s5_s9 {
+  width: 5.5dvh;
   right: 6%;
-  top: 10%;
+  top: 23%;
   animation-duration: 6s;
   animation-delay: -1s;
 }
 
 .s5_s8 {
   width: 3dvh;
-  left: 38%;
-  top: 18%;
+  right: 13%;
+  top: 22%;
   animation-duration: 6s;
   animation-delay: -2.5s;
 }
 
-.s5_s11 {
-  width: 7dvh;
-  left: 52%;
-  top: 18%;
-  animation-duration: 6s;
-  animation-delay: -0.5s;
-}
-
-.s5_s12 {
-  width: 15dvh;
-  left: 18%;
-  top: 5%;
-  animation-duration: 6s;
-  animation-delay: -3s;
-}
-
-.s5_s14 {
+.s5_s3 {
   width: 20dvh;
-  left: 50%;
-  top: -5%;
-  animation-duration: 6s;
-  animation-delay: -4s;
+  right: 18%;
+  bottom: -5%;
+  animation-duration: 3.5s;
+  animation-delay: -0.5s;
+  rotate: 26deg;
 }
+
+.s5_s2 {
+  width: 10dvh;
+  right: 32%;
+  bottom: 14%;
+  animation-duration: 3s;
+  animation-delay: 0s;
+}
+
+

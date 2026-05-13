@@ -1,9 +1,13 @@
+
 import styles from "./CharacterSelect.module.css";
+
 
 import holger from "../../assets/images/familie/holger-cirkel.svg";
 import jytte from "../../assets/images/familie/jytte-cirkel.svg";
 import niels from "../../assets/images/familie/niels-cirkel.svg";
 import hanne from "../../assets/images/familie/hanne-cirkel.svg";
+
+
 
 const characters = [
   { id: "holger", image: holger, className: "holger" },
@@ -15,6 +19,7 @@ const characters = [
 export default function CharacterSelect({ onSelectCharacter }) {
   return (
     <section className={styles.screen}>
+
       <h1 className={styles.title}>
         VÆLG ET FAMILIE MEDLEM AT <br />
         LÆRE MERE OM
