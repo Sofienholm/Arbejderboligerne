@@ -22,8 +22,6 @@ const characters = [
     className: "holger",
     name: "HOLGER",
     text: "DU SKAL NU FØLGE HOLGER",
-    moveX: "13vw",
-    moveY: "5vh",
   },
   {
     id: "niels",
@@ -31,8 +29,6 @@ const characters = [
     className: "niels",
     name: "NIELS",
     text: "DU SKAL NU FØLGE NIELS",
-    moveX: "-28vw",
-    moveY: "-10vh",
   },
   {
     id: "jytte",
@@ -40,8 +36,6 @@ const characters = [
     className: "jytte",
     name: "JYTTE",
     text: "DU SKAL NU FØLGE JYTTE",
-    moveX: "8vw",
-    moveY: "-33vh",
   },
   {
     id: "hanne",
@@ -49,10 +43,14 @@ const characters = [
     className: "hanne",
     name: "HANNE",
     text: "DU SKAL NU FØLGE HANNE",
-    moveX: "-29vw",
-    moveY: "-45vh",
   },
 ];
+
+const selectedPosition = {
+  top: "10%",
+  left: "28%",
+  width: "44dvw",
+};
 
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -164,13 +162,20 @@ export default function CharacterSelect({ onSelectCharacter }) {
             onClick={() => handleSelect(character)}
             disabled={selectedCharacter !== null}
             initial={{ scale: 0.9, opacity: 0 }}
-            animate={{
-              x: isSelected ? character.moveX : 0,
-              y: isSelected ? character.moveY : 0,
-              scale: isSelected ? 1.45 : 1,
-              opacity: isOtherSelected ? 0 : 1,
-              zIndex: isSelected ? 20 : 2,
-            }}
+            animate={
+              isSelected
+                ? {
+                    ...selectedPosition,
+                    scale: 1,
+                    opacity: 1,
+                    zIndex: 20,
+                  }
+                : {
+                    scale: 1,
+                    opacity: isOtherSelected ? 0 : 1,
+                    zIndex: 2,
+                  }
+            }
             whileTap={{ scale: 0.94 }}
             transition={{
               delay: selectedCharacter ? 0 : 0.7 + index * 0.25,
