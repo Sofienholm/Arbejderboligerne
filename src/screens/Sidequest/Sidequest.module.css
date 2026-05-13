@@ -14,12 +14,12 @@
   width: 90%;
 
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .subtitle {
   position: absolute;
-  top: 14.5%;
+  top: 12.5%;
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
@@ -56,7 +56,7 @@
   color: var(--sweet-grey);
 
   font-family: var(--font-body);
-  font-size: 2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.12em;
   cursor: pointer;
 }
