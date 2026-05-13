@@ -11,13 +11,14 @@
   top: 8%;
   left: 9%;
   font-size: 6.5rem;
+  z-index: 5;
 }
 
 .textBlock {
   position: absolute;
   top: 25%;
-  left: 50%;
-  z-index: 2;
+  left: 40%;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;
@@ -29,5 +30,56 @@
   left: -6%;
   bottom: -2%;
   width: 66%;
+  z-index: 3;
+}
+
+/* fælles styling for baggrundsstjerner */
+.bg {
+  position: absolute;
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
+  pointer-events: none;
   z-index: 1;
+}
+
+/* stjerne-placeringer for Jytte detail 1 */
+.s5_s7 {
+  width: 9.5dvh;
+  right: 14%;
+  bottom: 13%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s5_s9 {
+  width: 8.5dvh;
+  right: 6%;
+  top:8%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s5_s8 {
+  width: 3dvh;
+  right: 15%;
+  top: 15%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s5_s3 {
+  width: 20dvh;
+  right: 18%;
+  top: -5%;
+  animation-duration: 3.5s;
+  animation-delay: -0.5s;
+  rotate: 26deg;
+}
+
+.s5_s16 {
+  width: 13dvh;
+  right: 22%;
+  bottom: -4%;
+  animation-duration: 3s;
+  animation-delay: 0s;
 }
