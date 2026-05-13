@@ -69,9 +69,8 @@ VENNER.`,
 FINDER PÅ NYE LEGE
 HVER DAG.`,
 
-      textBottom: `INTET GÅR HANS
-NÆSE FORBI. ISÆR
-HVIS FAR SKAL HAVE
+      textBottom: `INTET GÅR HANS NÆSE FORBI. 
+      ISÆR HVIS FAR SKAL HAVE
 EN HJÆLPENDE HÅND`,
     },
 
