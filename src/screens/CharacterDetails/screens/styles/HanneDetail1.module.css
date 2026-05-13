@@ -9,7 +9,7 @@
 .title {
   position: absolute;
   top: 8%;
-  left: 8%;
+  left: 12%;
   font-size: 6.5rem;
 }
 
@@ -26,8 +26,38 @@
 
 .hannePlaying {
   position: absolute;
-  right: 4%;
-  bottom: -2%;
+  right: 10%;
+  bottom: 1%;
   width: 58%;
   z-index: 1;
+}
+.s2_s1 {
+  width: 9dvh;
+  left: -3%;
+  top: 30%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+.s2_s2 {
+  width: 9dvh;
+  right: 10%;
+  top: 10%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+  rotate: 180deg;
+}
+.s2_s16 {
+  width: 5dvh;
+  right: 20%;
+  top: 5%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
 }
