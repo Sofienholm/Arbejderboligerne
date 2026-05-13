@@ -11,22 +11,26 @@
   top: 8%;
   right: 8%;
   font-size: 8.5rem;
+  z-index: 5;
 }
 
-.textBlockTop p {
+.textBlockTop {
   position: absolute;
   top: 25%;
   left: 54%;
-  z-index: 3;
-  font-size: 2.4rem ;
-  
+  width: 46%;
+  z-index: 5;
 }
 
-.textBlockBottom p {
+.textBlockTop p {
+  font-size: 2.4rem;
+}
+
+.textBlockBottom {
   position: absolute;
-  left: 6%;
-  bottom: 4%;
-  z-index: 3;
+  left: 18%;
+  bottom: 7%;
+  z-index: 5;
 }
 
 .nielsPlaying {
@@ -34,7 +38,7 @@
   left: -6%;
   top: 2%;
   width: 60%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .nielsHomework {
@@ -42,5 +46,48 @@
   right: -5%;
   bottom: 16%;
   width: 53%;
+  z-index: 3;
+}
+
+/* fælles styling for baggrundsstjerner */
+.bg {
+  position: absolute;
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
+  pointer-events: none;
   z-index: 1;
+}
+
+/* stjerne-placeringer for Niels detail 1 */
+.s5_s7 {
+  width: 9.5dvh;
+  right: 14%;
+  bottom: 4%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s5_s9 {
+  width: 5.5dvh;
+  right: 6%;
+  top: 23%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s5_s8 {
+  width: 3dvh;
+  right: 13%;
+  top: 22%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+
+.s5_s12 {
+  width: 9dvh;
+  right: 45%;
+  bottom: 22%;
+  animation-duration: 3s;
+  animation-delay: 0s;
 }
