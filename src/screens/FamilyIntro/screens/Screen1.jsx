@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { familyIntroScreens } from "../../../data/screens";
 import styles from "./styles/Screen1.module.css";
 import starStyles from "../FamilyIntroScreens.module.css";
@@ -16,12 +17,60 @@ export default function Screen1() {
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star8} alt="" className={`${starStyles.bg} ${styles.s1_s8} floatC`} />
-      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s1_s2} floatA`} />
-      <img src={star13} alt="" className={`${starStyles.bg} ${styles.s1_s13} floatB`} />
-      <img src={star16} alt="" className={`${starStyles.bg} ${styles.s1_s16} floatA`} />
-      <img src={star4} alt="" className={`${starStyles.bg} ${styles.s1_s4} floatC`} />
-      <img src={star5} alt="" className={`${starStyles.bg} ${styles.s1_s5} floatC`} />
+      {/* ── Baggrundsstjerner ── */}
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s8}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star8} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s2}`}
+        initial={{ y: "-20%", opacity: 0, scale: 0.7 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s13}`}
+        initial={{ x: "20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star13} alt="" className={`${styles.starImg} floatB`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s16}`}
+        initial={{ x: "-10%", opacity: 0, scale: 0.7 }}
+        animate={{ x: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star16} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s4}`}
+        initial={{ y: "20%", opacity: 0 }}
+        animate={{ y: 0, opacity: 0.4 }}
+        transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star4} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s5}`}
+        initial={{ x: "-50%", opacity: 0, scale: 0.3 }}
+        animate={{ x: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star5} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
 
       {/* ── Tekst ── */}
       <div className={styles.s1_textBlock}>

@@ -84,7 +84,14 @@
 .s1_s5 {
   width: 8dvh;
   right: -4%;
-  top:10%;
+  top: 10%;
   animation-duration: 6s;
   animation-delay: -4s;
+}
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
 }
