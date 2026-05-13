@@ -4,13 +4,14 @@
   height: 100dvh;
   overflow: hidden;
   background-color: var(--color-bg);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
   width: 68dvw;
   min-height: 48dvh;
   background-color: #f2e6d2;
@@ -43,21 +44,16 @@
 }
 
 .introText {
-  position: absolute;
-  top: 67%;
-  left: 50%;
-  transform: translateX(-50%);
   width: 78%;
   text-align: center;
   font-size: 2rem;
   z-index: 3;
+  margin-top: 3rem;
 }
 
 .swipeText {
   position: absolute;
   bottom: 6%;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
   z-index: 3;
 }

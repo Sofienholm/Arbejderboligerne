@@ -76,7 +76,7 @@ export default function CharacterDetails({
 
   return (
     <div className={styles.wrapper} {...handlers}>
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence initial={true} custom={direction}>
         <motion.div
           key={`${character}-${index}`}
           custom={direction}
@@ -88,6 +88,7 @@ export default function CharacterDetails({
           className={styles.screen}
         >
           <CurrentScreen
+            styles={styles}
             character={character}
             onNext={onNext}
             onBack={onBack}

@@ -42,13 +42,14 @@ export default function CharacterIntro({ character }) {
         <section className={styles.screen}>
             <motion.div
                 className={styles.card}
-                initial={{ opacity: 0, y: 90, rotate: -5, scale: 0.85 }}
-                animate={{ opacity: 1, y: 0, rotate: -1.5, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.35, rotate: -12 }}
+                animate={{ opacity: 1, scale: 1, rotate: -2 }}
                 transition={{
-                    duration: 0.8,
+                    delay: 0.35,
+                    duration: 0.9,
                     type: "spring",
-                    stiffness: 90,
-                    damping: 13,
+                    stiffness: 80,
+                    damping: 9,
                 }}
             >
                 <img
