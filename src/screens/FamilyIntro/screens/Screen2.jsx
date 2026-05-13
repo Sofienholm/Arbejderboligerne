@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { familyIntroScreens } from "../../../data/screens";
 import styles from "./styles/Screen2.module.css";
 import starStyles from "../FamilyIntroScreens.module.css";
@@ -14,11 +15,41 @@ export default function Screen2() {
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star8} alt="" className={`${starStyles.bg} ${styles.s2_s8} floatC`} />
-      <img src={star9} alt="" className={`${starStyles.bg} ${styles.s2_s9} floatA`} />
-      <img src={star3} alt="" className={`${starStyles.bg} ${styles.s2_s3} floatB`} />
-      <img src={star15} alt="" className={`${starStyles.bg} ${styles.s2_s15} floatC`} />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s2_s8}`}
+        initial={{ x: "-20%", opacity: 0, scale: 0.7 }}
+        animate={{ x: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star8} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
 
+      <motion.div
+        className={`${starStyles.bg} ${styles.s2_s9}`}
+        initial={{ y: "20%", opacity: 0, scale: 0.6 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star9} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s2_s3}`}
+        initial={{ x: "-20%", opacity: 0, scale: 0.8 }}
+        animate={{ x: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star3} alt="" className={`${styles.starImg} floatB`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s2_s15}`}
+        initial={{ x: "-5%", opacity: 0, scale: 0.9 }}
+        animate={{ x: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
+      >
+        <img src={star15} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
       {/* ── Tekst ── */}
       <div className={styles.s2_textBlock}>
         <h1 className={styles.s2_title}>{content.title}</h1>
