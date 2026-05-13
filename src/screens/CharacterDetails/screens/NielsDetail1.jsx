@@ -13,11 +13,7 @@ export default function NielsDetail1() {
 
             <div className={styles.textBlockTop}>
                 <p>{content.textTop}</p>
-            </div>
-
-            <div className={styles.textBlockMiddle}>
-                <p>{content.textMiddle}</p>
-            </div>
+            </div> width: 46%;
 
             <div className={styles.textBlockBottom}>
                 <p>{content.textBottom}</p>

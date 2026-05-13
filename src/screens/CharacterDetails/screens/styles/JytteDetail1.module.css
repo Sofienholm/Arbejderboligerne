@@ -8,9 +8,9 @@
 
 .title {
   position: absolute;
-  top: 8%;
+  top: 10%;
   left: 9%;
-  font-size: 6.5rem;
+  font-size: 7.5rem;
   z-index: 5;
 }
 
