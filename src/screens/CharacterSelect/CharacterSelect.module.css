@@ -9,8 +9,7 @@
 .title {
   position: absolute;
   top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 10%;
   width: 80%;
   text-align: center;
   font-family: var(--font-body);
@@ -61,21 +60,19 @@
 
 .expandingCircle {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: calc(50% - 9dvw);
+  left: calc(50% - 9dvw);
   width: 18dvw;
   height: 18dvw;
   border-radius: 50%;
-  background-color: #f2e6d2;
-  transform: translate(-50%, -50%);
+  background-color: var(--color-bg);
   z-index: 8;
 }
 
 .transitionText {
   position: absolute;
   top: 59%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 10%;
   width: 80%;
   text-align: center;
   z-index: 25;
