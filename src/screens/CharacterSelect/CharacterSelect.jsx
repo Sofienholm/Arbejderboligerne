@@ -22,8 +22,8 @@ const characters = [
     className: "holger",
     name: "HOLGER",
     text: "DU SKAL NU FØLGE HOLGER",
-    moveX: "20vw",
-    moveY: "6vh",
+    moveX: "13vw",
+    moveY: "5vh",
   },
   {
     id: "niels",
@@ -31,8 +31,8 @@ const characters = [
     className: "niels",
     name: "NIELS",
     text: "DU SKAL NU FØLGE NIELS",
-    moveX: "-18vw",
-    moveY: "-5vh",
+    moveX: "-28vw",
+    moveY: "-10vh",
   },
   {
     id: "jytte",
@@ -40,8 +40,8 @@ const characters = [
     className: "jytte",
     name: "JYTTE",
     text: "DU SKAL NU FØLGE JYTTE",
-    moveX: "18vw",
-    moveY: "-23vh",
+    moveX: "8vw",
+    moveY: "-33vh",
   },
   {
     id: "hanne",
@@ -49,8 +49,8 @@ const characters = [
     className: "hanne",
     name: "HANNE",
     text: "DU SKAL NU FØLGE HANNE",
-    moveX: "-20vw",
-    moveY: "-38vh",
+    moveX: "-29vw",
+    moveY: "-45vh",
   },
 ];
 
