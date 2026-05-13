@@ -78,15 +78,24 @@ export default function CharacterSelect({ onSelectCharacter }) {
         LÆRE MERE OM
       </h1>
 
-      {characters.map((character) => (
-        <button
+      {characters.map((character, index) => (
+        <motion.button
           key={character.id}
           className={`${styles.characterButton} ${styles[character.className]}`}
           onClick={() => onSelectCharacter(character.id)}
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{
+            delay: 0.7 + index * 0.4,
+            duration: 0.3,
+            ease: "easeOut",
+          }}
         >
           <img src={character.image} alt={character.id} />
-        </button>
+        </motion.button>
       ))}
+
+
     </section>
   );
 }
