@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { familyIntroScreens } from "../../../data/screens";
 import styles from "./styles/Screen5.module.css";
 import starStyles from "../FamilyIntroScreens.module.css";
@@ -15,12 +16,57 @@ export default function Screen5() {
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star7} alt="" className={`${starStyles.bg} ${styles.s5_s7} floatC`} />
-      <img src={star9} alt="" className={`${starStyles.bg} ${styles.s5_s9} floatB`} />
-      <img src={star8} alt="" className={`${starStyles.bg} ${styles.s5_s8} floatC`} />
-      <img src={star3} alt="" className={`${starStyles.bg} ${styles.s5_s3} floatA`} />
-      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s5_s2} floatC`} />
-     
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s7}`}
+        initial={{ y: "-20%", opacity: 0, scale: 0.7 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star7} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s9}`}
+        initial={{ y: "-20%", opacity: 0, scale: 0.6 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star9} alt="" className={`${styles.starImg} floatB`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s8}`}
+        initial={{ y: "-30%", opacity: 0 }}
+        animate={{ y: 0, opacity: 0.4 }}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star8} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s3}`}
+        initial={{ y: "10%", opacity: 0, scale: 0.6 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{
+          delay: 0.6,
+          duration: 1.2,
+          type: "spring",
+          stiffness: 70,
+          damping: 15,
+        }}
+      >
+        <img src={star3} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s2}`}
+        initial={{ y: "-30%", opacity: 0, scale: 0.8 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
       {/* ── børnen ── */}
       <img
         src={JytteKokken}

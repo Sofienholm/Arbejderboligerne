@@ -1,6 +1,14 @@
 
+import { motion } from "framer-motion";
+import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
+
 import styles from "./CharacterSelect.module.css";
 
+import star2 from "../../assets/images/illustrations/star2.svg";
+import star4 from "../../assets/images/illustrations/star4.svg";
+import star8 from "../../assets/images/illustrations/star8.svg";
+import star13 from "../../assets/images/illustrations/star13.svg";
+import star16 from "../../assets/images/illustrations/star16.svg";
 
 import holger from "../../assets/images/familie/holger-cirkel.svg";
 import jytte from "../../assets/images/familie/jytte-cirkel.svg";
@@ -19,6 +27,51 @@ const characters = [
 export default function CharacterSelect({ onSelectCharacter }) {
   return (
     <section className={styles.screen}>
+      {/* ── Baggrundsstjerner ── */}
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s8}`}
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star8} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s2}`}
+        initial={{ y: "-120%", opacity: 0 }}
+        animate={{ y: 0, opacity: 0.4 }}
+        transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s13}`}
+        initial={{ x: "120%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star13} alt="" className={`${styles.starImg} floatB`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s16}`}
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star16} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s1_s4}`}
+        initial={{ y: "120%", opacity: 0 }}
+        animate={{ y: 0, opacity: 0.4 }}
+        transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star4} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
 
       <h1 className={styles.title}>
         VÆLG ET FAMILIE MEDLEM AT <br />

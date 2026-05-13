@@ -55,3 +55,51 @@
   right: 15%;
   width: 30dvw;
 }
+
+/* stjerne-placeringer for screen 1 */
+.s1_s8 {
+  width: 4dvh;
+  left: 16%;
+  top: 30%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s1_s2 {
+  width: 20dvh;
+  right: -6%;
+  top: 4%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s1_s13 {
+  width: 7dvh;
+  right: 10%;
+  top: 48%;
+  animation-duration: 6s;
+  animation-delay: -0.5s;
+}
+
+.s1_s16 {
+  width: 6dvh;
+  left: 15%;
+  bottom: 22%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s1_s4 {
+  width: 8.5dvh;
+  left: -3%;
+  bottom: 15%;
+  animation-duration: 6s;
+  animation-delay: -4s;
+}
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
