@@ -31,3 +31,54 @@
   width: 48%;
   z-index: 1;
 }
+
+/* stjerne-placeringer for screen 1 */
+
+.s3_s5 {
+  width: 15dvh;
+  left: 25%;
+  bottom: -5%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s3_s8 {
+  width: 3dvh;
+  right: 15%;
+  top: 10%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s3_s11 {
+  width: 7dvh;
+  right: 22%;
+  top: 20%;
+  animation-duration: 6s;
+  animation-delay: -0.5s;
+}
+
+.s3_s12 {
+  width: 15dvh;
+  right: 3%;
+  top: 30%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s3_s14 {
+  width: 6dvh;
+  right: 50%;
+  bottom: 10%;
+  rotate: 220deg;
+  animation-duration: 6s;
+  animation-delay: -4s;
+}
+
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
