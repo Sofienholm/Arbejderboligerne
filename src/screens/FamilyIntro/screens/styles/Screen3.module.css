@@ -19,7 +19,7 @@
 }
 
 .s3_born {
-  position:absolute;
+  position: absolute;
   width: 70dvh;
   left: -5%;
   bottom: 15%;
@@ -41,7 +41,6 @@
   animation-duration: 6s;
   animation-delay: -1s;
 }
-
 
 .s3_s8 {
   width: 3dvh;
@@ -67,11 +66,18 @@
   animation-delay: -3s;
 }
 
-
 .s3_s14 {
   width: 20dvh;
   left: 50%;
   top: -5%;
   animation-duration: 6s;
   animation-delay: -4s;
+}
+
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
 }
