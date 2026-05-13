@@ -4,6 +4,7 @@ import { useSwipeable } from "react-swipeable";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import styles from "./CharacterDetails.module.css";
 
+import CharacterIntro from "./screens/CharacterIntro";
 import HanneDetail1 from "./screens/HanneDetail1";
 import HanneDetail2 from "./screens/HanneDetail2";
 import NielsDetail1 from "./screens/NielsDetail1";
@@ -16,10 +17,10 @@ import Sidequest from "../Sidequest/Sidequest";
 
 // vælger hvilke 2 screens der hører til hver person
 const CHARACTER_SCREENS = {
-  hanne: [HanneDetail1, HanneDetail2, Sidequest],
-  niels: [NielsDetail1, NielsDetail2, Sidequest],
-  holger: [HolgerDetail1, HolgerDetail2, Sidequest],
-  jytte: [JytteDetail1, JytteDetail2, Sidequest],
+  hanne: [CharacterIntro, HanneDetail1, HanneDetail2, Sidequest],
+  niels: [CharacterIntro, NielsDetail1, NielsDetail2, Sidequest],
+  holger: [CharacterIntro, HolgerDetail1, HolgerDetail2, Sidequest],
+  jytte: [CharacterIntro, JytteDetail1, JytteDetail2, Sidequest],
 };
 
 export default function CharacterDetails({
@@ -87,7 +88,6 @@ export default function CharacterDetails({
           className={styles.screen}
         >
           <CurrentScreen
-            styles={styles}
             character={character}
             onNext={onNext}
             onBack={onBack}
