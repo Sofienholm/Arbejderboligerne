@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
@@ -15,20 +16,65 @@ import niels from "../../assets/images/familie/niels-cirkel.svg";
 import hanne from "../../assets/images/familie/hanne-cirkel.svg";
 
 const characters = [
-  { id: "holger", image: holger, className: "holger" },
-  { id: "niels", image: niels, className: "niels" },
-  { id: "jytte", image: jytte, className: "jytte" },
-  { id: "hanne", image: hanne, className: "hanne" },
+  {
+    id: "holger",
+    image: holger,
+    className: "holger",
+    name: "HOLGER",
+    text: "DU SKAL NU FØLGE HOLGER",
+    moveX: "20vw",
+    moveY: "6vh",
+  },
+  {
+    id: "niels",
+    image: niels,
+    className: "niels",
+    name: "NIELS",
+    text: "DU SKAL NU FØLGE NIELS",
+    moveX: "-18vw",
+    moveY: "-5vh",
+  },
+  {
+    id: "jytte",
+    image: jytte,
+    className: "jytte",
+    name: "JYTTE",
+    text: "DU SKAL NU FØLGE JYTTE",
+    moveX: "18vw",
+    moveY: "-23vh",
+  },
+  {
+    id: "hanne",
+    image: hanne,
+    className: "hanne",
+    name: "HANNE",
+    text: "DU SKAL NU FØLGE HANNE",
+    moveX: "-20vw",
+    moveY: "-38vh",
+  },
 ];
 
 export default function CharacterSelect({ onSelectCharacter }) {
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+
+  const handleSelect = (character) => {
+    setSelectedCharacter(character);
+
+    setTimeout(() => {
+      onSelectCharacter(character.id);
+    }, 1700);
+  };
+
   return (
     <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
         initial={{ x: "-120%", opacity: 0 }}
-        animate={{ x: 0, opacity: 0.4 }}
+        animate={{
+          x: 0,
+          opacity: selectedCharacter ? 0 : 0.4,
+        }}
         transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star8} alt="" className={`${styles.starImg} floatC`} />
@@ -37,7 +83,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s2}`}
         initial={{ y: "-120%", opacity: 0 }}
-        animate={{ y: 0, opacity: 0.4 }}
+        animate={{
+          y: 0,
+          opacity: selectedCharacter ? 0 : 0.4,
+        }}
         transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star2} alt="" className={`${styles.starImg} floatA`} />
@@ -46,7 +95,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s13}`}
         initial={{ x: "120%", opacity: 0 }}
-        animate={{ x: 0, opacity: 0.4 }}
+        animate={{
+          x: 0,
+          opacity: selectedCharacter ? 0 : 0.4,
+        }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star13} alt="" className={`${styles.starImg} floatB`} />
@@ -55,7 +107,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s16}`}
         initial={{ x: "-120%", opacity: 0 }}
-        animate={{ x: 0, opacity: 0.4 }}
+        animate={{
+          x: 0,
+          opacity: selectedCharacter ? 0 : 0.4,
+        }}
         transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star16} alt="" className={`${styles.starImg} floatA`} />
@@ -64,34 +119,81 @@ export default function CharacterSelect({ onSelectCharacter }) {
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s4}`}
         initial={{ y: "120%", opacity: 0 }}
-        animate={{ y: 0, opacity: 0.4 }}
+        animate={{
+          y: 0,
+          opacity: selectedCharacter ? 0 : 0.4,
+        }}
         transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
       >
         <img src={star4} alt="" className={`${styles.starImg} floatC`} />
       </motion.div>
 
-      <h1 className={styles.title}>
+      <motion.h1
+        className={styles.title}
+        animate={{
+          opacity: selectedCharacter ? 0 : 1,
+          y: selectedCharacter ? -20 : 0,
+        }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      >
         VÆLG ET FAMILIE MEDLEM AT <br />
         LÆRE MERE OM
-      </h1>
+      </motion.h1>
 
-      {characters.map((character, index) => (
-        <motion.button
-          key={character.id}
-          className={`${styles.characterButton} ${styles[character.className]}`}
-          onClick={() => onSelectCharacter(character.id)}
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          whileTap={{ scale: 0.94 }}
+      {selectedCharacter && (
+        <motion.div
+          className={styles.expandingCircle}
+          initial={{ scale: 0, opacity: 1 }}
+          animate={{ scale: 18, opacity: 1 }}
           transition={{
-            delay: 0.7 + index * 0.25,
-            duration: 0.35,
-            ease: "easeOut",
+            delay: 0.45,
+            duration: 0.9,
+            ease: "easeInOut",
           }}
+        />
+      )}
+
+      {characters.map((character, index) => {
+        const isSelected = selectedCharacter?.id === character.id;
+        const isOtherSelected = selectedCharacter && !isSelected;
+
+        return (
+          <motion.button
+            key={character.id}
+            className={`${styles.characterButton} ${styles[character.className]}`}
+            onClick={() => handleSelect(character)}
+            disabled={selectedCharacter !== null}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{
+              x: isSelected ? character.moveX : 0,
+              y: isSelected ? character.moveY : 0,
+              scale: isSelected ? 1.45 : 1,
+              opacity: isOtherSelected ? 0 : 1,
+              zIndex: isSelected ? 20 : 2,
+            }}
+            whileTap={{ scale: 0.94 }}
+            transition={{
+              delay: selectedCharacter ? 0 : 0.7 + index * 0.25,
+              duration: selectedCharacter ? 0.75 : 0.35,
+              ease: "easeInOut",
+            }}
+          >
+            <img src={character.image} alt={character.id} />
+          </motion.button>
+        );
+      })}
+
+      {selectedCharacter && (
+        <motion.div
+          className={styles.transitionText}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.05, duration: 0.45, ease: "easeOut" }}
         >
-          <img src={character.image} alt={character.id} />
-        </motion.button>
-      ))}
+          <h1>{selectedCharacter.name}</h1>
+          <p>{selectedCharacter.text}</p>
+        </motion.div>
+      )}
     </section>
   );
 }

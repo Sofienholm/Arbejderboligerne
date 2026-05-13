@@ -15,7 +15,6 @@ import JytteDetail1 from "./screens/JytteDetail1";
 import JytteDetail2 from "./screens/JytteDetail2";
 import Sidequest from "../Sidequest/Sidequest";
 
-// vælger hvilke 2 screens der hører til hver person
 const CHARACTER_SCREENS = {
   hanne: [CharacterIntro, HanneDetail1, HanneDetail2, Sidequest],
   niels: [CharacterIntro, NielsDetail1, NielsDetail2, Sidequest],
@@ -30,32 +29,32 @@ export default function CharacterDetails({
   startAt = 0,
 }) {
   const screens = CHARACTER_SCREENS[character] || [];
-  const [index, setIndex] = useState(startAt ?? 0); // hvilken detail screen der vises
-  const [direction, setDirection] = useState(1); // 1 = frem, -1 = tilbage
+  const [index, setIndex] = useState(startAt ?? 0);
+  const [direction, setDirection] = useState(1);
 
   const goNext = () => {
-    setDirection(1); // animationen skal gå fremad
+    setDirection(1);
 
     if (index < screens.length - 1) {
-      setIndex(index + 1); // næste detail screen
+      setIndex(index + 1);
     }
   };
 
   const goPrev = () => {
-    setDirection(-1); // animationen skal gå tilbage
+    setDirection(-1);
 
     if (index > 0) {
-      setIndex(index - 1); // forrige detail screen
+      setIndex(index - 1);
     } else {
-      onBack(); // tilbage til character select
+      onBack();
     }
   };
 
   const handlers = useSwipeable({
     onSwipedUp: goNext,
     onSwipedDown: goPrev,
-    trackMouse: true, // muligt at teste med mus
-    preventScrollOnSwipe: true, // stopper scrolling mens man swiper
+    trackMouse: true,
+    preventScrollOnSwipe: true,
   });
 
   const CurrentScreen = screens[index];
@@ -76,7 +75,7 @@ export default function CharacterDetails({
 
   return (
     <div className={styles.wrapper} {...handlers}>
-      <AnimatePresence initial={true} custom={direction}>
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={`${character}-${index}`}
           custom={direction}
@@ -88,7 +87,6 @@ export default function CharacterDetails({
           className={styles.screen}
         >
           <CurrentScreen
-            styles={styles}
             character={character}
             onNext={onNext}
             onBack={onBack}

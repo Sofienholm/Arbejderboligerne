@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import styles from "./styles/CharacterIntro.module.css";
 
 import holger from "../../../assets/images/familie/holger-cirkel.svg";
@@ -40,48 +39,22 @@ export default function CharacterIntro({ character }) {
 
     return (
         <section className={styles.screen}>
-            <motion.div
-                className={styles.card}
-                initial={{ opacity: 0, scale: 0.35, rotate: -12 }}
-                animate={{ opacity: 1, scale: 1, rotate: -2 }}
-                transition={{
-                    delay: 0.35,
-                    duration: 0.9,
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 9,
-                }}
-            >
-                <img
-                    src={content.image}
-                    alt={content.name}
-                    className={styles.characterImage}
-                />
+            <img
+                src={content.image}
+                alt={content.name}
+                className={styles.characterImage}
+            />
 
-                <div className={styles.cardText}>
-                    <h1>{content.name}</h1>
-                    <p>{content.role}</p>
-                </div>
-            </motion.div>
+            <div className={styles.textBlock}>
+                <h1>{content.name}</h1>
+                <p className={styles.role}>{content.role}</p>
+                <p className={styles.text}>{content.text}</p>
+            </div>
 
-            <motion.p
-                className={styles.introText}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65, duration: 0.5, ease: "easeOut" }}
-            >
-                {content.text}
-            </motion.p>
-
-            <motion.div
-                className={styles.swipeText}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.5, ease: "easeOut" }}
-            >
+            <div className={styles.swipeText}>
                 <p>SWIPE FOR AT GÅ VIDERE</p>
                 <span>↑</span>
-            </motion.div>
+            </div>
         </section>
     );
 }
