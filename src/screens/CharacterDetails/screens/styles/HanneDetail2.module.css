@@ -26,17 +26,17 @@
 
 .hanneMother {
   position: absolute;
-  right: 10%;
-  bottom: -1%;
-  width: 48%;
+  right: -10%;
+  bottom: -15%;
+  width: 82%;
   z-index: 1;
 }
 
 /* stjerne-placeringer for screen 1 */
 
 .s3_s5 {
-  width: 15dvh;
-  left: 25%;
+  width: 18dvh;
+  left: 10%;
   bottom: -5%;
   animation-duration: 6s;
   animation-delay: -1s;
@@ -64,15 +64,6 @@
   top: 30%;
   animation-duration: 6s;
   animation-delay: -3s;
-}
-
-.s3_s14 {
-  width: 6dvh;
-  right: 50%;
-  bottom: 10%;
-  rotate: 220deg;
-  animation-duration: 6s;
-  animation-delay: -4s;
 }
 
 .starImg {

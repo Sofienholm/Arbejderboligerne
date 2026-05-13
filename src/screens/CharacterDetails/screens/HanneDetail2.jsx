@@ -10,7 +10,6 @@ import star5 from "../../../assets/images/illustrations/star5.svg";
 import star8 from "../../../assets/images/illustrations/star8.svg";
 import star11 from "../../../assets/images/illustrations/star11.svg";
 import star12 from "../../../assets/images/illustrations/star12.svg";
-import star14 from "../../../assets/images/illustrations/star14.svg";
 
 export default function HanneDetail2() {
     const content = characterDetails.hanne.detail2;
@@ -55,15 +54,6 @@ export default function HanneDetail2() {
                 transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
             >
                 <img src={star12} alt="" className={`${styles.starImg} floatC`} />
-            </motion.div>
-
-            <motion.div
-                className={`${starStyles.bg} ${styles.s3_s14}`}
-                initial={{ x: "20%", opacity: 0, scale: 0.7 }}
-                animate={{ x: 0, opacity: 0.4, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
-            >
-                <img src={star14} alt="" className={`${styles.starImg} floatB`} />
             </motion.div>
 
             <h1 className={styles.title}>{content.title}</h1>
