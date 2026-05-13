@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
@@ -14,8 +13,6 @@ import holger from "../../assets/images/familie/holger-cirkel.svg";
 import jytte from "../../assets/images/familie/jytte-cirkel.svg";
 import niels from "../../assets/images/familie/niels-cirkel.svg";
 import hanne from "../../assets/images/familie/hanne-cirkel.svg";
-
-
 
 const characters = [
   { id: "holger", image: holger, className: "holger" },
@@ -85,17 +82,16 @@ export default function CharacterSelect({ onSelectCharacter }) {
           onClick={() => onSelectCharacter(character.id)}
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
+          whileTap={{ scale: 0.94 }}
           transition={{
-            delay: 0.7 + index * 0.4,
-            duration: 0.3,
+            delay: 0.7 + index * 0.25,
+            duration: 0.35,
             ease: "easeOut",
           }}
         >
           <img src={character.image} alt={character.id} />
         </motion.button>
       ))}
-
-
     </section>
   );
 }
