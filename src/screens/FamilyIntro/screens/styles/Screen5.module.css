@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left:6rem;
+  margin-left: 6rem;
   margin-bottom: 7rem;
   line-height: 0.8;
   text-align: center;
@@ -83,5 +83,10 @@
   animation-duration: 3s;
   animation-delay: 0s;
 }
-
-
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}

@@ -44,9 +44,9 @@ export default function Screen2() {
 
       <motion.div
         className={`${starStyles.bg} ${styles.s2_s15}`}
-        initial={{ x: "-5%", opacity: 0, scale: 0.9 }}
-        animate={{ x: 0, opacity: 0.4, scale: 1 }}
-        transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
+        initial={{ x: "5%", y: "-10%", opacity: 0, scale: 0.9, rotate: 10 }}
+        animate={{ x: 0, y: "0", opacity: 0.4, scale: 1, rotate: 0 }}
+        transition={{ delay: 0, duration: 1.5, ease: "easeInOut" }}
       >
         <img src={star15} alt="" className={`${styles.starImg} floatC`} />
       </motion.div>

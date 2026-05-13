@@ -13,7 +13,7 @@
   font-size: 5rem;
   line-height: 0.9;
   margin-bottom: 9rem;
-  margin-left:4rem;
+  margin-left: 4rem;
 }
 
 .s4_body {
@@ -67,12 +67,17 @@
 }
 
 .s4_s4 {
-    width: 3dvh;
+  width: 3dvh;
   left: 33%;
   top: 42%;
   animation-duration: 6s;
   animation-delay: -1s;
   rotate: 0deg;
 }
-
-
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}

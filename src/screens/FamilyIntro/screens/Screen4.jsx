@@ -5,8 +5,8 @@ import starStyles from "../FamilyIntroScreens.module.css";
 import holgerLomme from "../../../assets/images/familie/fam-intro4.svg";
 
 import star2 from "../../../assets/images/illustrations/star2.svg";
-import star8 from "../../../assets/images/illustrations/star8.svg";
-import star9 from "../../../assets/images/illustrations/star9.svg";
+// import star8 from "../../../assets/images/illustrations/star8.svg";
+// import star9 from "../../../assets/images/illustrations/star9.svg";
 
 
 export default function Screen4() {
@@ -15,9 +15,32 @@ export default function Screen4() {
   return (
     <>
       {/* ── Baggrundsstjerner ── */}
-      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s4_s2} floatC`} />
-      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s4_s3} floatA`} />
-      <img src={star2} alt="" className={`${starStyles.bg} ${styles.s4_s4} floatC`} />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s4_s2}`}
+        initial={{ y: "-150%", opacity: 0, scale: 0.7 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.1, duration: 1.2, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s4_s3}`}
+        initial={{ y: "150%", opacity: 0, scale: 0.5 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s4_s4}`}
+        initial={{ y: "-200%", opacity: 0, scale: 0.8 }}
+        animate={{ y: 0, opacity: 0.4, scale: 1 }}
+        transition={{ delay: 0.9, duration: 1.2, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatC`} />
+      </motion.div>
       {/* ── børnen ── */}
       <img
         src={holgerLomme}
