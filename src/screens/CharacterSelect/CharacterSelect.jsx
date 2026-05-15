@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useSwipeable } from "react-swipeable";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
 import styles from "./CharacterSelect.module.css";
@@ -55,6 +54,7 @@ const selectedPosition = {
 
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const touchStartY = useRef(null);
 
   const handleSelect = (character) => {
     setSelectedCharacter(character);
@@ -70,14 +70,42 @@ export default function CharacterSelect({ onSelectCharacter }) {
     }
   };
 
-  const handlers = useSwipeable({
-    onSwipedUp: goNext,
-    trackMouse: true,
-    preventScrollOnSwipe: true,
-  });
+  const handleTouchStart = (event) => {
+    touchStartY.current = event.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartY.current === null) return;
+
+    const touchEndY = event.changedTouches[0].clientY;
+    const distance = touchStartY.current - touchEndY;
+
+    if (distance > 40) {
+      goNext();
+    }
+
+    touchStartY.current = null;
+  };
+
+  const handleMouseDown = (event) => {
+    touchStartY.current = event.clientY;
+  };
+
+  const handleMouseUp = (event) => {
+    if (touchStartY.current === null) return;
+
+    const mouseEndY = event.clientY;
+    const distance = touchStartY.current - mouseEndY;
+
+    if (distance > 40) {
+      goNext();
+    }
+
+    touchStartY.current = null;
+  };
 
   return (
-    <section className={styles.screen} {...handlers}>
+    <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
@@ -230,6 +258,16 @@ export default function CharacterSelect({ onSelectCharacter }) {
           <p>SWIPE FOR AT LÆRE MERE</p>
           <span>↑</span>
         </motion.div>
+      )}
+
+      {selectedCharacter && (
+        <div
+          className={styles.swipeLayer}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+        />
       )}
 
       <div className={styles.preloadImages} aria-hidden="true">
