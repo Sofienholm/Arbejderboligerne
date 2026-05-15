@@ -38,9 +38,9 @@
 
 .holgerSmoke {
   position: absolute;
-  right: -2%;
+  right: -4%;
   bottom: -1%;
-  width: 60%;
+  width: 50%;
   z-index: 4;
 }
 
