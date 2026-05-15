@@ -8,7 +8,7 @@
 
 .header {
   position: absolute;
-  top: 5%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -173,7 +173,7 @@
   color: var(--sweet-grey);
 
   font-family: var(--font-body);
-  font-size: 2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.12em;
   cursor: pointer;
 }
