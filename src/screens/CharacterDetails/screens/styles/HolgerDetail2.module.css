@@ -10,14 +10,15 @@
   position: absolute;
   top: 8%;
   left: 8%;
-  font-size: 4.5rem;
+  font-size: 4.7rem;
+  z-index: 5;
 }
 
 .textBlock {
   position: absolute;
-  top: 23%;
+  top: 22%;
   left: 8%;
-  z-index: 3;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;
@@ -33,13 +34,64 @@
   left: -3%;
   bottom: -2%;
   width: 77%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .holgerStanding {
   position: absolute;
-  right: 0;
+  right: -2%;
   bottom: 13%;
   width: 70%;
-  z-index: 2;
+  z-index: 4;
+}
+
+/* fælles styling for baggrundsstjerner */
+.bg {
+  position: absolute;
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* stjerne-placeringer for Holger detail 2 */
+.s5_s7 {
+  width: 9.5dvh;
+  right: 14%;
+  bottom: 3%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s5_s9 {
+  width: 5.5dvh;
+  right: 6%;
+  top: 23%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s5_s8 {
+  width: 3dvh;
+  right: 13%;
+  top: 16%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s5_s3 {
+  width: 16dvh;
+  left: -10%;
+  bottom: 33%;
+  animation-duration: 3.5s;
+  animation-delay: -0.5s;
+  rotate: 26deg;
+}
+
+.s5_s2 {
+  width: 10dvh;
+left: 12%;
+  bottom: 30%;
+  animation-duration: 3s;
+  animation-delay: 0s;
 }

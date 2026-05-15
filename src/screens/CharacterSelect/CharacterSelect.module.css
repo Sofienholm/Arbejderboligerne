@@ -90,7 +90,7 @@
 
 .s1_s8 {
   width: 4dvh;
-  left: 16%;
+  left: 6%;
   top: 30%;
   animation-duration: 6s;
   animation-delay: -1s;
@@ -106,8 +106,8 @@
 
 .s1_s13 {
   width: 7dvh;
-  right: 10%;
-  top: 48%;
+  right: 5%;
+  top: 52%;
   animation-duration: 6s;
   animation-delay: -0.5s;
 }
@@ -115,15 +115,15 @@
 .s1_s16 {
   width: 6dvh;
   left: 15%;
-  bottom: 22%;
+  bottom: 17%;
   animation-duration: 6s;
   animation-delay: -3s;
 }
 
 .s1_s4 {
-  width: 8.5dvh;
+  width: 7.5dvh;
   left: -3%;
-  bottom: 15%;
+  bottom: 8%;
   animation-duration: 6s;
   animation-delay: -4s;
 }

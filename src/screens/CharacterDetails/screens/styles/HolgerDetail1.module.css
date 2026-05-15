@@ -9,22 +9,23 @@
 .title {
   position: absolute;
   top: 8%;
-  left: 9%;
-  font-size: 6.5rem;
+  left: 7%;
+  font-size: 7.5rem;
+  z-index: 5;
 }
 
 .textBlockTop {
   position: absolute;
   top: 24%;
   left: 42%;
-  z-index: 2;
+  z-index: 5;
 }
 
 .textBlockBottom {
   position: absolute;
   top: 41%;
   left: 42%;
-  z-index: 2;
+  z-index: 5;
 }
 
 .holgerWork {
@@ -32,7 +33,7 @@
   left: -4%;
   bottom: -2%;
   width: 85%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .holgerSmoke {
@@ -40,5 +41,39 @@
   right: -2%;
   bottom: -1%;
   width: 60%;
+  z-index: 4;
+}
+
+/* fælles styling for baggrundsstjerner */
+.bg {
+  position: absolute;
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
+  pointer-events: none;
   z-index: 1;
+}
+
+/* stjerne-placeringer for Holger detail 1 */
+.s5_s1 {
+  width: 18dvh;
+  left: -5%;
+  top:25%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s5_s12 {
+  width: 22dvh;
+  right: 6%;
+  top: -8%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s5_s16 {
+  width: 13dvh;
+  right: -3%;
+  top: 12%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
 }
