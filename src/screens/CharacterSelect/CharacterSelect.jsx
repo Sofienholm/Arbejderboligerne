@@ -52,6 +52,11 @@ const selectedPosition = {
   width: "44dvw",
 };
 
+const starTransition = {
+  duration: 0.7,
+  ease: "easeOut",
+};
+
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [isLeaving, setIsLeaving] = useState(false);
@@ -86,7 +91,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
           x: isLeaving ? "-120vw" : 0,
           opacity: 0.4,
         }}
-        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+        transition={{
+          ...starTransition,
+          delay: isLeaving ? 0 : 0.1,
+        }}
       >
         <img src={star8} alt="" className={`${styles.starImg} floatC`} />
       </motion.div>
@@ -98,7 +106,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
           y: isLeaving ? "-120vh" : 0,
           opacity: 0.4,
         }}
-        transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+        transition={{
+          ...starTransition,
+          delay: isLeaving ? 0 : 0.2,
+        }}
       >
         <img src={star2} alt="" className={`${styles.starImg} floatA`} />
       </motion.div>
@@ -110,7 +121,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
           x: isLeaving ? "120vw" : 0,
           opacity: 0.4,
         }}
-        transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        transition={{
+          ...starTransition,
+          delay: isLeaving ? 0 : 0.3,
+        }}
       >
         <img src={star13} alt="" className={`${styles.starImg} floatB`} />
       </motion.div>
@@ -122,7 +136,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
           x: isLeaving ? "-120vw" : 0,
           opacity: 0.4,
         }}
-        transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+        transition={{
+          ...starTransition,
+          delay: isLeaving ? 0 : 0.4,
+        }}
       >
         <img src={star16} alt="" className={`${styles.starImg} floatA`} />
       </motion.div>
@@ -134,7 +151,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
           y: isLeaving ? "120vh" : 0,
           opacity: 0.4,
         }}
-        transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
+        transition={{
+          ...starTransition,
+          delay: isLeaving ? 0 : 0.5,
+        }}
       >
         <img src={star4} alt="" className={`${styles.starImg} floatC`} />
       </motion.div>

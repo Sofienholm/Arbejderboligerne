@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styles from "./styles/HolgerDetail1.module.css";
 import { characterDetails } from "../../../data/characters";
+import starStyles from "../../FamilyIntro/FamilyIntroScreens.module.css";
 
 import holgerWork from "../../../assets/images/familie/holger/holger1a.svg";
 import holgerSmoke from "../../../assets/images/familie/holger/holger1b.svg";
@@ -15,23 +16,32 @@ export default function HolgerDetail1() {
   return (
     <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
-      <img
-        src={star1}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s1} floatA`}
-      />
 
-      <img
-        src={star12}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s12} floatC`}
-      />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s1}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star1} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s12}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star12} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
 
-      <img
-        src={star16}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s16} floatB`}
-      />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s16}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star16} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
 
       <motion.h1
         className={styles.title}

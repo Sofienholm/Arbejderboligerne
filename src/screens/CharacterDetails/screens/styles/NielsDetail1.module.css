@@ -83,11 +83,17 @@
   animation-delay: -2.5s;
 }
 
-
 .s5_s12 {
   width: 9dvh;
   right: 45%;
   bottom: 22%;
   animation-duration: 3s;
+  animation-delay: 0s;
+}
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
   animation-delay: 0s;
 }

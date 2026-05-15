@@ -57,7 +57,7 @@
 .s5_s1 {
   width: 18dvh;
   left: -5%;
-  top:25%;
+  top: 25%;
   animation-duration: 6s;
   animation-delay: -3s;
 }
@@ -76,4 +76,12 @@
   top: 12%;
   animation-duration: 6s;
   animation-delay: -2.5s;
+}
+
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
 }
