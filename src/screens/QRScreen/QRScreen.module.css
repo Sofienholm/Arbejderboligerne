@@ -13,22 +13,128 @@
   z-index: 2;
 
   font-size: 5.5rem;
-  line-height: 1.25;
-  text-align: center;
+  line-height: 1;
+  text-align: right;
 }
 
 .characterImage {
   position: absolute;
   left: -6%;
   bottom: -2%;
-  width: 58%;
+  width: 68%;
   z-index: 1;
+}
+
+.arrow {
+  position: absolute;
+  right: 5%;
+  bottom: 32%;
+  width: 55%;
+  z-index: 2;
+
+  animation-name: arrowFloat;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.back {
+  position: absolute;
+  left: 5%;
+  top: 8%;
+  width: 25%;
+  z-index: 3;
+
+  animation-name: backFloat;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 .qrCode {
   position: absolute;
-  right: 10%;
-  bottom: 13%;
-  width: 23%;
+  right: 8%;
+  bottom: 8%;
+  width: 30%;
   z-index: 2;
+}
+
+/* fælles styling for baggrundsstjerner */
+.bg {
+  position: absolute;
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* stjerne-placeringer */
+.s5_s7 {
+  width: 9.5dvh;
+  right: 40%;
+  bottom: 6%;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+.s5_s9 {
+  width: 5.5dvh;
+  left: 32%;
+  top: 38%;
+  animation-duration: 6s;
+  animation-delay: -1s;
+}
+
+.s5_s8 {
+  width: 4dvh;
+  left: 5%;
+  top: 17%;
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+
+.s5_s3 {
+  width: 15dvh;
+  left: 8%;
+  top: 20%;
+  animation-duration: 3.5s;
+  animation-delay: -0.5s;
+  rotate: 26deg;
+}
+
+.s5_s2 {
+  width: 5dvh;
+  left: 27%;
+  top: 30%;
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+
+
+@keyframes arrowFloat {
+  0% {
+    transform: translateY(0px) rotate(8deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(10deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(8deg);
+  }
+}
+
+@keyframes backFloat {
+  0% {
+    transform: translateY(0px) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(-7deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(-12deg);
+  }
 }
