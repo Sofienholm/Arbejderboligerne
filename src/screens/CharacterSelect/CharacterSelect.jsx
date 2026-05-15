@@ -180,6 +180,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
             className={`${styles.characterButton} ${styles[character.className]}`}
             onClick={() => handleSelect(character)}
             disabled={selectedCharacter !== null}
+            style={{ pointerEvents: selectedCharacter ? "none" : "auto" }}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={
               isSelected
