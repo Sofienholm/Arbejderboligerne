@@ -28,7 +28,7 @@ export default function FamilyIntroScreens({
 
     if (index < SCREENS.length - 1) {
       setIndex(index + 1); // næste intro screen
-    } else {
+    } else if (onNext) {
       onNext(); // videre til næste hovedscreen
     }
   };
