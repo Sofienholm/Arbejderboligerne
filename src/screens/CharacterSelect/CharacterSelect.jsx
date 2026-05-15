@@ -70,29 +70,47 @@ export default function CharacterSelect({ onSelectCharacter }) {
     }
   };
 
-  const handlePointerDown = (event) => {
+  const handleTouchStart = (event) => {
     if (!selectedCharacter) return;
-    startY.current = event.clientY;
+    event.stopPropagation();
+    startY.current = event.touches[0].clientY;
   };
 
-  const handlePointerUp = (event) => {
+  const handleTouchEnd = (event) => {
     if (!selectedCharacter || startY.current === null) return;
-
-    const endY = event.clientY;
+    event.stopPropagation();
+    const endY = event.changedTouches[0].clientY;
     const distance = startY.current - endY;
-
     if (distance > 40) {
       goNext();
     }
+    startY.current = null;
+  };
 
+  const handleMouseDown = (event) => {
+    if (!selectedCharacter) return;
+    event.stopPropagation();
+    startY.current = event.clientY;
+  };
+
+  const handleMouseUp = (event) => {
+    if (!selectedCharacter || startY.current === null) return;
+    event.stopPropagation();
+    const endY = event.clientY;
+    const distance = startY.current - endY;
+    if (distance > 40) {
+      goNext();
+    }
     startY.current = null;
   };
 
   return (
     <section
       className={styles.screen}
-      onPointerDownCapture={handlePointerDown}
-      onPointerUpCapture={handlePointerUp}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
       {/* ── Baggrundsstjerner ── */}
       <motion.div
