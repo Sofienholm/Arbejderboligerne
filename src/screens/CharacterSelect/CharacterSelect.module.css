@@ -51,11 +51,10 @@
 }
 
 .hanne {
-  bottom: 15%;
-  right: 15%;
+  top: 62%;
+  left: 55%;
   width: 30dvw;
 }
-
 /* ── Transition-cirkel ── */
 
 .expandingCircle {
