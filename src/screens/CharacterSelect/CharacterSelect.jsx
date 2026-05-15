@@ -165,16 +165,16 @@ export default function CharacterSelect({ onSelectCharacter }) {
             animate={
               isSelected
                 ? {
-                    ...selectedPosition,
-                    scale: 1,
-                    opacity: 1,
-                    zIndex: 20,
-                  }
+                  ...selectedPosition,
+                  scale: 1,
+                  opacity: 1,
+                  zIndex: 20,
+                }
                 : {
-                    scale: 1,
-                    opacity: isOtherSelected ? 0 : 1,
-                    zIndex: 2,
-                  }
+                  scale: 1,
+                  opacity: isOtherSelected ? 0 : 1,
+                  zIndex: 2,
+                }
             }
             whileTap={{ scale: 0.94 }}
             transition={{
@@ -188,17 +188,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
         );
       })}
 
-      {selectedCharacter && (
-        <motion.div
-          className={styles.transitionText}
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.05, duration: 0.45, ease: "easeOut" }}
-        >
-          <h1>{selectedCharacter.name}</h1>
-          <p>{selectedCharacter.text}</p>
-        </motion.div>
-      )}
+
     </section>
   );
 }

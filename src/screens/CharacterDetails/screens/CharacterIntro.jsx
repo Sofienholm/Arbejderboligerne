@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styles from "./styles/CharacterIntro.module.css";
 
 import holger from "../../../assets/images/familie/holger-cirkel.svg";
@@ -41,15 +42,25 @@ export default function CharacterIntro({ character }) {
                 className={styles.characterImage}
             />
 
-            <div className={styles.textBlock}>
+            <motion.div
+                className={styles.textBlock}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+            >
                 <h1>{content.name}</h1>
                 <p className={styles.role}>{content.role}</p>
-            </div>
+            </motion.div>
 
-            <div className={styles.swipeText}>
+            <motion.div
+                className={styles.swipeText}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.75, duration: 0.6, ease: "easeOut" }}
+            >
                 <p>SWIPE FOR AT LÆRE MERE</p>
                 <span>↑</span>
-            </div>
+            </motion.div>
         </section>
     );
 }
