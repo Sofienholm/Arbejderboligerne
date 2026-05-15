@@ -22,6 +22,7 @@ export default function HanneDetail1() {
             >
                 <img src={star1} alt="" className={`${styles.starImg} floatA`} />
             </motion.div>
+
             <motion.div
                 className={`${starStyles.bg} ${styles.s2_s2}`}
                 initial={{ x: "-20%", opacity: 0 }}
@@ -30,6 +31,7 @@ export default function HanneDetail1() {
             >
                 <img src={star2} alt="" className={`${styles.starImg} floatA`} />
             </motion.div>
+
             <motion.div
                 className={`${starStyles.bg} ${styles.s2_s16}`}
                 initial={{ x: "-20%", opacity: 0 }}
@@ -39,17 +41,32 @@ export default function HanneDetail1() {
                 <img src={star16} alt="" className={`${styles.starImg} floatA`} />
             </motion.div>
 
-            <h1 className={styles.title}>{content.title}</h1>
+            <motion.h1
+                className={styles.title}
+                initial={{ opacity: 0, x: -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.15, duration: 0.6, ease: "easeOut" }}
+            >
+                {content.title}
+            </motion.h1>
 
-            <div className={styles.textBlock}>
+            <motion.div
+                className={styles.textBlock}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+            >
                 <p>{content.textTop}</p>
                 <p>{content.textBottom}</p>
-            </div>
+            </motion.div>
 
-            <img
+            <motion.img
                 className={styles.hannePlaying}
                 src={hannePlaying}
                 alt="Hanne leger med dukkehus"
+                initial={{ opacity: 0, x: -80 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
             />
         </section>
     );

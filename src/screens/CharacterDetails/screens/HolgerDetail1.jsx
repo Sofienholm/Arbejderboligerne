@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styles from "./styles/HolgerDetail1.module.css";
 import { characterDetails } from "../../../data/characters";
 
@@ -32,26 +33,49 @@ export default function HolgerDetail1() {
         className={`${styles.bg} ${styles.s5_s16} floatB`}
       />
 
-      <h1 className={styles.title}>{content.title}</h1>
+      <motion.h1
+        className={styles.title}
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.15, duration: 0.6, ease: "easeOut" }}
+      >
+        {content.title}
+      </motion.h1>
 
-      <div className={styles.textBlockTop}>
+      <motion.div
+        className={styles.textBlockTop}
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
+      >
         <p>{content.textTop}</p>
-      </div>
+      </motion.div>
 
-      <div className={styles.textBlockBottom}>
+      <motion.div
+        className={styles.textBlockBottom}
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+      >
         <p>{content.textBottom}</p>
-      </div>
+      </motion.div>
 
-      <img
+      <motion.img
         className={styles.holgerWork}
         src={holgerWork}
         alt="Holger arbejder ved bordet"
+        initial={{ opacity: 0, x: -80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.25, duration: 0.7, ease: "easeOut" }}
       />
 
-      <img
+      <motion.img
         className={styles.holgerSmoke}
         src={holgerSmoke}
         alt="Holger ryger"
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.45, duration: 0.7, ease: "easeOut" }}
       />
     </section>
   );

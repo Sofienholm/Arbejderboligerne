@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styles from "./styles/NielsDetail1.module.css";
 import { characterDetails } from "../../../data/characters";
 
@@ -39,26 +40,49 @@ export default function NielsDetail1() {
         className={`${styles.bg} ${styles.s5_s12} floatA`}
       />
 
-      <h1 className={styles.title}>{content.title}</h1>
+      <motion.h1
+        className={styles.title}
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.15, duration: 0.6, ease: "easeOut" }}
+      >
+        {content.title}
+      </motion.h1>
 
-      <div className={styles.textBlockTop}>
+      <motion.div
+        className={styles.textBlockTop}
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
+      >
         <p>{content.textTop}</p>
-      </div>
+      </motion.div>
 
-      <div className={styles.textBlockBottom}>
+      <motion.div
+        className={styles.textBlockBottom}
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+      >
         <p>{content.textBottom}</p>
-      </div>
+      </motion.div>
 
-      <img
+      <motion.img
         className={styles.nielsPlaying}
         src={nielsPlaying}
         alt="Niels leger"
+        initial={{ opacity: 0, x: -80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.35, duration: 0.7, ease: "easeOut" }}
       />
 
-      <img
+      <motion.img
         className={styles.nielsHomework}
         src={nielsHomework}
         alt="Niels laver lektier"
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.45, duration: 0.7, ease: "easeOut" }}
       />
     </section>
   );

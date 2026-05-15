@@ -104,26 +104,24 @@
   margin-top: 0.5rem;
 }
 
-.swipeText {
+.learnButton {
   position: absolute;
-  bottom: 6%;
-  left: 10%;
-  width: 80%;
-  text-align: center;
-  z-index: 25;
+  bottom: 8%;
+  left: 20%;
+  width: 60%;
+  z-index: 30;
 
-  animation: swipeBounce 1.4s ease-in-out infinite;
-}
+  border: none;
+  border-radius: 999px;
+  padding: 1.4rem 2rem;
 
-.swipeText p {
-  font-size: 1.7rem;
-}
+  font-family: var(--font-body);
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+  background-color: #2f6fed;
 
-.swipeText span {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 3rem;
-  color: var(--apple-juice);
+  cursor: pointer;
 }
 
 /* ── Stjerner ── */
@@ -183,16 +181,4 @@
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-}
-
-@keyframes swipeBounce {
-  0% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -0.8rem;
-  }
-  100% {
-    translate: 0 0;
-  }
 }
