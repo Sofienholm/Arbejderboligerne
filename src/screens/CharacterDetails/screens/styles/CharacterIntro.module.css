@@ -6,6 +6,21 @@
   background-color: var(--color-bg);
 }
 
+.backButton {
+  position: absolute;
+  top: 4%;
+  left: 5%;
+  z-index: 10;
+
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  color: var(--apple-juice);
+  cursor: pointer;
+}
+
 .characterImage {
   position: absolute;
   top: 10%;
