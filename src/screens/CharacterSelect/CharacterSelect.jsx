@@ -60,7 +60,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
 
     setTimeout(() => {
       onSelectCharacter(character.id);
-    }, 1700);
+    }, 2200);
   };
 
   return (
