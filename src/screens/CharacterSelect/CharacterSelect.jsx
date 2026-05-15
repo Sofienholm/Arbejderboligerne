@@ -1,5 +1,6 @@
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { useSwipeable } from "react-swipeable";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
 import styles from "./CharacterSelect.module.css";
@@ -54,10 +55,6 @@ const selectedPosition = {
 
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const startY = useRef(null);
-  const sectionRef = useRef(null);
-  const selectedCharacterRef = useRef(null);
-  const goNextRef = useRef(null);
 
   const handleSelect = (character) => {
     setSelectedCharacter(character);
@@ -68,71 +65,19 @@ export default function CharacterSelect({ onSelectCharacter }) {
   };
 
   const goNext = () => {
-    if (selectedCharacterRef.current) {
-      onSelectCharacter(selectedCharacterRef.current.id);
+    if (selectedCharacter) {
+      onSelectCharacter(selectedCharacter.id);
     }
   };
 
-  useEffect(() => {
-    selectedCharacterRef.current = selectedCharacter;
-  }, [selectedCharacter]);
-
-  useEffect(() => {
-    goNextRef.current = goNext;
+  const handlers = useSwipeable({
+    onSwipedUp: goNext,
+    trackMouse: true,
+    preventScrollOnSwipe: true,
   });
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const handleTouchStart = (e) => {
-      if (!selectedCharacterRef.current) return;
-      e.stopPropagation();
-      startY.current = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e) => {
-      if (!selectedCharacterRef.current || startY.current === null) return;
-      e.stopPropagation();
-      const endY = e.changedTouches[0].clientY;
-      const distance = startY.current - endY;
-      if (distance > 40) {
-        goNextRef.current?.();
-      }
-      startY.current = null;
-    };
-
-    const handleMouseDown = (e) => {
-      if (!selectedCharacterRef.current) return;
-      e.stopPropagation();
-      startY.current = e.clientY;
-    };
-
-    const handleMouseUp = (e) => {
-      if (!selectedCharacterRef.current || startY.current === null) return;
-      e.stopPropagation();
-      const distance = startY.current - e.clientY;
-      if (distance > 40) {
-        goNextRef.current?.();
-      }
-      startY.current = null;
-    };
-
-    section.addEventListener("touchstart", handleTouchStart, { capture: true });
-    section.addEventListener("touchend", handleTouchEnd, { capture: true });
-    section.addEventListener("mousedown", handleMouseDown, { capture: true });
-    section.addEventListener("mouseup", handleMouseUp, { capture: true });
-
-    return () => {
-      section.removeEventListener("touchstart", handleTouchStart, { capture: true });
-      section.removeEventListener("touchend", handleTouchEnd, { capture: true });
-      section.removeEventListener("mousedown", handleMouseDown, { capture: true });
-      section.removeEventListener("mouseup", handleMouseUp, { capture: true });
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className={styles.screen}>
+    <section className={styles.screen} {...handlers}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
@@ -235,7 +180,6 @@ export default function CharacterSelect({ onSelectCharacter }) {
             className={`${styles.characterButton} ${styles[character.className]}`}
             onClick={() => handleSelect(character)}
             disabled={selectedCharacter !== null}
-            style={{ pointerEvents: selectedCharacter ? "none" : "auto" }}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={
               isSelected
