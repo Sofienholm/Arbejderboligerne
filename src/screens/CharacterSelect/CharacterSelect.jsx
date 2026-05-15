@@ -60,10 +60,11 @@ export default function CharacterSelect({ onSelectCharacter }) {
 
     setTimeout(() => {
       onSelectCharacter(character.id);
-    }, 2200);
+    }, 1700);
   };
 
   return (
+
     <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
@@ -188,7 +189,11 @@ export default function CharacterSelect({ onSelectCharacter }) {
         );
       })}
 
-
+      <div className={styles.preloadImages} aria-hidden="true">
+        {characters.map((character) => (
+          <img key={`preload-${character.id}`} src={character.image} alt="" />
+        ))}
+      </div>
     </section>
   );
 }
