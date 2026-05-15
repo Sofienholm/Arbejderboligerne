@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
@@ -55,6 +55,9 @@ const selectedPosition = {
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const startY = useRef(null);
+  const sectionRef = useRef(null);
+  const selectedCharacterRef = useRef(null);
+  const goNextRef = useRef(null);
 
   const handleSelect = (character) => {
     setSelectedCharacter(character);
@@ -65,53 +68,71 @@ export default function CharacterSelect({ onSelectCharacter }) {
   };
 
   const goNext = () => {
-    if (selectedCharacter) {
-      onSelectCharacter(selectedCharacter.id);
+    if (selectedCharacterRef.current) {
+      onSelectCharacter(selectedCharacterRef.current.id);
     }
   };
 
-  const handleTouchStart = (event) => {
-    if (!selectedCharacter) return;
-    event.stopPropagation();
-    startY.current = event.touches[0].clientY;
-  };
+  useEffect(() => {
+    selectedCharacterRef.current = selectedCharacter;
+  }, [selectedCharacter]);
 
-  const handleTouchEnd = (event) => {
-    if (!selectedCharacter || startY.current === null) return;
-    event.stopPropagation();
-    const endY = event.changedTouches[0].clientY;
-    const distance = startY.current - endY;
-    if (distance > 40) {
-      goNext();
-    }
-    startY.current = null;
-  };
+  useEffect(() => {
+    goNextRef.current = goNext;
+  });
 
-  const handleMouseDown = (event) => {
-    if (!selectedCharacter) return;
-    event.stopPropagation();
-    startY.current = event.clientY;
-  };
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
 
-  const handleMouseUp = (event) => {
-    if (!selectedCharacter || startY.current === null) return;
-    event.stopPropagation();
-    const endY = event.clientY;
-    const distance = startY.current - endY;
-    if (distance > 40) {
-      goNext();
-    }
-    startY.current = null;
-  };
+    const handleTouchStart = (e) => {
+      if (!selectedCharacterRef.current) return;
+      e.stopPropagation();
+      startY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (!selectedCharacterRef.current || startY.current === null) return;
+      e.stopPropagation();
+      const endY = e.changedTouches[0].clientY;
+      const distance = startY.current - endY;
+      if (distance > 40) {
+        goNextRef.current?.();
+      }
+      startY.current = null;
+    };
+
+    const handleMouseDown = (e) => {
+      if (!selectedCharacterRef.current) return;
+      e.stopPropagation();
+      startY.current = e.clientY;
+    };
+
+    const handleMouseUp = (e) => {
+      if (!selectedCharacterRef.current || startY.current === null) return;
+      e.stopPropagation();
+      const distance = startY.current - e.clientY;
+      if (distance > 40) {
+        goNextRef.current?.();
+      }
+      startY.current = null;
+    };
+
+    section.addEventListener("touchstart", handleTouchStart, { capture: true });
+    section.addEventListener("touchend", handleTouchEnd, { capture: true });
+    section.addEventListener("mousedown", handleMouseDown, { capture: true });
+    section.addEventListener("mouseup", handleMouseUp, { capture: true });
+
+    return () => {
+      section.removeEventListener("touchstart", handleTouchStart, { capture: true });
+      section.removeEventListener("touchend", handleTouchEnd, { capture: true });
+      section.removeEventListener("mousedown", handleMouseDown, { capture: true });
+      section.removeEventListener("mouseup", handleMouseUp, { capture: true });
+    };
+  }, []);
 
   return (
-    <section
-      className={styles.screen}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-    >
+    <section ref={sectionRef} className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
