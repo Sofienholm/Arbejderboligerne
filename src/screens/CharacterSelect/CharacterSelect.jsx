@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useSwipeable } from "react-swipeable";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
 import styles from "./CharacterSelect.module.css";
@@ -55,29 +54,30 @@ const selectedPosition = {
 
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [isLeaving, setIsLeaving] = useState(false);
 
   const handleSelect = (character) => {
     setSelectedCharacter(character);
+    setIsLeaving(false);
   };
 
   const handleBack = () => {
     setSelectedCharacter(null);
+    setIsLeaving(false);
   };
 
-  const goNext = () => {
-    if (selectedCharacter) {
+  const handleLearnMore = () => {
+    if (!selectedCharacter) return;
+
+    setIsLeaving(true);
+
+    setTimeout(() => {
       onSelectCharacter(selectedCharacter.id);
-    }
+    }, 650);
   };
-
-  const handlers = useSwipeable({
-    onSwipedUp: goNext,
-    trackMouse: true,
-    preventScrollOnSwipe: true,
-  });
 
   return (
-    <section className={styles.screen} {...handlers}>
+    <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
@@ -155,19 +155,30 @@ export default function CharacterSelect({ onSelectCharacter }) {
         <motion.div
           className={styles.expandingCircle}
           initial={{ scale: 0, opacity: 1 }}
-          animate={{ scale: 18, opacity: 1 }}
+          animate={{
+            scale: 18,
+            opacity: isLeaving ? 0 : 1,
+          }}
           transition={{
-            delay: 0.45,
-            duration: 0.9,
+            delay: isLeaving ? 0 : 0.45,
+            duration: isLeaving ? 0.4 : 0.9,
             ease: "easeInOut",
           }}
         />
       )}
 
       {selectedCharacter && (
-        <button className={styles.backButton} onClick={handleBack}>
+        <motion.button
+          className={styles.backButton}
+          onClick={handleBack}
+          animate={{
+            x: isLeaving ? "-40vw" : 0,
+            opacity: isLeaving ? 0 : 1,
+          }}
+          transition={{ duration: 0.45, ease: "easeInOut" }}
+        >
           ← TILBAGE
-        </button>
+        </motion.button>
       )}
 
       {characters.map((character, index) => {
@@ -185,8 +196,9 @@ export default function CharacterSelect({ onSelectCharacter }) {
               isSelected
                 ? {
                   ...selectedPosition,
+                  x: isLeaving ? "-120vw" : 0,
                   scale: 1,
-                  opacity: 1,
+                  opacity: isLeaving ? 0 : 1,
                   zIndex: 20,
                 }
                 : {
@@ -198,7 +210,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
             whileTap={{ scale: 0.94 }}
             transition={{
               delay: selectedCharacter ? 0 : 0.7 + index * 0.25,
-              duration: selectedCharacter ? 0.75 : 0.35,
+              duration: selectedCharacter ? 0.65 : 0.35,
               ease: "easeInOut",
             }}
           >
@@ -211,8 +223,16 @@ export default function CharacterSelect({ onSelectCharacter }) {
         <motion.div
           className={styles.introText}
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
+          animate={{
+            opacity: isLeaving ? 0 : 1,
+            x: isLeaving ? "120vw" : 0,
+            y: 0,
+          }}
+          transition={{
+            delay: isLeaving ? 0 : 0.8,
+            duration: isLeaving ? 0.45 : 0.7,
+            ease: "easeOut",
+          }}
         >
           <h1>{selectedCharacter.name}</h1>
           <p>{selectedCharacter.role}</p>
@@ -220,15 +240,22 @@ export default function CharacterSelect({ onSelectCharacter }) {
       )}
 
       {selectedCharacter && (
-        <motion.div
-          className={styles.swipeText}
+        <motion.button
+          className={styles.learnButton}
+          onClick={handleLearnMore}
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
+          animate={{
+            opacity: isLeaving ? 0 : 1,
+            y: isLeaving ? "30vh" : 0,
+          }}
+          transition={{
+            delay: isLeaving ? 0 : 1.15,
+            duration: isLeaving ? 0.4 : 0.6,
+            ease: "easeOut",
+          }}
         >
-          <p>SWIPE FOR AT LÆRE MERE</p>
-          <span>↑</span>
-        </motion.div>
+          LÆR MERE
+        </motion.button>
       )}
 
       <div className={styles.preloadImages} aria-hidden="true">
