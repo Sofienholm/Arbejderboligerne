@@ -199,9 +199,3 @@
 .screen {
   touch-action: none;
 }
-.swipeLayer {
-  position: absolute;
-  inset: 0;
-  z-index: 24;
-  background: transparent;
-}
