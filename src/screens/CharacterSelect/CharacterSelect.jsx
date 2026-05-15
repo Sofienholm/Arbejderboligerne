@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useSwipeable } from "react-swipeable";
 import starStyles from "../../screens/FamilyIntro/FamilyIntroScreens.module.css";
 
 import styles from "./CharacterSelect.module.css";
@@ -21,28 +22,28 @@ const characters = [
     image: holger,
     className: "holger",
     name: "HOLGER",
-    text: "DU SKAL NU FØLGE HOLGER",
+    role: "FAR I FAMILIEN HANSEN",
   },
   {
     id: "niels",
     image: niels,
     className: "niels",
     name: "NIELS",
-    text: "DU SKAL NU FØLGE NIELS",
+    role: "FAMILIENS ÆLDSTE BARN",
   },
   {
     id: "jytte",
     image: jytte,
     className: "jytte",
     name: "JYTTE",
-    text: "DU SKAL NU FØLGE JYTTE",
+    role: "MOR I FAMILIEN HANSEN",
   },
   {
     id: "hanne",
     image: hanne,
     className: "hanne",
     name: "HANNE",
-    text: "DU SKAL NU FØLGE HANNE",
+    role: "FAMILIENS YNGSTE BARN",
   },
 ];
 
@@ -57,15 +58,26 @@ export default function CharacterSelect({ onSelectCharacter }) {
 
   const handleSelect = (character) => {
     setSelectedCharacter(character);
-
-    setTimeout(() => {
-      onSelectCharacter(character.id);
-    }, 1700);
   };
 
-  return (
+  const handleBack = () => {
+    setSelectedCharacter(null);
+  };
 
-    <section className={styles.screen}>
+  const goNext = () => {
+    if (selectedCharacter) {
+      onSelectCharacter(selectedCharacter.id);
+    }
+  };
+
+  const handlers = useSwipeable({
+    onSwipedUp: goNext,
+    trackMouse: true,
+    preventScrollOnSwipe: true,
+  });
+
+  return (
+    <section className={styles.screen} {...handlers}>
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
@@ -152,6 +164,12 @@ export default function CharacterSelect({ onSelectCharacter }) {
         />
       )}
 
+      {selectedCharacter && (
+        <button className={styles.backButton} onClick={handleBack}>
+          ← TILBAGE
+        </button>
+      )}
+
       {characters.map((character, index) => {
         const isSelected = selectedCharacter?.id === character.id;
         const isOtherSelected = selectedCharacter && !isSelected;
@@ -188,6 +206,30 @@ export default function CharacterSelect({ onSelectCharacter }) {
           </motion.button>
         );
       })}
+
+      {selectedCharacter && (
+        <motion.div
+          className={styles.introText}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
+        >
+          <h1>{selectedCharacter.name}</h1>
+          <p>{selectedCharacter.role}</p>
+        </motion.div>
+      )}
+
+      {selectedCharacter && (
+        <motion.div
+          className={styles.swipeText}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
+        >
+          <p>SWIPE FOR AT LÆRE MERE</p>
+          <span>↑</span>
+        </motion.div>
+      )}
 
       <div className={styles.preloadImages} aria-hidden="true">
         {characters.map((character) => (
