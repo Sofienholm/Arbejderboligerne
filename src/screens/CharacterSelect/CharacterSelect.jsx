@@ -83,8 +83,8 @@ export default function CharacterSelect({ onSelectCharacter }) {
         className={`${starStyles.bg} ${styles.s1_s8}`}
         initial={{ x: "-120%", opacity: 0 }}
         animate={{
-          x: 0,
-          opacity: selectedCharacter ? 0 : 0.4,
+          x: isLeaving ? "-120vw" : 0,
+          opacity: 0.4,
         }}
         transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
       >
@@ -95,8 +95,8 @@ export default function CharacterSelect({ onSelectCharacter }) {
         className={`${starStyles.bg} ${styles.s1_s2}`}
         initial={{ y: "-120%", opacity: 0 }}
         animate={{
-          y: 0,
-          opacity: selectedCharacter ? 0 : 0.4,
+          y: isLeaving ? "-120vh" : 0,
+          opacity: 0.4,
         }}
         transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
       >
@@ -107,8 +107,8 @@ export default function CharacterSelect({ onSelectCharacter }) {
         className={`${starStyles.bg} ${styles.s1_s13}`}
         initial={{ x: "120%", opacity: 0 }}
         animate={{
-          x: 0,
-          opacity: selectedCharacter ? 0 : 0.4,
+          x: isLeaving ? "120vw" : 0,
+          opacity: 0.4,
         }}
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
       >
@@ -119,8 +119,8 @@ export default function CharacterSelect({ onSelectCharacter }) {
         className={`${starStyles.bg} ${styles.s1_s16}`}
         initial={{ x: "-120%", opacity: 0 }}
         animate={{
-          x: 0,
-          opacity: selectedCharacter ? 0 : 0.4,
+          x: isLeaving ? "-120vw" : 0,
+          opacity: 0.4,
         }}
         transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
       >
@@ -131,8 +131,8 @@ export default function CharacterSelect({ onSelectCharacter }) {
         className={`${starStyles.bg} ${styles.s1_s4}`}
         initial={{ y: "120%", opacity: 0 }}
         animate={{
-          y: 0,
-          opacity: selectedCharacter ? 0 : 0.4,
+          y: isLeaving ? "120vh" : 0,
+          opacity: 0.4,
         }}
         transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
       >
