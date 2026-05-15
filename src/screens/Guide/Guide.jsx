@@ -37,12 +37,12 @@ export default function Guide({ onNext }) {
 
       <div className={styles.stepText2}>
         <h2>Gå ind i lejligheden</h2>
-        <p>TRÆD IND I HJEMMET OG OPLEV HVERDAGEN TÆT PÅ.</p>
+        <p>TRÆD IND I HJEMMET OG OPLEV HVERDAGEN.</p>
       </div>
 
       <div className={styles.stepText3}>
         <h2>Find spor i rummet</h2>
-        <p>FIND HOTSPOTS OG UNDERSØG GENSTANDE MED DIN TELEFON.</p>
+        <p>FIND HOTSPOTS OG UNDERSØG GENSTANDE.</p>
       </div>
 
       <div className={styles.stepText4}>
