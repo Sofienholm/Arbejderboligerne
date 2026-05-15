@@ -46,17 +46,16 @@ export default function CharacterIntro({ character }) {
                 className={styles.textBlock}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+                transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
             >
                 <h1>{content.name}</h1>
                 <p className={styles.role}>{content.role}</p>
             </motion.div>
-
             <motion.div
                 className={styles.swipeText}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.75, duration: 0.6, ease: "easeOut" }}
+                transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
             >
                 <p>SWIPE FOR AT LÆRE MERE</p>
                 <span>↑</span>
