@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import styles from "./CharacterDetails.module.css";
@@ -30,6 +30,8 @@ export default function CharacterDetails({
   const screens = CHARACTER_SCREENS[character] || [];
   const [index, setIndex] = useState(startAt ?? 0);
   const [direction, setDirection] = useState(1);
+
+  const hasMounted = useRef(false);
 
   const goNext = () => {
     setDirection(1);
@@ -72,6 +74,8 @@ export default function CharacterDetails({
 
   if (!CurrentScreen) return null;
 
+  const shouldSkipInitialSlide = !hasMounted.current && index === 0;
+
   return (
     <div className={styles.wrapper} {...handlers}>
       <AnimatePresence initial={true} custom={direction}>
@@ -79,11 +83,14 @@ export default function CharacterDetails({
           key={`${character}-${index}`}
           custom={direction}
           variants={slideVariants}
-          initial={index === 0 ? false : "enter"}
+          initial={shouldSkipInitialSlide ? false : "enter"}
           animate="center"
           exit="exit"
           transition={{ duration: 0.35, ease: "easeInOut" }}
           className={styles.screen}
+          onAnimationComplete={() => {
+            hasMounted.current = true;
+          }}
         >
           <CurrentScreen
             character={character}
