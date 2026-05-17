@@ -72,7 +72,7 @@ export default function App() {
         return (
           <QRScreen
             character={selectedCharacter}
-            onReset={() => goToScreen("start")}
+            onBack={() => goToScreen("characterSelect")}
           />
         );
       default:
