@@ -1,13 +1,13 @@
 # Projekt: Arbejderboligerne
 
 Mobil-baseret museumsoplevelse til Industrimuseet i Horsens.
-Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels, Holger, Jytte) og swiper sig gennem deres historie, sidequest og afsluttende QR-skærm.
+Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels, Holger, Jytte) og swiper sig gennem deres historie og afsluttende QR-skærm. Guide vises som overlay (slider op fra bunden) når brugeren beder om hjælp.
 
 ## Stack
 
 - React 19.2.5
 - Vite 8.0.10
-- framer-motion 12.38.0
+- framer-motion 12.38.0 (bruges nu i App.jsx til Guide-overlay)
 - react-swipeable 7.0.2
 - Vanilla CSS Modules (ingen Tailwind, ingen CSS-in-JS)
 - Ingen router — navigation håndteres med useState i App.jsx via en switch på `currentScreen`
@@ -16,19 +16,20 @@ Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels,
 
 ```
 start
-  └── familyIntroScreens (Screen0–Screen5, sender direkte videre via onSelectCharacter)
+  └── familyIntroScreens (Screen0–Screen5, sender videre via onSelectCharacter)
         └── characterDetails (CharacterIntro + 2 detail-skærme per karakter)
               ├── onBack → characterSelect (alternativ karakter-vælger)
-              └── onNext → sidequest (1 per karakter)
-                    ├── onBack → characterDetails
-                    └── onQrBack → characterSelect
+              ├── onOpenGuide → Guide (overlay, slider op fra bunden via framer-motion)
+              │     └── onNext → qrScreen
+              └── onNext → qrScreen
+                    └── onBack → characterSelect
 ```
 
-`characterSelect` bruges som tilbage-destination fra `characterDetails` og `sidequest`. Det kan også nås direkte via state, men er ikke en del af det lineære flow.
+`Guide` er ikke en route — den er et **overlay** styret af `showGuide`-state, der animeres ind med `AnimatePresence` + `motion.div` (y: "100%" → 0).
 
-`qrScreen` findes som case i App.jsx men kaldes ikke aktivt i flowet endnu.
+`characterSelect` bruges som tilbage-destination fra `characterDetails` og `qrScreen`. Det er ikke en del af det lineære hovedflow.
 
-`Guide`-skærmen ligger stadig på disk (`src/screens/Guide/`) men er **ikke længere koblet til App.jsx** — kan slettes hvis den ikke skal bruges.
+`Sidequest` ligger stadig på disk (`src/screens/Sidequest/`) men er **ikke længere koblet til App.jsx** — kan slettes hvis den ikke skal bruges.
 
 ## Folder-struktur
 
@@ -47,8 +48,8 @@ arbejderboligerne/
 ├── vite.config.js                           ✅  (host:true ligger fejlagtigt på root, burde være under server:{})
 ├── public/                                  (tom)
 └── src/
-    ├── App.jsx                              ✅  (state-baseret nav: start → familyIntroScreens → characterDetails → sidequest, characterSelect/qrScreen som side-cases)
-    ├── App.module.css                       ⚪
+    ├── App.jsx                              ✅  (state-baseret nav: start → familyIntroScreens → characterDetails → qrScreen; Guide som framer-motion overlay)
+    ├── App.module.css                       ✅  (inkl. .guideOverlay-style til Guide-overlay)
     ├── index.jsx                            ✅  (createRoot mount-fil)
     │
     ├── assets/
@@ -60,6 +61,7 @@ arbejderboligerne/
     │       │   └── JytteQRKODE.svg          ✅
     │       ├── familie/
     │       │   ├── start-fam.svg            ✅
+    │       │   ├── start-fam.png            ✅  (PNG-version)
     │       │   ├── fam-intro1a.svg          ✅
     │       │   ├── fam-intro1b.svg          ✅
     │       │   ├── fam-intro2.svg           ✅
@@ -151,7 +153,7 @@ arbejderboligerne/
     │   │   └── CharacterSelect.module.css   ✅
     │   │
     │   ├── CharacterDetails/
-    │   │   ├── CharacterDetails.jsx         ✅  (wrapper — router mellem CharacterIntro + 8 detail-skærme; props: character, startAt, onNext, onBack)
+    │   │   ├── CharacterDetails.jsx         ✅  (wrapper — router mellem CharacterIntro + 8 detail-skærme; props: character, startAt, onNext, onBack, onOpenGuide)
     │   │   ├── CharacterDetails.module.css  ✅
     │   │   └── screens/
     │   │       ├── CharacterIntro.jsx       ✅  (fælles intro-skærm før detail-skærme)
@@ -174,27 +176,27 @@ arbejderboligerne/
     │   │           ├── JytteDetail1.module.css     ✅
     │   │           └── JytteDetail2.module.css     ✅
     │   │
-    │   ├── Sidequest/
-    │   │   ├── Sidequest.jsx                🟡  (wrapper — vælger 1 af 4 sidequests baseret på character; props: character, startAt, onBack, onQrBack)
-    │   │   ├── Sidequest.module.css         ✅
-    │   │   └── screens/
-    │   │       ├── SidequestHanne.jsx       ⚪
-    │   │       ├── SidequestNiels.jsx       ⚪
-    │   │       ├── SidequestHolger.jsx      ⚪
-    │   │       ├── SidequestJytte.jsx       ⚪
-    │   │       └── styles/
-    │   │           ├── SidequestHanne.module.css   ⚪
-    │   │           ├── SidequestNiels.module.css   ⚪
-    │   │           ├── SidequestHolger.module.css  ⚪
-    │   │           └── SidequestJytte.module.css   ⚪
-    │   │
-    │   ├── Guide/                           ⚠  (Ikke koblet til App.jsx længere — kan slettes)
-    │   │   ├── Guide.jsx                    🟡
+    │   ├── Guide/                           (bruges som overlay i App.jsx, ikke som route)
+    │   │   ├── Guide.jsx                    🟡  (props: character, onNext)
     │   │   └── Guide.module.css             ✅
     │   │
-    │   └── QRScreen/
-    │       ├── QRScreen.jsx                 🟡  (props: character, onBack)
-    │       └── QRScreen.module.css          ✅
+    │   ├── QRScreen/
+    │   │   ├── QRScreen.jsx                 🟡  (props: character, onBack)
+    │   │   └── QRScreen.module.css          ✅
+    │   │
+    │   └── Sidequest/                       ⚠  (Ikke koblet til App.jsx længere — kan slettes hvis ikke nødvendig)
+    │       ├── Sidequest.jsx                🟡
+    │       ├── Sidequest.module.css         ✅
+    │       └── screens/
+    │           ├── SidequestHanne.jsx       ⚪
+    │           ├── SidequestNiels.jsx       ⚪
+    │           ├── SidequestHolger.jsx      ⚪
+    │           ├── SidequestJytte.jsx       ⚪
+    │           └── styles/
+    │               ├── SidequestHanne.module.css   ⚪
+    │               ├── SidequestNiels.module.css   ⚪
+    │               ├── SidequestHolger.module.css  ⚪
+    │               └── SidequestJytte.module.css   ⚪
     │
     └── styles/
         ├── global.css                       ✅  (importeres i index.jsx)
@@ -205,27 +207,27 @@ arbejderboligerne/
 ## App.jsx state-API
 
 ```js
-currentScreen: "start" | "familyIntroScreens" | "characterSelect" | "characterDetails" | "sidequest" | "qrScreen"
+currentScreen: "start" | "familyIntroScreens" | "characterSelect" | "characterDetails" | "qrScreen"
 selectedCharacter: "hanne" | "niels" | "holger" | "jytte" | null
 subScreen: string | null   // passes til wrappers som prop `startAt`
+showGuide: boolean         // styrer om Guide-overlay vises
 ```
 
 ## Konventioner
 
-- Wrapper-komponenter (FamilyIntroScreens, CharacterDetails, Sidequest) modtager `startAt`-prop som valgfri override af initial underskærm.
-- Underskærme kaldes ved camelCase ID: `screen0`, `screen1`, `hanneDetail2`, `sidequestNiels`, `characterIntro` osv.
+- Wrapper-komponenter (FamilyIntroScreens, CharacterDetails) modtager `startAt`-prop som valgfri override af initial underskærm.
+- Underskærme kaldes ved camelCase ID: `screen0`, `screen1`, `hanneDetail2`, `characterIntro` osv.
 - CSS Modules: alle styles importeres som `import styles from "./X.module.css"`.
 - Filnavn-konvention: PascalCase for komponenter, undtagen `Start/start.jsx` (lille s) som er en undtagelse.
+- Guide-overlay: bruger `motion.div` med `initial={{ y: "100%" }}`, `animate={{ y: 0 }}`, `exit={{ y: "100%" }}` for en bottom-sheet effekt.
 
 ## Ændringer siden sidste version af STRUCTURE.md
 
-- Ny mappe: `src/assets/images/QRKODER/` med 4 QR-koder per karakter
-- Nye illustrations: 4 Guide-step SVGs, 4 dilemma SVGs, PilThojre/PilTvenstre, arrow, back
-- Ny underskærm: `CharacterDetails/screens/CharacterIntro.jsx` (fælles intro før detail-skærmene)
-- `src/components/DevMenu/` er fjernet
-- `Guide` er ikke længere koblet i App.jsx (mappen ligger stadig på disk)
-- FamilyIntroScreens sender nu direkte til characterDetails via `onSelectCharacter` (springer characterSelect over i hovedflowet)
-- Sidequest har nye props: `onBack` og `onQrBack` (i stedet for `onNext`)
-- QRScreen har `onBack` (i stedet for `onReset`)
-- Mange CSS Modules + alle Character Detail-skærme er nu udfyldt
-- data/characters.js og data/sideQuests.js er nu udfyldt
+- **Guide er tilbage som overlay** (ikke længere en route) — bruger framer-motion `AnimatePresence` til at slide op fra bunden, toggles via `showGuide`-state og `onOpenGuide`-prop på CharacterDetails
+- **Sidequest fjernet fra App.jsx** — mappen ligger stadig på disk, kan slettes
+- `characterDetails.onNext` peger nu på `qrScreen` (Sidequest er sprunget over)
+- `CharacterDetails` har fået ny prop: `onOpenGuide`
+- Ny state i App.jsx: `showGuide`, plus funktioner `openGuide()` og `handleGuideNext()`
+- `App.jsx` importerer nu `motion, AnimatePresence` fra framer-motion
+- `App.module.css` er udfyldt (sandsynligvis med `.guideOverlay`-stil)
+- Ny asset: `src/assets/images/familie/start-fam.png` (PNG-version af start-fam.svg)
