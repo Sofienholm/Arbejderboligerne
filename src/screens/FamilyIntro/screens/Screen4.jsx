@@ -64,13 +64,12 @@ export default function Screen4() {
               animate={{
                 y: [220, -6, 10, -2, 0],
                 opacity: [0, 1, 1, 1, 1],
-                scaleY: [1.16, 0.78, 1.08, 0.96, 1],
-                scaleX: [0.96, 1.08, 0.98, 1.02, 1],
+
               }}
               transition={{
-                delay: 1 + index * 0.18,
-                duration: 0.62,
-                ease: ["easeOut", "easeIn", "easeOut", "easeIn"],
+                delay: 0.5 + index * 0.58,
+                duration: 1,
+                ease: ["easeOut", "easeIn",],
               }}
             >
               {item}

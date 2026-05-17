@@ -114,15 +114,14 @@ export default function Start({ onNext }) {
         <h1 className={styles.year}>1955</h1>
       </header>
       <div
-        className={`${styles.personTapIndicator} ${hasClicked || isLeaving ? styles.personTapIndicatorHidden : ""
+        className={`${styles.floorTapIndicator} ${hasClicked || isLeaving ? styles.floorTapIndicatorHidden : ""
           }`}
       >
-        <span className={`${styles.personRipple} ${styles.rippleHanne}`}></span>
-        <span className={`${styles.personRipple} ${styles.rippleJytte}`}></span>
-        <span className={`${styles.personRipple} ${styles.rippleHolger}`}></span>
-        <span className={`${styles.personRipple} ${styles.rippleNiels}`}></span>
+        <span className={styles.floorRipple}></span>
+        <span className={styles.floorRipple}></span>
+        <span className={styles.floorRipple}></span>
 
-        <p>TRYK FOR AT TRÆDE IND</p>
+        <p>TRYK FOR AT STARTE</p>
       </div>
 
       <div
