@@ -39,16 +39,23 @@
 }
 
 .back {
-  position: absolute;
-  left: 5%;
-  top: 8%;
-  width: 25%;
-  z-index: 3;
-
+  width: 100%;
   animation-name: backFloat;
   animation-duration: 6s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+.backButton {
+  position: absolute;
+  left: 5%;
+  top: 8%;
+  width: 25%;
+  z-index: 20;
+
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .qrCode {
@@ -109,7 +116,6 @@
   animation-duration: 7s;
   animation-delay: 0s;
 }
-
 
 @keyframes arrowFloat {
   0% {
