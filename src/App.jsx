@@ -107,7 +107,9 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-      <InaktivReset onNulstil={nulstilOplevelse} />
+      {currentScreen !== "start" && (
+        <InaktivReset onNulstil={nulstilOplevelse} />
+      )}
     </div>
   );
 }

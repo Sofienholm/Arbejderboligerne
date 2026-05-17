@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./InaktivReset.module.css";
 
-const TID_FOER_BESKED = 1000; // 9 sekunder uden aktivitet - godt til test
+const TID_FOER_BESKED = 90000; // 9 sekunder uden aktivitet - godt til test
 const NEDTAELLING_TID = 15; // 15 sekunder før siden nulstilles
 
 export default function InaktivReset({ onNulstil }) {

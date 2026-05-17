@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import styles from "./styles/HolgerDetail2.module.css";
+import styles from "./styles/HanneDetail2.module.css";
 import { characterDetails } from "../../../data/characters";
 import starStyles from "../../FamilyIntro/FamilyIntroScreens.module.css";
 
