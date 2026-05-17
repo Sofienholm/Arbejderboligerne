@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: 6rem;
   gap: 0;
 }
 
@@ -39,10 +39,10 @@
 
 .familieWrapper {
   position: absolute;
-  bottom: 8%;
+  bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
-  width: 75%;
+  width: 93%;
   z-index: 3;
 }
 
@@ -66,7 +66,75 @@
   pointer-events: none;
 }
 
+/* ── Floor tap indicator ── */
+
+.floorTapIndicator {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  width: 80%;
+  height: 8.5rem;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  pointer-events: none;
+  opacity: 1;
+
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out,
+    filter 0.45s ease-out;
+}
+
+.floorTapIndicatorHidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+  filter: blur(3px);
+}
+
+.floorRipple {
+  position: absolute;
+  left: 50%;
+  bottom: 2.9rem;
+
+  width: 100%;
+  height: 4.3rem;
+
+  border: 0.15rem solid rgb(178, 74, 27);
+  border-radius: 50%;
+
+  transform: translateX(-50%) scale(0.62);
+  opacity: 0;
+
+  animation: floorRipple 3s ease-out infinite;
+}
+
+.floorRipple:nth-child(2) {
+  animation-delay: 0.65s;
+}
+
+.floorRipple:nth-child(3) {
+  animation-delay: 1.3s;
+}
+
+.floorTapIndicator p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--autumn-orange, #c8541e);
+  opacity: 0.88;
+}
+
 /* placeringer + animation timing */
+
 .radio {
   width: 18dvh;
   left: 12%;
@@ -165,6 +233,22 @@
 
 .fadeOut {
   animation: fadeOut 0.65s ease-in-out forwards;
+}
+
+@keyframes floorRipple {
+  0% {
+    transform: translateX(-50%) scale(0.55);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0;
+  }
 }
 
 @keyframes leaveLeft {

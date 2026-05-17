@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./start.module.css";
 
-import familieImg from "../../assets/images/familie/start-fam.svg";
+import familieImg from "../../assets/images/familie/start-fam.png";
 
 import radio from "../../assets/images/illustrations/radio.svg";
 import tv from "../../assets/images/illustrations/tv.svg";
@@ -16,16 +16,21 @@ import star11 from "../../assets/images/illustrations/star11.svg";
 import star12 from "../../assets/images/illustrations/star12.svg";
 
 export default function Start({ onNext }) {
+  const [hasClicked, setHasClicked] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
 
   const handleStartClick = () => {
-    if (isLeaving) return;
+    if (hasClicked) return;
 
-    setIsLeaving(true);
+    setHasClicked(true);
+
+    setTimeout(() => {
+      setIsLeaving(true);
+    }, 1500);
 
     setTimeout(() => {
       onNext();
-    }, 850);
+    }, 2350);
   };
 
   return (
@@ -110,6 +115,17 @@ export default function Start({ onNext }) {
       </header>
 
       <div
+        className={`${styles.floorTapIndicator} ${hasClicked || isLeaving ? styles.floorTapIndicatorHidden : ""
+          }`}
+      >
+        <span className={styles.floorRipple}></span>
+        <span className={styles.floorRipple}></span>
+        <span className={styles.floorRipple}></span>
+
+        <p>TRYK FOR AT TRÆDE IND</p>
+      </div>
+
+      <div
         className={`${styles.familieWrapper} ${isLeaving ? styles.fadeOut : ""
           }`}
       >
@@ -119,7 +135,6 @@ export default function Start({ onNext }) {
           className={styles.familieImg}
         />
       </div>
-
     </div>
   );
 }
