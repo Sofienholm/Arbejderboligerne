@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./InaktivReset.module.css";
 
-const TID_FOER_BESKED = 9000; // 90 sekunder uden aktivitet
-const NEDTAELLING_TID = 15; // 10 sekunder før siden nulstilles
+const TID_FOER_BESKED = 1000; // 9 sekunder uden aktivitet - godt til test
+const NEDTAELLING_TID = 15; // 15 sekunder før siden nulstilles
 
 export default function InaktivReset({ onNulstil }) {
     const [visBesked, setVisBesked] = useState(false);
@@ -22,13 +22,7 @@ export default function InaktivReset({ onNulstil }) {
             }, TID_FOER_BESKED);
         };
 
-        const brugerAktivitet = [
-            "click",
-            "touchstart",
-            "mousemove",
-            "keydown",
-            "scroll",
-        ];
+        const brugerAktivitet = ["click", "touchstart", "keydown", "scroll"];
 
         brugerAktivitet.forEach((aktivitet) => {
             window.addEventListener(aktivitet, startTimerForfra);
@@ -92,10 +86,6 @@ export default function InaktivReset({ onNulstil }) {
                     <br />
                     Ellers går oplevelsen tilbage til startskærmen.
                 </p>
-
-                <button type="button" onClick={blivHer}>
-                    Ja
-                </button>
             </div>
         </div>
     );
