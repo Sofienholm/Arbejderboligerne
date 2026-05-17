@@ -3,9 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Sidequest.module.css";
 import { sideQuests } from "../../data/sideQuests";
 import Guide from "../Guide/Guide";
+import QRScreen from "../QRScreen/QRScreen";
 
-export default function Sidequest({ character, onNext }) {
+export default function Sidequest({ character, onQrBack }) {
   const [showGuide, setShowGuide] = useState(false);
+  const [showQrBehindGuide, setShowQrBehindGuide] = useState(false);
 
   const content = sideQuests[character];
 
@@ -15,25 +17,31 @@ export default function Sidequest({ character, onNext }) {
     setShowGuide(true);
   };
 
-  const closeGuideAndGoToQr = () => {
+  const closeGuideAndShowQr = () => {
+    setShowQrBehindGuide(true);
     setShowGuide(false);
-    onNext();
   };
 
   return (
     <section className={styles.screen}>
-      <h1 className={styles.title}>{content.title}</h1>
-      <h2 className={styles.subtitle}>{content.subtitle}</h2>
+      {showQrBehindGuide ? (
+        <QRScreen character={character} onBack={onQrBack} />
+      ) : (
+        <>
+          <h1 className={styles.title}>{content.title}</h1>
+          <h2 className={styles.subtitle}>{content.subtitle}</h2>
 
-      <img
-        className={styles.dilemmaImage}
-        src={content.dilemmaImage}
-        alt={content.title}
-      />
+          <img
+            className={styles.dilemmaImage}
+            src={content.dilemmaImage}
+            alt={content.title}
+          />
 
-      <button className={styles.button} onClick={openGuide}>
-        {content.buttonText}
-      </button>
+          <button className={styles.button} onClick={openGuide}>
+            {content.buttonText}
+          </button>
+        </>
+      )}
 
       <AnimatePresence>
         {showGuide && (
@@ -44,7 +52,7 @@ export default function Sidequest({ character, onNext }) {
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeInOut" }}
           >
-            <Guide character={character} onNext={closeGuideAndGoToQr} />
+            <Guide character={character} onNext={closeGuideAndShowQr} />
           </motion.div>
         )}
       </AnimatePresence>
