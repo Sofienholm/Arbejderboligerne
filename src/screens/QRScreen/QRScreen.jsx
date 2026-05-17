@@ -68,14 +68,15 @@ export default function QRScreen({ character, onBack }) {
         alt=""
       />
 
-      <button className={styles.backButton} onClick={onBack}>
-        <img
-          className={styles.back}
-          src={back}
-          alt="Vælg et andet familiemedlem"
-        />
+      <button
+        className={styles.backButton}
+        onClick={() => {
+          console.log("KLIK");
+          onBack();
+        }}
+      >
+        TILBAGE
       </button>
-
       <img
         className={styles.qrCode}
         src={content.qr.qrCodeImage}
