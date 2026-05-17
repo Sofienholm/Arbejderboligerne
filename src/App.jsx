@@ -54,7 +54,6 @@ export default function App() {
           <Sidequest
             character={selectedCharacter}
             startAt={subScreen}
-
             onBack={() => goToScreen("characterDetails")}
             onQrBack={() => goToScreen("characterSelect")}
           />
