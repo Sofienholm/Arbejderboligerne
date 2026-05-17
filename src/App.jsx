@@ -68,6 +68,7 @@ export default function App() {
         );
 
       case "sidequest":
+        console.log("APP RENDER SIDEQUEST - openGuide:", openGuide);
         return (
           <Sidequest
             character={selectedCharacter}
