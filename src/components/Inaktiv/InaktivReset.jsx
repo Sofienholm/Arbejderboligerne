@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./InaktivReset.module.css";
 
-const TID_FOER_BESKED = 900000; // 90 sekunder uden aktivitet
-const NEDTAELLING_TID = 10; // 10 sekunder før siden nulstilles
+const TID_FOER_BESKED = 9000; // 90 sekunder uden aktivitet
+const NEDTAELLING_TID = 15; // 10 sekunder før siden nulstilles
 
 export default function InaktivReset({ onNulstil }) {
     const [visBesked, setVisBesked] = useState(false);
@@ -83,9 +83,14 @@ export default function InaktivReset({ onNulstil }) {
 
                 <h2>Er du her stadig?</h2>
 
+                <button type="button" onClick={blivHer}>
+                    Ja
+                </button>
+
                 <p>
-                    Tryk ja, hvis du vil fortsætte. Ellers går oplevelsen tilbage til
-                    startskærmen.
+                    Tryk ja, hvis du vil fortsætte.
+                    <br />
+                    Ellers går oplevelsen tilbage til startskærmen.
                 </p>
 
                 <button type="button" onClick={blivHer}>
