@@ -68,47 +68,105 @@
 
 /* ── Floor tap indicator ── */
 
-.floorTapIndicator {
+/* ── Person tap indicator ── */
+
+.personTapIndicator {
   position: absolute;
-  left: 50%;
-  bottom: 6%;
-  width: 80%;
-  height: 8.5rem;
-  transform: translateX(-50%);
+  inset: 0;
   z-index: 2;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-
   pointer-events: none;
+
   opacity: 1;
 
   transition: opacity 0.45s ease-out, transform 0.45s ease-out,
     filter 0.45s ease-out;
 }
 
-.floorTapIndicatorHidden {
+.personTapIndicatorHidden {
   opacity: 0;
-  transform: translateX(-50%) translateY(8px);
+  transform: translateY(8px);
   filter: blur(3px);
 }
 
-.floorRipple {
+.personRipple {
   position: absolute;
-  left: 50%;
-  bottom: 2.9rem;
+  bottom: 8.7%;
 
-  width: 100%;
-  height: 4.3rem;
-
-  border: 0.15rem solid rgb(178, 74, 27);
+  border: 0.14rem solid rgba(200, 84, 30, 0.38);
   border-radius: 50%;
 
-  transform: translateX(-50%) scale(0.62);
   opacity: 0;
+  transform: translateX(-50%) scale(0.55);
 
-  animation: floorRipple 3s ease-out infinite;
+  animation: personRipple 3.8s ease-out infinite;
+}
+
+/* Hanne */
+.rippleHanne {
+  left: 30%;
+  width: 8.5rem;
+  height: 2.4rem;
+  animation-delay: 0s;
+}
+
+/* Jytte */
+.rippleJytte {
+  left: 43%;
+  width: 10rem;
+  height: 2.7rem;
+  animation-delay: 0.75s;
+}
+
+/* Holger */
+.rippleHolger {
+  left: 55%;
+  width: 11rem;
+  height: 2.9rem;
+  animation-delay: 1.5s;
+}
+
+/* Niels */
+.rippleNiels {
+  left: 70%;
+  width: 8.8rem;
+  height: 2.4rem;
+  animation-delay: 2.25s;
+}
+
+.personTapIndicator p {
+  position: absolute;
+  left: 50%;
+  bottom: 4.2%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--autumn-orange, #c8541e);
+  opacity: 0.88;
+}
+
+@keyframes personRipple {
+  0% {
+    transform: translateX(-50%) scale(0.55);
+    opacity: 0;
+  }
+
+  16% {
+    opacity: 0.48;
+  }
+
+  42% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0;
+  }
 }
 
 .floorRipple:nth-child(2) {
@@ -233,54 +291,4 @@
 
 .fadeOut {
   animation: fadeOut 0.65s ease-in-out forwards;
-}
-
-@keyframes floorRipple {
-  0% {
-    transform: translateX(-50%) scale(0.55);
-    opacity: 0;
-  }
-
-  18% {
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: translateX(-50%) scale(1);
-    opacity: 0;
-  }
-}
-
-@keyframes leaveLeft {
-  to {
-    transform: translateX(-130vw);
-    opacity: 0;
-  }
-}
-
-@keyframes leaveRight {
-  to {
-    transform: translateX(130vw);
-    opacity: 0;
-  }
-}
-
-@keyframes leaveTop {
-  to {
-    transform: translateY(-130vh);
-    opacity: 0;
-  }
-}
-
-@keyframes leaveBottom {
-  to {
-    transform: translateY(130vh);
-    opacity: 0;
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
 }
