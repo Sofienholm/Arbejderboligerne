@@ -10,7 +10,7 @@ import star8 from "../../assets/images/illustrations/star8.svg";
 import star3 from "../../assets/images/illustrations/star3.svg";
 import star2 from "../../assets/images/illustrations/star2.svg";
 
-export default function QRScreen({ character, onBack }) {
+export default function QRScreen({ character }) {
   const content = sideQuests[character];
 
   if (!content) return null;
@@ -68,14 +68,11 @@ export default function QRScreen({ character, onBack }) {
         alt=""
       />
 
-      <button className={styles.backButton} onClick={onBack}>
-        <img
-          className={styles.back}
-          src={back}
-          alt="Tilbage"
-        />
-      </button>
-
+      <img
+        className={styles.back}
+        src={back}
+        alt=""
+      />
 
       <img
         className={styles.qrCode}
