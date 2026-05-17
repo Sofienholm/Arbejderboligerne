@@ -17,13 +17,7 @@ export default function Sidequest({ character, onOpenGuide }) {
         alt={content.title}
       />
 
-      <button
-        className={styles.button}
-        onClick={() => {
-          console.log("onOpenGuide:", onOpenGuide);
-          onOpenGuide();
-        }}
-      >
+      <button type="button" className={styles.button} onClick={onOpenGuide}>
         {content.buttonText}
       </button>
     </section>

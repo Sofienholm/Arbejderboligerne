@@ -25,6 +25,7 @@ export default function CharacterDetails({
   character,
   onNext,
   onBack,
+  onOpenGuide,
   startAt = 0,
 }) {
   const screens = CHARACTER_SCREENS[character] || [];
@@ -38,6 +39,8 @@ export default function CharacterDetails({
 
     if (index < screens.length - 1) {
       setIndex(index + 1);
+    } else {
+      onNext();
     }
   };
 
@@ -96,6 +99,7 @@ export default function CharacterDetails({
             character={character}
             onNext={onNext}
             onBack={onBack}
+            onOpenGuide={onOpenGuide}
           />
         </motion.div>
       </AnimatePresence>

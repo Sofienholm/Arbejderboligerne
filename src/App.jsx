@@ -6,7 +6,6 @@ import Start from "./screens/Start/start";
 import FamilyIntroScreens from "./screens/FamilyIntro/FamilyIntroScreens";
 import CharacterSelect from "./screens/CharacterSelect/CharacterSelect";
 import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
-import Sidequest from "./screens/Sidequest/Sidequest";
 import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
 
@@ -62,19 +61,9 @@ export default function App() {
           <CharacterDetails
             character={selectedCharacter}
             startAt={subScreen}
-            onNext={() => goToScreen("sidequest")}
+            onNext={() => goToScreen("qrScreen")}
             onBack={() => goToScreen("characterSelect")}
-          />
-        );
-
-      case "sidequest":
-        console.log("APP RENDER SIDEQUEST - openGuide:", openGuide);
-        return (
-          <Sidequest
-            character={selectedCharacter}
-            startAt={subScreen}
             onOpenGuide={openGuide}
-            onBack={() => goToScreen("characterDetails")}
           />
         );
 
