@@ -57,6 +57,22 @@ const starTransition = {
   ease: "easeOut",
 };
 
+const titleTransition = {
+  duration: 0.35,
+  ease: "easeOut",
+};
+
+const characterEnterTransition = {
+  delay: 0.35,
+  duration: 0.45,
+  ease: "easeOut",
+};
+
+const characterSelectTransition = {
+  duration: 0.65,
+  ease: "easeInOut",
+};
+
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [isLeaving, setIsLeaving] = useState(false);
@@ -80,6 +96,8 @@ export default function CharacterSelect({ onSelectCharacter }) {
       onSelectCharacter(selectedCharacter.id);
     }, 650);
   };
+
+  const titleIsHidden = selectedCharacter || isLeaving;
 
   return (
     <section className={styles.screen}>
@@ -161,11 +179,18 @@ export default function CharacterSelect({ onSelectCharacter }) {
 
       <motion.h1
         className={styles.title}
-        animate={{
-          opacity: selectedCharacter ? 0 : 1,
-          y: selectedCharacter ? -20 : 0,
+        initial={{
+          opacity: 0,
+          y: -20,
         }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
+        animate={{
+          opacity: titleIsHidden ? 0 : 1,
+          y: titleIsHidden ? -20 : 0,
+        }}
+        transition={{
+          ...titleTransition,
+          delay: titleIsHidden ? 0 : 0.5,
+        }}
       >
         VÆLG ET FAMILIE MEDLEM AT <br />
         LÆRE MERE OM
@@ -201,7 +226,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
         </motion.button>
       )}
 
-      {characters.map((character, index) => {
+      {characters.map((character) => {
         const isSelected = selectedCharacter?.id === character.id;
         const isOtherSelected = selectedCharacter && !isSelected;
 
@@ -211,7 +236,10 @@ export default function CharacterSelect({ onSelectCharacter }) {
             className={`${styles.characterButton} ${styles[character.className]}`}
             onClick={() => handleSelect(character)}
             disabled={selectedCharacter !== null}
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{
+              scale: 0.98,
+              opacity: 0,
+            }}
             animate={
               isSelected
                 ? {
@@ -228,11 +256,11 @@ export default function CharacterSelect({ onSelectCharacter }) {
                 }
             }
             whileTap={{ scale: 0.94 }}
-            transition={{
-              delay: selectedCharacter ? 0 : 0.7 + index * 0.25,
-              duration: selectedCharacter ? 0.65 : 0.35,
-              ease: "easeInOut",
-            }}
+            transition={
+              selectedCharacter
+                ? characterSelectTransition
+                : characterEnterTransition
+            }
           >
             <img src={character.image} alt={character.id} />
           </motion.button>

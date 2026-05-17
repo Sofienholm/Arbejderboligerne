@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import styles from "./styles/NielsDetail2.module.css";
 import { characterDetails } from "../../../data/characters";
+import starStyles from "../../FamilyIntro/FamilyIntroScreens.module.css";
 
 import nielsFriends from "../../../assets/images/familie/niels/niels2.svg";
 
@@ -15,29 +17,44 @@ export default function NielsDetail2() {
   return (
     <section className={styles.screen}>
       {/* ── Baggrundsstjerner ── */}
-      <img
-        src={star1}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s1} floatA`}
-      />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s1}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star1} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
 
-      <img
-        src={star2}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s2} floatC`}
-      />
 
-      <img
-        src={star3}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s3} floatB`}
-      />
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s2}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star2} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
 
-      <img
-        src={star4}
-        alt=""
-        className={`${styles.bg} ${styles.s5_s4} floatC`}
-      />
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s3}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star3} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
+
+
+      <motion.div
+        className={`${starStyles.bg} ${styles.s5_s4}`}
+        initial={{ x: "-20%", opacity: 0 }}
+        animate={{ x: 0, opacity: 0.4 }}
+        transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+      >
+        <img src={star4} alt="" className={`${styles.starImg} floatA`} />
+      </motion.div>
 
 
       <h1 className={styles.title}>{content.title}</h1>

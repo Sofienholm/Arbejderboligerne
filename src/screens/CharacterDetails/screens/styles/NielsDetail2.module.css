@@ -79,3 +79,10 @@
   animation-delay: -0.5s;
   rotate: 26deg;
 }
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
