@@ -1,0 +1,83 @@
+.baggrund {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(23, 20, 17, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.boks {
+  width: min(90vw, 360px);
+  padding: 32px 24px;
+  border-radius: 28px;
+  background: rgba(255, 248, 235, 0.94);
+  text-align: center;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.timerCirkel {
+  --stoerrelse: 88px;
+  --tykkelse: 8px;
+
+  width: var(--stoerrelse);
+  height: var(--stoerrelse);
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  background: conic-gradient(
+    #6f4f36 calc(var(--timer-status) * 360deg),
+    rgba(111, 79, 54, 0.18) 0deg
+  );
+}
+
+.timerCirkel::before {
+  content: "";
+  position: absolute;
+  inset: var(--tykkelse);
+  border-radius: 50%;
+  background: #fff8eb;
+}
+
+.timerCirkel span {
+  position: relative;
+  z-index: 1;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #3d2b1f;
+}
+
+.boks h2 {
+  margin: 0 0 10px;
+  font-size: 1.7rem;
+  color: #3d2b1f;
+}
+
+.boks p {
+  margin: 0 0 24px;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: #5b493d;
+}
+
+.boks button {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 34px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff8eb;
+  background: #6f4f36;
+  cursor: pointer;
+}
+
+.boks button:active {
+  transform: scale(0.97);
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./App.module.css";
 
+import InaktivReset from "./components/Inaktiv/InaktivReset";
 import Start from "./screens/Start/start";
 import FamilyIntroScreens from "./screens/FamilyIntro/FamilyIntroScreens";
 import CharacterSelect from "./screens/CharacterSelect/CharacterSelect";
@@ -9,11 +10,20 @@ import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
 
+
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [subScreen, setSubScreen] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
+
+  const nulstilOplevelse = () => {
+    setCurrentScreen("start");
+    setSelectedCharacter(null);
+    setSubScreen(null);
+    setShowGuide(false);
+    window.scrollTo(0, 0);
+  };
 
   const goToScreen = (screen) => {
     setCurrentScreen(screen);
@@ -97,6 +107,7 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+      <InaktivReset onNulstil={nulstilOplevelse} />
     </div>
   );
 }
