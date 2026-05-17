@@ -7,12 +7,11 @@ import CharacterSelect from "./screens/CharacterSelect/CharacterSelect";
 import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Sidequest from "./screens/Sidequest/Sidequest";
 import QRScreen from "./screens/QRScreen/QRScreen";
-import DevMenu from "./components/DevMenu/DevMenu";
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [subScreen, setSubScreen] = useState(null); // midlertidig — bruges af DevMenu
+  const [subScreen, setSubScreen] = useState(null);
 
   const goToScreen = (screen) => {
     setCurrentScreen(screen);
@@ -23,14 +22,6 @@ export default function App() {
   const handleCharacterSelect = (character) => {
     setSelectedCharacter(character);
     goToScreen("characterDetails");
-  };
-
-  // DevMenu kan hoppe direkte til en specifik skærm + underskærm + karakter
-  const handleDevGoTo = ({ screen, character, subScreen: sub }) => {
-    if (character) setSelectedCharacter(character);
-    setCurrentScreen(screen);
-    setSubScreen(sub);
-    window.scrollTo(0, 0);
   };
 
   const renderScreen = () => {
@@ -67,7 +58,6 @@ export default function App() {
             onBack={() => goToScreen("characterDetails")}
           />
         );
-
       case "qrScreen":
         return (
           <QRScreen
@@ -80,14 +70,5 @@ export default function App() {
     }
   };
 
-  return (
-    <div className={styles.appContainer}>
-      {renderScreen()}
-      <DevMenu
-        onGoTo={handleDevGoTo}
-        currentScreen={currentScreen}
-        currentSubScreen={subScreen}
-      />
-    </div>
-  );
+  return <div className={styles.appContainer}>{renderScreen()}</div>;
 }
