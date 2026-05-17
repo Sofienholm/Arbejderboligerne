@@ -33,7 +33,7 @@
   font-family: var(--font-heading);
   font-size: 14rem;
   font-weight: 100;
-  color: var(--autumn-orange);
+  color: #c8541e;
   line-height: 0.6;
 }
 
@@ -66,42 +66,7 @@
   pointer-events: none;
 }
 
-/* ── TRYK indicator ── */
-
-.tapIndicator {
-  position: absolute;
-  left: 50%;
-  bottom: 4.5rem;
-  transform: translateX(-50%);
-  z-index: 20;
-
-  padding: 1.1rem 2.6rem;
-  border-radius: 999px;
-  opacity: 0;
-  font-family: var(--font-body);
-  font-size: 1.7rem;
-  letter-spacing: 0.14em;
-  color: var(--autumn-orange);
-
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(30px);
-
-  opacity: 0;
-  animation: tapPulse 1.8s ease-in-out infinite;
-  transition: opacity 0.45s ease-out, transform 0.45s ease-out,
-    filter 0.45s ease-out;
-}
-
-.tapIndicatorHidden {
-  opacity: 0;
-  transform: translateX(-50%) translateY(10px) scale(0.96);
-  filter: blur(4px);
-  pointer-events: none;
-  opacity: 0;
-}
-
 /* placeringer + animation timing */
-
 .radio {
   width: 18dvh;
   left: 12%;
@@ -200,17 +165,6 @@
 
 .fadeOut {
   animation: fadeOut 0.65s ease-in-out forwards;
-}
-
-@keyframes tapPulse {
-  0%,
-  100% {
-    transform: translateX(-50%) scale(1);
-  }
-
-  50% {
-    transform: translateX(-50%) scale(1.04);
-  }
 }
 
 @keyframes leaveLeft {
