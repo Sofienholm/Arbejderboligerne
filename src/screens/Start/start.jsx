@@ -16,16 +16,24 @@ import star11 from "../../assets/images/illustrations/star11.svg";
 import star12 from "../../assets/images/illustrations/star12.svg";
 
 export default function Start({ onNext }) {
+  const [hasClicked, setHasClicked] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
 
   const handleStartClick = () => {
-    if (isLeaving) return;
+    if (hasClicked) return;
 
-    setIsLeaving(true);
+    setHasClicked(true);
 
+    // Først forsvinder "TRYK"
+    // Derefter bliver startskærmen stående lidt, før den bevæger sig væk
+    setTimeout(() => {
+      setIsLeaving(true);
+    }, 1500);
+
+    // Når leave-animationen er færdig, går vi videre til Screen0
     setTimeout(() => {
       onNext();
-    }, 850);
+    }, 2350);
   };
 
   return (
@@ -118,6 +126,13 @@ export default function Start({ onNext }) {
           alt="Familien Hansen"
           className={styles.familieImg}
         />
+      </div>
+
+      <div
+        className={`${styles.tapIndicator} ${hasClicked ? styles.tapIndicatorHidden : ""
+          }`}
+      >
+        TRYK
       </div>
     </div>
   );
