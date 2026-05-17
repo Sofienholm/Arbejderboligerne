@@ -5,7 +5,7 @@ import { sideQuests } from "../../data/sideQuests";
 import Guide from "../Guide/Guide";
 import QRScreen from "../QRScreen/QRScreen";
 
-export default function Sidequest({ character, onQrBack }) {
+export default function Sidequest({ character, onNext, onQrBack }) {
   const [showGuide, setShowGuide] = useState(false);
   const [showQrBehindGuide, setShowQrBehindGuide] = useState(false);
 
@@ -43,7 +43,7 @@ export default function Sidequest({ character, onQrBack }) {
         </>
       )}
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={showQrBehindGuide ? onNext : undefined}>
         {showGuide && (
           <motion.div
             className={styles.guideOverlay}
