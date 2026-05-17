@@ -69,11 +69,7 @@ export default function QRScreen({ character, onBack }) {
       />
 
       <button className={styles.backButton} onClick={onBack}>
-        <img
-          className={styles.back}
-          src={back}
-          alt="Vælg et andet familiemedlem"
-        />
+        TILBAGE
       </button>
 
       <img

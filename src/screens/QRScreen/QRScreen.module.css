@@ -39,6 +39,7 @@
 }
 
 .back {
+  display: block;
   width: 100%;
   animation-name: backFloat;
   animation-duration: 6s;
@@ -50,7 +51,8 @@
   left: 5%;
   top: 8%;
   width: 25%;
-  z-index: 20;
+  height: auto;
+  z-index: 50;
 
   border: none;
   background: none;
