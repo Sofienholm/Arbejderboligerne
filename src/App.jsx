@@ -6,7 +6,7 @@ import FamilyIntroScreens from "./screens/FamilyIntro/FamilyIntroScreens";
 import CharacterSelect from "./screens/CharacterSelect/CharacterSelect";
 import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Sidequest from "./screens/Sidequest/Sidequest";
-import QRScreen from "./screens/QRScreen/QRScreen";
+
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState("start");
@@ -58,13 +58,7 @@ export default function App() {
             onQrBack={() => goToScreen("characterSelect")}
           />
         );
-      case "qrScreen":
-        return (
-          <QRScreen
-            character={selectedCharacter}
-            onBack={() => goToScreen("characterSelect")}
-          />
-        );
+
       default:
         return <Start onNext={() => goToScreen("familyIntroScreens")} />;
     }
