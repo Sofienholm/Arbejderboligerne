@@ -1,7 +1,7 @@
 # Projekt: Arbejderboligerne
 
 Mobil-baseret museumsoplevelse til Industrimuseet i Horsens.
-Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels, Holger, Jytte) og swiper sig gennem deres historie, sidequest, guide og afsluttende QR-skærm.
+Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels, Holger, Jytte) og swiper sig gennem deres historie, sidequest og afsluttende QR-skærm.
 
 ## Stack
 
@@ -12,9 +12,23 @@ Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels,
 - Vanilla CSS Modules (ingen Tailwind, ingen CSS-in-JS)
 - Ingen router — navigation håndteres med useState i App.jsx via en switch på `currentScreen`
 
-## Skærm-flow (lineært)
+## Skærm-flow
 
-`start` → `familyIntroScreens` (6 underskærme: Screen0–Screen5) → `characterSelect` → `characterDetails` (2 underskærme per karakter) → `sidequest` (1 per karakter) → `guide` → `qrScreen`
+```
+start
+  └── familyIntroScreens (Screen0–Screen5, sender direkte videre via onSelectCharacter)
+        └── characterDetails (CharacterIntro + 2 detail-skærme per karakter)
+              ├── onBack → characterSelect (alternativ karakter-vælger)
+              └── onNext → sidequest (1 per karakter)
+                    ├── onBack → characterDetails
+                    └── onQrBack → characterSelect
+```
+
+`characterSelect` bruges som tilbage-destination fra `characterDetails` og `sidequest`. Det kan også nås direkte via state, men er ikke en del af det lineære flow.
+
+`qrScreen` findes som case i App.jsx men kaldes ikke aktivt i flowet endnu.
+
+`Guide`-skærmen ligger stadig på disk (`src/screens/Guide/`) men er **ikke længere koblet til App.jsx** — kan slettes hvis den ikke skal bruges.
 
 ## Folder-struktur
 
@@ -33,12 +47,17 @@ arbejderboligerne/
 ├── vite.config.js                           ✅  (host:true ligger fejlagtigt på root, burde være under server:{})
 ├── public/                                  (tom)
 └── src/
-    ├── App.jsx                              ✅  (state-baseret nav, props: startAt sendes til wrappers)
+    ├── App.jsx                              ✅  (state-baseret nav: start → familyIntroScreens → characterDetails → sidequest, characterSelect/qrScreen som side-cases)
     ├── App.module.css                       ⚪
     ├── index.jsx                            ✅  (createRoot mount-fil)
     │
     ├── assets/
     │   └── images/
+    │       ├── QRKODER/
+    │       │   ├── HanneQRKODE.svg          ✅
+    │       │   ├── NielsQRKODE.svg          ✅
+    │       │   ├── HolgerQRKODE.svg         ✅
+    │       │   └── JytteQRKODE.svg          ✅
     │       ├── familie/
     │       │   ├── start-fam.svg            ✅
     │       │   ├── fam-intro1a.svg          ✅
@@ -73,35 +92,44 @@ arbejderboligerne/
     │       │       └── jytteQR.svg          ✅
     │       └── illustrations/
     │           ├── QRKODE.svg               ✅
+    │           ├── arrow.svg                ✅
+    │           ├── back.svg                 ✅
     │           ├── brev.svg                 ✅
     │           ├── guide.svg                ✅
     │           ├── radio.svg                ✅
     │           ├── tv.svg                   ✅
+    │           ├── PilThojre.svg            ✅
+    │           ├── PilTvenstre.svg          ✅
+    │           ├── Guide-step1.svg          ✅
+    │           ├── Guide-step2.svg          ✅
+    │           ├── Guide-step3.svg          ✅
+    │           ├── Guide-step4.svg          ✅
+    │           ├── Hanne-dilemma.svg        ✅
+    │           ├── Niels-dilemma.svg        ✅
+    │           ├── Holger-dilemma.svg       ✅
+    │           ├── Jytte-dilemma.svg        ✅
     │           └── star1.svg ... star16.svg ✅  (16 stjerner total)
     │
     ├── components/
     │   ├── CharacterButton/
     │   │   ├── CharacterButton.jsx          ⚪
     │   │   └── CharacterButton.module.css   ⚪
-    │   ├── DevMenu/
-    │   │   ├── DevMenu.jsx                  ✅  (midlertidig nav-menu, fjernes før release)
-    │   │   └── DevMenu.module.css           ✅
     │   └── ProgressBar/
     │       ├── ProgressBar.jsx              ✅
     │       └── ProgressBar.module.css       ✅
     │
     ├── data/
-    │   ├── characters.js                    ⚪  (skal indeholde de 4 karakterer: navn, alder, rolle, billed-stier)
+    │   ├── characters.js                    ✅  (de 4 karakterer med metadata)
     │   ├── screens.js                       ✅  (tekster til Family Intro Screen 0–5)
-    │   └── sideQuests.js                    ⚪  (skal indeholde opgave-definitioner per karakter)
+    │   └── sideQuests.js                    ✅  (opgave-definitioner per karakter)
     │
     ├── screens/
     │   ├── Start/
-    │   │   ├── start.jsx                    ✅  (eksporterer komponent ved navn `Splash`, prop: onStart eller onNext)
+    │   │   ├── start.jsx                    ✅  (eksporterer komponent ved navn `Splash`, prop: onNext)
     │   │   └── start.module.css             ✅
     │   │
     │   ├── FamilyIntro/
-    │   │   ├── FamilyIntroScreens.jsx       🟡  (wrapper — skal route mellem Screen0–5; modtager prop `startAt`)
+    │   │   ├── FamilyIntroScreens.jsx       ✅  (wrapper — router mellem Screen0–5; props: startAt, onSelectCharacter)
     │   │   ├── FamilyIntroScreens.module.css ✅
     │   │   └── screens/
     │   │       ├── Screen0.jsx              ✅
@@ -113,40 +141,42 @@ arbejderboligerne/
     │   │       └── styles/
     │   │           ├── Screen0.module.css   ✅
     │   │           ├── Screen1.module.css   ✅
-    │   │           ├── Screen2.module.css   ⚪
-    │   │           ├── Screen3.module.css   ⚪
-    │   │           ├── Screen4.module.css   ⚪
-    │   │           └── Screen5.module.css   ⚪
+    │   │           ├── Screen2.module.css   ✅
+    │   │           ├── Screen3.module.css   ✅
+    │   │           ├── Screen4.module.css   ✅
+    │   │           └── Screen5.module.css   ✅
     │   │
     │   ├── CharacterSelect/
-    │   │   ├── CharacterSelect.jsx          🟡  (skal vise 4 karakter-knapper, prop: onSelectCharacter)
-    │   │   └── CharacterSelect.module.css   ⚪
+    │   │   ├── CharacterSelect.jsx          🟡  (prop: onSelectCharacter)
+    │   │   └── CharacterSelect.module.css   ✅
     │   │
     │   ├── CharacterDetails/
-    │   │   ├── CharacterDetails.jsx         🟡  (wrapper — skal route mellem 8 underskærme baseret på character + startAt)
-    │   │   ├── CharacterDetails.module.css  ⚪
+    │   │   ├── CharacterDetails.jsx         ✅  (wrapper — router mellem CharacterIntro + 8 detail-skærme; props: character, startAt, onNext, onBack)
+    │   │   ├── CharacterDetails.module.css  ✅
     │   │   └── screens/
-    │   │       ├── HanneDetail1.jsx         ⚪
-    │   │       ├── HanneDetail2.jsx         ⚪
-    │   │       ├── NielsDetail1.jsx         ⚪
-    │   │       ├── NielsDetail2.jsx         ⚪
-    │   │       ├── HolgerDetail1.jsx        ⚪
-    │   │       ├── HolgerDetail2.jsx        ⚪
-    │   │       ├── JytteDetail1.jsx         ⚪
-    │   │       ├── JytteDetail2.jsx         ⚪
+    │   │       ├── CharacterIntro.jsx       ✅  (fælles intro-skærm før detail-skærme)
+    │   │       ├── HanneDetail1.jsx         ✅
+    │   │       ├── HanneDetail2.jsx         ✅
+    │   │       ├── NielsDetail1.jsx         ✅
+    │   │       ├── NielsDetail2.jsx         ✅
+    │   │       ├── HolgerDetail1.jsx        ✅
+    │   │       ├── HolgerDetail2.jsx        ✅
+    │   │       ├── JytteDetail1.jsx         ✅
+    │   │       ├── JytteDetail2.jsx         ✅
     │   │       └── styles/
-    │   │           ├── HanneDetail1.module.css   ⚪
-    │   │           ├── HanneDetail2.module.css   ⚪
-    │   │           ├── NielsDetail1.module.css   ⚪
-    │   │           ├── NielsDetail2.module.css   ⚪
-    │   │           ├── HolgerDetail1.module.css  ⚪
-    │   │           ├── HolgerDetail2.module.css  ⚪
-    │   │           ├── JytteDetail1.module.css   ⚪
-    │   │           └── JytteDetail2.module.css   ⚪
+    │   │           ├── CharacterIntro.module.css   ✅
+    │   │           ├── HanneDetail1.module.css     ✅
+    │   │           ├── HanneDetail2.module.css     ✅
+    │   │           ├── NielsDetail1.module.css     ✅
+    │   │           ├── NielsDetail2.module.css     ✅
+    │   │           ├── HolgerDetail1.module.css    ✅
+    │   │           ├── HolgerDetail2.module.css    ✅
+    │   │           ├── JytteDetail1.module.css     ✅
+    │   │           └── JytteDetail2.module.css     ✅
     │   │
     │   ├── Sidequest/
-    │   │   ├── Sidequest.jsx                🟡  (wrapper — vælger 1 af 4 sidequests baseret på character)
-    │   │   ├── Sidequest.module.css         ⚪
+    │   │   ├── Sidequest.jsx                🟡  (wrapper — vælger 1 af 4 sidequests baseret på character; props: character, startAt, onBack, onQrBack)
+    │   │   ├── Sidequest.module.css         ✅
     │   │   └── screens/
     │   │       ├── SidequestHanne.jsx       ⚪
     │   │       ├── SidequestNiels.jsx       ⚪
@@ -158,13 +188,13 @@ arbejderboligerne/
     │   │           ├── SidequestHolger.module.css  ⚪
     │   │           └── SidequestJytte.module.css   ⚪
     │   │
-    │   ├── Guide/
-    │   │   ├── Guide.jsx                    🟡  (props: character, onNext, onBack)
-    │   │   └── Guide.module.css             ⚪
+    │   ├── Guide/                           ⚠  (Ikke koblet til App.jsx længere — kan slettes)
+    │   │   ├── Guide.jsx                    🟡
+    │   │   └── Guide.module.css             ✅
     │   │
     │   └── QRScreen/
-    │       ├── QRScreen.jsx                 🟡  (props: character, onReset)
-    │       └── QRScreen.module.css          ⚪
+    │       ├── QRScreen.jsx                 🟡  (props: character, onBack)
+    │       └── QRScreen.module.css          ✅
     │
     └── styles/
         ├── global.css                       ✅  (importeres i index.jsx)
@@ -175,14 +205,27 @@ arbejderboligerne/
 ## App.jsx state-API
 
 ```js
-currentScreen: "start" | "familyIntroScreens" | "characterSelect" | "characterDetails" | "sidequest" | "guide" | "qrScreen"
+currentScreen: "start" | "familyIntroScreens" | "characterSelect" | "characterDetails" | "sidequest" | "qrScreen"
 selectedCharacter: "hanne" | "niels" | "holger" | "jytte" | null
-subScreen: string | null   // sættes af DevMenu, passes til wrappers som prop `startAt`
+subScreen: string | null   // passes til wrappers som prop `startAt`
 ```
 
 ## Konventioner
 
 - Wrapper-komponenter (FamilyIntroScreens, CharacterDetails, Sidequest) modtager `startAt`-prop som valgfri override af initial underskærm.
-- Underskærme kaldes ved camelCase ID: `screen0`, `screen1`, `hanneDetail2`, `sidequestNiels` osv.
+- Underskærme kaldes ved camelCase ID: `screen0`, `screen1`, `hanneDetail2`, `sidequestNiels`, `characterIntro` osv.
 - CSS Modules: alle styles importeres som `import styles from "./X.module.css"`.
 - Filnavn-konvention: PascalCase for komponenter, undtagen `Start/start.jsx` (lille s) som er en undtagelse.
+
+## Ændringer siden sidste version af STRUCTURE.md
+
+- Ny mappe: `src/assets/images/QRKODER/` med 4 QR-koder per karakter
+- Nye illustrations: 4 Guide-step SVGs, 4 dilemma SVGs, PilThojre/PilTvenstre, arrow, back
+- Ny underskærm: `CharacterDetails/screens/CharacterIntro.jsx` (fælles intro før detail-skærmene)
+- `src/components/DevMenu/` er fjernet
+- `Guide` er ikke længere koblet i App.jsx (mappen ligger stadig på disk)
+- FamilyIntroScreens sender nu direkte til characterDetails via `onSelectCharacter` (springer characterSelect over i hovedflowet)
+- Sidequest har nye props: `onBack` og `onQrBack` (i stedet for `onNext`)
+- QRScreen har `onBack` (i stedet for `onReset`)
+- Mange CSS Modules + alle Character Detail-skærme er nu udfyldt
+- data/characters.js og data/sideQuests.js er nu udfyldt
