@@ -90,8 +90,16 @@
 
 .s5_s2 {
   width: 10dvh;
-left: 12%;
+  left: 12%;
   bottom: 30%;
   animation-duration: 3s;
+  animation-delay: 0s;
+}
+
+.starImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation-duration: 6s;
   animation-delay: 0s;
 }
