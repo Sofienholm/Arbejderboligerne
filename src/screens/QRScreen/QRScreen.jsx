@@ -68,7 +68,13 @@ export default function QRScreen({ character, onBack }) {
         alt=""
       />
 
-      <button className={styles.backButton} onClick={onBack}>
+      <button
+        className={styles.backButton}
+        onClick={() => {
+          console.log("onBack er:", onBack);
+          onBack();
+        }}
+      >
         <img
           className={styles.back}
           src={back}
