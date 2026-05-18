@@ -77,6 +77,9 @@ export default function CharacterSelect({ onSelectCharacter, onRestart }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   // Bruges til at fade skærmen ud før der skiftes til detaljeskærmen
   const [isLeaving, setIsLeaving] = useState(false);
+  // Bruges når brugeren vil starte helt forfra
+  const [isRestarting, setIsRestarting] = useState(false);
+
 
   const handleSelect = (character) => {
     setSelectedCharacter(character);
@@ -98,11 +101,26 @@ export default function CharacterSelect({ onSelectCharacter, onRestart }) {
       onSelectCharacter(selectedCharacter.id);
     }, 650);
   };
+  const handleRestart = () => {
+    setIsRestarting(true);
 
+    setTimeout(() => {
+      onRestart();
+    }, 450);
+  };
   const titleIsHidden = selectedCharacter || isLeaving;
 
   return (
-    <section className={styles.screen}>
+    <motion.section
+      className={styles.screen}
+      animate={{
+        opacity: isRestarting ? 0 : 1,
+      }}
+      transition={{
+        duration: 0.45,
+        ease: "easeInOut",
+      }}
+    >
       {/* ── Baggrundsstjerner ── */}
       <motion.div
         className={`${starStyles.bg} ${styles.s1_s8}`}
@@ -273,15 +291,15 @@ export default function CharacterSelect({ onSelectCharacter, onRestart }) {
       {!selectedCharacter && (
         <motion.button
           className={styles.restartButton}
-          onClick={onRestart}
+          onClick={handleRestart}
           initial={{ opacity: 0, y: 20 }}
           animate={{
-            opacity: isLeaving ? 0 : 1,
-            y: isLeaving ? 20 : 0,
+            opacity: isLeaving || isRestarting ? 0 : 1,
+            y: isLeaving || isRestarting ? 20 : 0,
           }}
           transition={{
             ...titleTransition,
-            delay: 0.9,
+            delay: isRestarting ? 0 : 0.9,
           }}
         >
           START FORFRA
@@ -333,6 +351,6 @@ export default function CharacterSelect({ onSelectCharacter, onRestart }) {
           <img key={`preload-${character.id}`} src={character.image} alt="" />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

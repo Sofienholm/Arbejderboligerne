@@ -1,3 +1,6 @@
+body {
+  background-color: var(--color-bg);
+}
 .container {
   position: relative;
   width: 100%;
@@ -9,6 +12,19 @@
   flex-direction: column;
   align-items: center;
   user-select: none;
+}
+.fadeIn {
+  animation: fadeInStart 0.45s ease-in-out both;
+}
+
+@keyframes fadeInStart {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .header {

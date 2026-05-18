@@ -35,7 +35,7 @@ export default function Start({ onNext }) {
   };
 
   return (
-    <div className={styles.container} onClick={handleStartClick}>
+    <div className={`${styles.container} ${styles.fadeIn}`} onClick={handleStartClick}>
       <div className={styles.bgLayer}>
         <img
           src={radio}
