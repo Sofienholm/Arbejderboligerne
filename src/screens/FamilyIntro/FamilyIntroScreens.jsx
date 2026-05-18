@@ -12,7 +12,7 @@ import Screen4 from "./screens/Screen4";
 import Screen5 from "./screens/Screen5";
 import Screen6 from "../CharacterSelect/CharacterSelect";
 
-// alle intro screens samlet, så vi kan skifte mellem dem med index
+// Alle intro-screens samlet i et array, så vi kan styre flowet med index
 const SCREENS = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5, Screen6];
 
 export default function FamilyIntroScreens({
@@ -20,55 +20,56 @@ export default function FamilyIntroScreens({
   onSelectCharacter,
   startAt = 0,
 }) {
-  const [index, setIndex] = useState(startAt ?? 0); // hvilken screen der vises
-  const [direction, setDirection] = useState(1); // 1 = frem, -1 = tilbage
+  const [index, setIndex] = useState(startAt ?? 0);
+  // Retning på animationen: 1 = frem, -1 = tilbage
+  const [direction, setDirection] = useState(1);
 
   const goNext = () => {
-    setDirection(1); // animationen skal gå fremad
+    setDirection(1);
 
     if (index < SCREENS.length - 1) {
-      setIndex(index + 1); // næste intro screen
+      setIndex(index + 1);
     } else if (onNext) {
-      onNext(); // videre til næste hovedscreen
+      onNext();
     }
   };
 
   const goPrev = () => {
-    setDirection(-1); // animationen skal gå tilbage
+    setDirection(-1);
 
-    if (index > 0) setIndex(index - 1); // stopper ved første screen
+    if (index > 0) setIndex(index - 1);
   };
 
-  // registrerer swipe op/ned
+  // Swipe op og ned bruges til at skifte mellem intro-skærmene
   const handlers = useSwipeable({
     onSwipedUp: goNext,
     onSwipedDown: goPrev,
-    trackMouse: true, // muligt at teste med mus
-    preventScrollOnSwipe: true, // stopper scrolling på siden mens man swiper
+    trackMouse: true,
+    preventScrollOnSwipe: true,
   });
 
-  const CurrentScreen = SCREENS[index]; // den screen der vises lige nu
+  const CurrentScreen = SCREENS[index];
 
-  // animationen til når screens glider ind og ud
+  // Styrer hvordan ny og gammel skærm glider ind/ud lodret
   const slideVariants = {
     enter: (direction) => ({
-      y: direction === 1 ? "100%" : "-100%", // ny screen kommer nedefra/oppefra
+      y: direction === 1 ? "100%" : "-100%",
     }),
     center: {
-      y: 0, // screen ender i midten
+      y: 0,
     },
     exit: (direction) => ({
-      y: direction === 1 ? "-100%" : "100%", // gammel screen glider ud modsat vej
+      y: direction === 1 ? "-100%" : "100%",
     }),
   };
 
   return (
     <div className={styles.wrapper} {...handlers}>
-      {/* animationen omkring intro screen */}
       <AnimatePresence custom={direction}>
         <motion.div
-          key={index} // gør at framer motion opdager screen-skift
-          custom={direction} // sender direction ind i animationen
+          // key på index gør at Framer Motion opdager skift mellem skærmene
+          key={index}
+          custom={direction}
           variants={slideVariants}
           initial={index === 0 ? false : "enter"}
           animate="center"
@@ -83,7 +84,7 @@ export default function FamilyIntroScreens({
         </motion.div>
       </AnimatePresence>
 
-      {/* progressionbar */}
+      {/* Progress bar skjules på første og sidste skærm */}
       {index > 0 && index < SCREENS.length - 1 && (
         <ProgressBar total={SCREENS.length - 2} currentIndex={index - 1} />
       )}

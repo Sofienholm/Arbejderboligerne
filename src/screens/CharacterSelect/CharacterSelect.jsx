@@ -15,6 +15,7 @@ import jytte from "../../assets/images/familie/jytte-cirkel.svg";
 import niels from "../../assets/images/familie/niels-cirkel.svg";
 import hanne from "../../assets/images/familie/hanne-cirkel.svg";
 
+// Familien som array, så vi kan loope dem ud og animere dem ens
 const characters = [
   {
     id: "holger",
@@ -75,6 +76,7 @@ const characterSelectTransition = {
 
 export default function CharacterSelect({ onSelectCharacter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  // Bruges til at fade skærmen ud før der skiftes til detaljeskærmen
   const [isLeaving, setIsLeaving] = useState(false);
 
   const handleSelect = (character) => {
@@ -87,6 +89,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
     setIsLeaving(false);
   };
 
+  // Venter på exit-animationen, før vi sender brugeren videre
   const handleLearnMore = () => {
     if (!selectedCharacter) return;
 
@@ -196,6 +199,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
         LÆRE MERE OM
       </motion.h1>
 
+      {/* Cirklen vokser frem bag den valgte karakter */}
       {selectedCharacter && (
         <motion.div
           className={styles.expandingCircle}
@@ -226,6 +230,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
         </motion.button>
       )}
 
+      {/* Render hver karakter som en knap – den valgte rykker op, resten fades ud */}
       {characters.map((character) => {
         const isSelected = selectedCharacter?.id === character.id;
         const isOtherSelected = selectedCharacter && !isSelected;
@@ -306,6 +311,7 @@ export default function CharacterSelect({ onSelectCharacter }) {
         </motion.button>
       )}
 
+      {/* Skjult preload, så billederne er klar når man swiper videre */}
       <div className={styles.preloadImages} aria-hidden="true">
         {characters.map((character) => (
           <img key={`preload-${character.id}`} src={character.image} alt="" />

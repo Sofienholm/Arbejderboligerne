@@ -19,6 +19,7 @@ export default function Start({ onNext }) {
   const [hasClicked, setHasClicked] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
 
+  // Lader exit-animationen spille færdig, før vi går videre til intro-skærmene
   const handleStartClick = () => {
     if (hasClicked) return;
 

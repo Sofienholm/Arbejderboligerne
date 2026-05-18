@@ -14,6 +14,7 @@ import JytteDetail1 from "./screens/JytteDetail1";
 import JytteDetail2 from "./screens/JytteDetail2";
 import Sidequest from "../Sidequest/Sidequest";
 
+// Samler hver karakters underskærme, så flowet kan styres med index
 const CHARACTER_SCREENS = {
   hanne: [HanneDetail1, HanneDetail2, Sidequest],
   niels: [NielsDetail1, NielsDetail2, Sidequest],
@@ -30,8 +31,10 @@ export default function CharacterDetails({
 }) {
   const screens = CHARACTER_SCREENS[character] || [];
   const [index, setIndex] = useState(startAt ?? 0);
+  // Retning på animationen: 1 = frem, -1 = tilbage
   const [direction, setDirection] = useState(1);
 
+  // Bruges til at springe første slide-animation over, når skærmen lige er åbnet
   const hasMounted = useRef(false);
 
   const goNext = () => {
@@ -54,6 +57,7 @@ export default function CharacterDetails({
     }
   };
 
+  // Swipe op og ned bruges til at skifte mellem karakterens underskærme
   const handlers = useSwipeable({
     onSwipedUp: goNext,
     onSwipedDown: goPrev,
@@ -63,6 +67,7 @@ export default function CharacterDetails({
 
   const CurrentScreen = screens[index];
 
+  // Styrer hvordan ny og gammel skærm glider ind/ud lodret
   const slideVariants = {
     enter: (direction) => ({
       y: direction === 1 ? "100%" : "-100%",
@@ -77,6 +82,7 @@ export default function CharacterDetails({
 
   if (!CurrentScreen) return null;
 
+  // Første skærm skal ikke glide ind når man lige har valgt karakter
   const shouldSkipInitialSlide = !hasMounted.current && index === 0;
 
   return (

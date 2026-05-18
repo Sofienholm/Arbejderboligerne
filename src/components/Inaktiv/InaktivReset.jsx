@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./InaktivReset.module.css";
 
-const TID_FOER_BESKED = 90000; // 9 sekunder uden aktivitet - godt til test
-const NEDTAELLING_TID = 15; // 15 sekunder før siden nulstilles
+// Nulstiller oplevelsen automatisk, hvis skærmen har stået ubrugt for længe
+const TID_FOER_BESKED = 90000;
+const NEDTAELLING_TID = 15;
 
 export default function InaktivReset({ onNulstil }) {
     const [visBesked, setVisBesked] = useState(false);
     const [nedtaelling, setNedtaelling] = useState(NEDTAELLING_TID);
 
+    // Lytter på bruger-events og starter timeren forfra hver gang
     useEffect(() => {
         let inaktivTimer;
 
@@ -39,6 +41,7 @@ export default function InaktivReset({ onNulstil }) {
         };
     }, [visBesked]);
 
+    // Tæller ned mens beskeden vises – rammer 0 = nulstil hele oplevelsen
     useEffect(() => {
         if (!visBesked) return;
 

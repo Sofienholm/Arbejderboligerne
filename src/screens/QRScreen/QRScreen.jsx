@@ -10,7 +10,9 @@ import star8 from "../../assets/images/illustrations/star8.svg";
 import star3 from "../../assets/images/illustrations/star3.svg";
 import star2 from "../../assets/images/illustrations/star2.svg";
 
+// Sidste skærm i flowet – viser karakterens QR-kode så brugeren kan scanne videre
 export default function QRScreen({ character, onBack }) {
+  // Henter den valgte karakters dilemma- og QR-indhold fra datafilen
   const content = sideQuests[character];
 
   if (!content) return null;

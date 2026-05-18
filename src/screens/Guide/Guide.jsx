@@ -7,6 +7,7 @@ import step4 from "../../assets/images/illustrations/Guide-step4.svg";
 import arrowRight from "../../assets/images/illustrations/PilThojre.svg";
 import arrowLeft from "../../assets/images/illustrations/PilTvenstre.svg";
 
+// Vises som overlay og forklarer trin-for-trin hvordan oplevelsen bruges
 export default function Guide({ onNext }) {
   return (
     <section className={styles.screen}>

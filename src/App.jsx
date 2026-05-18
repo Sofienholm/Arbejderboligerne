@@ -11,12 +11,15 @@ import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
 
 
+// Styrer hele app-flowet: start → intro → vælg karakter → detaljer → QR
 export default function App() {
+  // Holder styr på hvilken hovedskærm brugeren er på
   const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [subScreen, setSubScreen] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
 
+  // Sender brugeren helt tilbage til start (bruges af InaktivReset)
   const nulstilOplevelse = () => {
     setCurrentScreen("start");
     setSelectedCharacter(null);
@@ -36,10 +39,12 @@ export default function App() {
     goToScreen("characterDetails");
   };
 
+  // Guiden vises som overlay oven på den aktuelle skærm
   const openGuide = () => {
     setShowGuide(true);
   };
 
+  // Lukker guiden og sender brugeren videre til QR-skærmen
   const handleGuideNext = () => {
     setCurrentScreen("qrScreen");
     setShowGuide(false);
@@ -47,6 +52,7 @@ export default function App() {
     window.scrollTo(0, 0);
   };
 
+  // Vælger hvilken skærm der skal vises ud fra currentScreen
   const renderScreen = () => {
     switch (currentScreen) {
       case "start":
@@ -94,6 +100,7 @@ export default function App() {
     <div className={styles.appContainer}>
       {renderScreen()}
 
+      {/* Guide-overlay glider op nedefra og lægger sig oven på skærmen */}
       <AnimatePresence>
         {showGuide && (
           <motion.div
@@ -107,6 +114,8 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Inaktivitetstimer skal ikke køre på startskærmen */}
       {currentScreen !== "start" && (
         <InaktivReset onNulstil={nulstilOplevelse} />
       )}

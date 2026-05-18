@@ -1,5 +1,6 @@
 import styles from "./ProgressBar.module.css";
 
+// Tegner én cirkel pr. skærm – udfyldte cirkler viser hvor langt brugeren er
 export default function ProgressBar({ total, currentIndex }) {
     return (
         <div className={styles.progressBar}>
