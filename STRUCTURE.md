@@ -36,6 +36,7 @@ start
 ## Folder-struktur
 
 Status-markører:
+
 - ✅ = filen har indhold
 - 🟡 = filen er stub (få linjer placeholder, kan renderes uden crash)
 - ⚪ = filen er tom (0 linjer)
@@ -115,9 +116,6 @@ arbejderboligerne/
     │           └── star1.svg ... star16.svg ✅  (16 stjerner total)
     │
     ├── components/
-    │   ├── CharacterButton/
-    │   │   ├── CharacterButton.jsx          ⚪
-    │   │   └── CharacterButton.module.css   ⚪
     │   ├── Inaktiv/
     │   │   ├── InaktivReset.jsx             ✅  (prop: onNulstil — nulstiller efter inaktivitet)
     │   │   └── InaktivReset.module.css      ✅
@@ -192,30 +190,24 @@ arbejderboligerne/
     │   └── Sidequest/                       ⚠  (Ikke koblet til App.jsx længere — kan slettes hvis ikke nødvendig)
     │       ├── Sidequest.jsx                🟡
     │       ├── Sidequest.module.css         ✅
-    │       └── screens/
-    │           ├── SidequestHanne.jsx       ⚪
-    │           ├── SidequestNiels.jsx       ⚪
-    │           ├── SidequestHolger.jsx      ⚪
-    │           ├── SidequestJytte.jsx       ⚪
-    │           └── styles/
-    │               ├── SidequestHanne.module.css   ⚪
-    │               ├── SidequestNiels.module.css   ⚪
-    │               ├── SidequestHolger.module.css  ⚪
-    │               └── SidequestJytte.module.css   ⚪
+    │
     │
     └── styles/
         ├── global.css                       ✅  (importeres i index.jsx)
-        ├── variables.css                    ⚪
-        └── animations.css                   ⚪
+
 ```
 
 ## App.jsx state-API
 
 ```js
-currentScreen: "start" | "familyIntroScreens" | "characterSelect" | "characterDetails" | "qrScreen"
-selectedCharacter: "hanne" | "niels" | "holger" | "jytte" | null
-subScreen: string | null   // passes til wrappers som prop `startAt`
-showGuide: boolean         // styrer om Guide-overlay vises
+currentScreen: "start" |
+  "familyIntroScreens" |
+  "characterSelect" |
+  "characterDetails" |
+  "qrScreen";
+selectedCharacter: "hanne" | "niels" | "holger" | "jytte" | null;
+
+showGuide: boolean; // styrer om Guide-overlay vises
 ```
 
 ## Globale komponenter (altid monteret)

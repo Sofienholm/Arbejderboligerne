@@ -8,7 +8,7 @@
 
 .title {
   position: absolute;
-  top: 12%;
+  top: 9%;
   left: 10%;
   width: 80%;
   text-align: center;
@@ -16,6 +16,7 @@
   color: var(--apple-juice);
   font-size: 3rem;
   z-index: 5;
+  font-weight: 100;
 }
 
 .characterButton {
@@ -45,13 +46,13 @@
 }
 
 .jytte {
-  top: 49%;
+  top: 51%;
   left: 15%;
   width: 35dvw;
 }
 
 .hanne {
-  top: 62%;
+  top: 65%;
   left: 55%;
   width: 30dvw;
 }
@@ -193,4 +194,24 @@
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+}
+.restartButton {
+  position: absolute;
+  bottom: 5%;
+  left: 9%;
+  width: 82%;
+  text-align: center;
+  z-index: 30;
+
+  border: none;
+  background: none;
+  padding: 0;
+
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--autumn-orange);
+  cursor: pointer;
 }

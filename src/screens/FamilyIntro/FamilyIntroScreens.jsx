@@ -18,6 +18,7 @@ const SCREENS = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5, Screen6];
 export default function FamilyIntroScreens({
   onNext,
   onSelectCharacter,
+  onRestart,
   startAt = 0,
 }) {
   const [index, setIndex] = useState(startAt ?? 0);
@@ -80,6 +81,7 @@ export default function FamilyIntroScreens({
           <CurrentScreen
             styles={styles}
             onSelectCharacter={onSelectCharacter}
+            onRestart={onRestart}
           />
         </motion.div>
       </AnimatePresence>

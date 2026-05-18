@@ -60,12 +60,15 @@ export default function App() {
               setSelectedCharacter(characterId);
               setCurrentScreen("characterDetails");
             }}
+            onRestart={nulstilOplevelse}
           />
         );
-
       // Bruges når brugeren går tilbage og vil vælge et andet familiemedlem
       case "characterSelect":
-        return <CharacterSelect onSelectCharacter={handleCharacterSelect} />;
+        return <CharacterSelect
+          onSelectCharacter={handleCharacterSelect}
+          onRestart={nulstilOplevelse}
+        />;
 
       case "characterDetails":
         return (

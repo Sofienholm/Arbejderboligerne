@@ -129,7 +129,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 
-  color: var(--autumn-orange, #c8541e);
+  color: var(--autumn-orange);
   opacity: 0.88;
 }
 

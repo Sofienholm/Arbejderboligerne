@@ -34,7 +34,8 @@ export default function CharacterDetails({
   // Retning på animationen: 1 = frem, -1 = tilbage
   const [direction, setDirection] = useState(1);
 
-  // Bruges til at springe første slide-animation over, når skærmen lige er åbnet
+  // Husker om CharacterDetails allerede er blevet vist.
+  // Det bruges til at undgå en slide-animation på den allerførste karakter-skærm.
   const hasMounted = useRef(false);
 
   const goNext = () => {
@@ -82,7 +83,8 @@ export default function CharacterDetails({
 
   if (!CurrentScreen) return null;
 
-  // Første skærm skal ikke glide ind når man lige har valgt karakter
+  // Første gang karakterflowet åbnes, vises første skærm direkte.
+  // Når brugeren swiper videre, bruges slide-animationerne normalt.
   const shouldSkipInitialSlide = !hasMounted.current && index === 0;
 
   return (
@@ -98,6 +100,7 @@ export default function CharacterDetails({
           transition={{ duration: 0.35, ease: "easeInOut" }}
           className={styles.screen}
           onAnimationComplete={() => {
+            //  Efter første visning må de næste skærmskift gerne animere
             hasMounted.current = true;
           }}
         >

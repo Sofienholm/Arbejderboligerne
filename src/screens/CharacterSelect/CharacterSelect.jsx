@@ -73,8 +73,7 @@ const characterSelectTransition = {
   duration: 0.65,
   ease: "easeInOut",
 };
-
-export default function CharacterSelect({ onSelectCharacter }) {
+export default function CharacterSelect({ onSelectCharacter, onRestart }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   // Bruges til at fade skærmen ud før der skiftes til detaljeskærmen
   const [isLeaving, setIsLeaving] = useState(false);
@@ -271,6 +270,23 @@ export default function CharacterSelect({ onSelectCharacter }) {
           </motion.button>
         );
       })}
+      {!selectedCharacter && (
+        <motion.button
+          className={styles.restartButton}
+          onClick={onRestart}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            opacity: isLeaving ? 0 : 1,
+            y: isLeaving ? 20 : 0,
+          }}
+          transition={{
+            ...titleTransition,
+            delay: 0.9,
+          }}
+        >
+          START FORFRA
+        </motion.button>
+      )}
 
       {selectedCharacter && (
         <motion.div
