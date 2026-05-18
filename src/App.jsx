@@ -10,27 +10,23 @@ import CharacterDetails from "./screens/CharacterDetails/CharacterDetails";
 import Guide from "./screens/Guide/Guide";
 import QRScreen from "./screens/QRScreen/QRScreen";
 
-
 // Styrer hele app-flowet: start → intro → vælg karakter → detaljer → QR
 export default function App() {
   // Holder styr på hvilken hovedskærm brugeren er på
   const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [subScreen, setSubScreen] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
 
   // Sender brugeren helt tilbage til start (bruges af InaktivReset)
   const nulstilOplevelse = () => {
     setCurrentScreen("start");
     setSelectedCharacter(null);
-    setSubScreen(null);
     setShowGuide(false);
     window.scrollTo(0, 0);
   };
 
   const goToScreen = (screen) => {
     setCurrentScreen(screen);
-    setSubScreen(null);
     window.scrollTo(0, 0);
   };
 
@@ -48,7 +44,6 @@ export default function App() {
   const handleGuideNext = () => {
     setCurrentScreen("qrScreen");
     setShowGuide(false);
-    setSubScreen(null);
     window.scrollTo(0, 0);
   };
 
@@ -61,7 +56,6 @@ export default function App() {
       case "familyIntroScreens":
         return (
           <FamilyIntroScreens
-            startAt={subScreen}
             onSelectCharacter={(characterId) => {
               setSelectedCharacter(characterId);
               setCurrentScreen("characterDetails");
@@ -69,6 +63,7 @@ export default function App() {
           />
         );
 
+      // Bruges når brugeren går tilbage og vil vælge et andet familiemedlem
       case "characterSelect":
         return <CharacterSelect onSelectCharacter={handleCharacterSelect} />;
 
@@ -76,7 +71,6 @@ export default function App() {
         return (
           <CharacterDetails
             character={selectedCharacter}
-            startAt={subScreen}
             onNext={() => goToScreen("qrScreen")}
             onBack={() => goToScreen("characterSelect")}
             onOpenGuide={openGuide}
@@ -110,7 +104,7 @@ export default function App() {
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeInOut" }}
           >
-            <Guide character={selectedCharacter} onNext={handleGuideNext} />
+            <Guide onNext={handleGuideNext} />
           </motion.div>
         )}
       </AnimatePresence>
