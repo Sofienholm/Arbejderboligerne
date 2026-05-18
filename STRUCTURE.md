@@ -1,7 +1,7 @@
 # Projekt: Arbejderboligerne
 
 Mobil-baseret museumsoplevelse til Industrimuseet i Horsens.
-Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels, Holger, Jytte) og swiper sig gennem deres historie og afsluttende QR-skærm. Guide vises som overlay (slider op fra bunden) når brugeren beder om hjælp.
+Brugeren vælger en af 4 karakterer fra en arbejderfamilie i 1955 (Hanne, Niels, Holger, Jytte) og swiper sig gennem deres historie og afsluttende QR-skærm. Guide vises som overlay (slider op fra bunden) når brugeren beder om hjælp. En inaktivitets-reset nulstiller oplevelsen automatisk.
 
 ## Stack
 
@@ -27,6 +27,8 @@ start
 
 `Guide` er ikke en route — den er et **overlay** styret af `showGuide`-state, der animeres ind med `AnimatePresence` + `motion.div` (y: "100%" → 0).
 
+`InaktivReset` er en **global komponent** der monteres på alle skærme undtagen `start`. Den nulstiller hele oplevelsen til `start` efter en periodes inaktivitet (museums-kiosk pattern).
+
 `characterSelect` bruges som tilbage-destination fra `characterDetails` og `qrScreen`. Det er ikke en del af det lineære hovedflow.
 
 `Sidequest` ligger stadig på disk (`src/screens/Sidequest/`) men er **ikke længere koblet til App.jsx** — kan slettes hvis den ikke skal bruges.
@@ -48,7 +50,7 @@ arbejderboligerne/
 ├── vite.config.js                           ✅  (host:true ligger fejlagtigt på root, burde være under server:{})
 ├── public/                                  (tom)
 └── src/
-    ├── App.jsx                              ✅  (state-baseret nav: start → familyIntroScreens → characterDetails → qrScreen; Guide som framer-motion overlay)
+    ├── App.jsx                              ✅  (state-baseret nav + Guide-overlay + InaktivReset-watchdog)
     ├── App.module.css                       ✅  (inkl. .guideOverlay-style til Guide-overlay)
     ├── index.jsx                            ✅  (createRoot mount-fil)
     │
@@ -116,6 +118,9 @@ arbejderboligerne/
     │   ├── CharacterButton/
     │   │   ├── CharacterButton.jsx          ⚪
     │   │   └── CharacterButton.module.css   ⚪
+    │   ├── Inaktiv/
+    │   │   ├── InaktivReset.jsx             ✅  (prop: onNulstil — nulstiller efter inaktivitet)
+    │   │   └── InaktivReset.module.css      ✅
     │   └── ProgressBar/
     │       ├── ProgressBar.jsx              ✅
     │       └── ProgressBar.module.css       ✅
@@ -213,6 +218,10 @@ subScreen: string | null   // passes til wrappers som prop `startAt`
 showGuide: boolean         // styrer om Guide-overlay vises
 ```
 
+## Globale komponenter (altid monteret)
+
+- **InaktivReset** — monteret på alle skærme undtagen `start`. Modtager `onNulstil`-callback (App.jsx kalder `nulstilOplevelse()` der resetter alt og går til start). Bruges som museums-kiosk watchdog.
+
 ## Konventioner
 
 - Wrapper-komponenter (FamilyIntroScreens, CharacterDetails) modtager `startAt`-prop som valgfri override af initial underskærm.
@@ -220,14 +229,10 @@ showGuide: boolean         // styrer om Guide-overlay vises
 - CSS Modules: alle styles importeres som `import styles from "./X.module.css"`.
 - Filnavn-konvention: PascalCase for komponenter, undtagen `Start/start.jsx` (lille s) som er en undtagelse.
 - Guide-overlay: bruger `motion.div` med `initial={{ y: "100%" }}`, `animate={{ y: 0 }}`, `exit={{ y: "100%" }}` for en bottom-sheet effekt.
+- Danske callback-navne: `nulstilOplevelse`, `onNulstil` osv. — dansk bruges for funktionalitet specifik til den danske museumskontekst.
 
 ## Ændringer siden sidste version af STRUCTURE.md
 
-- **Guide er tilbage som overlay** (ikke længere en route) — bruger framer-motion `AnimatePresence` til at slide op fra bunden, toggles via `showGuide`-state og `onOpenGuide`-prop på CharacterDetails
-- **Sidequest fjernet fra App.jsx** — mappen ligger stadig på disk, kan slettes
-- `characterDetails.onNext` peger nu på `qrScreen` (Sidequest er sprunget over)
-- `CharacterDetails` har fået ny prop: `onOpenGuide`
-- Ny state i App.jsx: `showGuide`, plus funktioner `openGuide()` og `handleGuideNext()`
-- `App.jsx` importerer nu `motion, AnimatePresence` fra framer-motion
-- `App.module.css` er udfyldt (sandsynligvis med `.guideOverlay`-stil)
-- Ny asset: `src/assets/images/familie/start-fam.png` (PNG-version af start-fam.svg)
+- **Ny komponent: `src/components/Inaktiv/InaktivReset`** — global watchdog der nulstiller hele oplevelsen efter inaktivitet (museums-kiosk pattern)
+- **App.jsx:** ny funktion `nulstilOplevelse()` der resetter `currentScreen`, `selectedCharacter`, `subScreen`, `showGuide`
+- **App.jsx:** `<InaktivReset />` monteres conditional på alle skærme undtagen `start`
