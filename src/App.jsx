@@ -94,7 +94,7 @@ export default function App() {
   };
 
   return (
-    <div className={styles.appContainer}>
+    <main className={styles.appContainer}>
       {renderScreen()}
 
       {/* Guide-overlay glider op nedefra og lægger sig oven på skærmen */}
@@ -116,6 +116,6 @@ export default function App() {
       {currentScreen !== "start" && (
         <InaktivReset onNulstil={nulstilOplevelse} />
       )}
-    </div>
+    </main>
   );
 }
