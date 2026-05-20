@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./InaktivReset.module.css";
 
 // Nulstiller oplevelsen automatisk, hvis skærmen har stået ubrugt for længe
-const TID_FOER_BESKED = 300000;
+const TID_FOER_BESKED = 3000;
 const NEDTAELLING_TID = 15;
 
 export default function InaktivReset({ onNulstil }) {
