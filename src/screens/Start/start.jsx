@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./start.module.css";
 
-import familieImg from "../../assets/images/familie/start-fam.webp";
+import familieImg from "../../assets/images/familie/start-fam.png";
 
 import radio from "../../assets/images/illustrations/radio.svg";
 import tv from "../../assets/images/illustrations/tv.svg";
