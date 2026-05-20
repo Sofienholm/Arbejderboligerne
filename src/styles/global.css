@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Unica+One&display=swap");
+/* Google Fonts hentes nu via <link> i index.html (ikke render-blokerende) */
 * {
   margin: 0;
 }
