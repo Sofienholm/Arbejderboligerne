@@ -2,6 +2,12 @@
 * {
   margin: 0;
 }
+/* Slår browserens native billed-drag fra, så museswipe ikke "tager fat"
+   i billederne men når frem til react-swipeable */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
 :root {
   /* ===== FONTS ===== */
   --font-heading: "Abril Fatface", serif;
