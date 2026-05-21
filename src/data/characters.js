@@ -13,7 +13,7 @@ VÆRE DERHJEMME.`,
     },
 
     detail2: {
-      title: "RÆKKER PENGENE",
+      title: "RÆKKER PENGENE?",
       textTop: `HOLGER VIL GERNE VÆRE EN GOD FAR,
 OG DERFOR ARBEJDER HAN FOR, AT DET
 HELE HÆNGER SAMMEN.`,

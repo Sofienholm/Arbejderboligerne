@@ -10,7 +10,7 @@
   position: absolute;
   top: 8%;
   left: 8%;
-  font-size: 4.7rem;
+  font-size: 4.5rem;
   z-index: 5;
 }
 
@@ -39,9 +39,9 @@
 
 .holgerStanding {
   position: absolute;
-  right: -2%;
+  left: 35%;
   bottom: 13%;
-  width: 70%;
+  width: 90%;
   z-index: 4;
 }
 
