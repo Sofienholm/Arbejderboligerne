@@ -4,7 +4,7 @@ import styles from "./TabletFrame.module.css";
 // Tablet-formatet prototypen altid vises i.
 // 820 x 1180 = iPad Air 11" (M3) i portrait (logiske CSS-pixels).
 // Ser noget forskudt ud på den rigtige iPad, er det TABLET_H der finjusteres.
-const TABLET_W = 820;
+const TABLET_W = 850;
 const TABLET_H = 1180;
 
 export default function TabletFrame() {

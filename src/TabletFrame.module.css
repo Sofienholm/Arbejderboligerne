@@ -1,7 +1,7 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background: #000; /* sorte bjælker i siderne på desktop */
+  background: #b6b4b4; /* sorte bjælker i siderne på desktop */
   display: flex;
   align-items: center;
   justify-content: center;
