@@ -18,7 +18,9 @@
   /* ===== FARVER - BAGGRUND ===== */
   --color-bg: #d9d9d9;
 }
-
+body {
+  background-color: var(--color-bg);
+}
 h1 {
   font-family: var(--font-heading);
   color: var(--autumn-orange);
