@@ -1,0 +1,22 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: #000; /* sorte bjælker i siderne på desktop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.stage {
+  flex: none; /* flex må ikke krympe 820x1180-boksen */
+  transform-origin: center center;
+}
+
+.frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #d9d9d9;
+}
