@@ -12,7 +12,7 @@ export default function Guide({ onNext }) {
   return (
     <section className={styles.screen}>
       <div className={styles.header}>
-        <h1 className={styles.title}>DETALJ I FORTÆLLINGEN</h1>
+        <h1 className={styles.title}>DELTAG I FORTÆLLINGEN</h1>
 
         <p className={styles.subtitle}>
           OG HJÆLP FAMILIEN MED DERES DILEMMAER
