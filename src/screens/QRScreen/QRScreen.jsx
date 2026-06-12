@@ -11,7 +11,7 @@ import star3 from "../../assets/images/illustrations/star3.svg";
 import star2 from "../../assets/images/illustrations/star2.svg";
 
 import { useState } from "react";
-import QrGuide from "../components/QrGuide/QrGuide";
+import QrGuide from "../../components/QrGuide/QrGuide";
 
 // Sidste skærm i flowet – viser karakterens QR-kode så brugeren kan scanne videre
 export default function QRScreen({ character, onBack }) {
