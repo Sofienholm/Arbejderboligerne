@@ -129,8 +129,8 @@
   z-index: 10;
 
   border: none;
-  background-color: #de5a1f;
-  color: white;
+  background-color: var(--vintage-navy-blue);
+  color: var(--sweet-grey);
   padding: 14px 28px;
   border-radius: 999px;
 
