@@ -121,7 +121,23 @@
   animation-duration: 7s;
   animation-delay: 0s;
 }
+.guideButton {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 10;
 
+  border: none;
+  background-color: #de5a1f;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 999px;
+
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
 @keyframes arrowFloat {
   0% {
     transform: translateY(0px) rotate(8deg);
