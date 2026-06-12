@@ -1,0 +1,183 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  z-index: 1000;
+
+  transform: translateY(100%);
+  transition: transform 0.45s ease;
+}
+
+.open {
+  transform: translateY(0);
+}
+
+.header {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80%;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+
+  font-family: var(--font-body);
+  font-size: 2.3rem;
+  color: var(--apple-juice);
+}
+
+.stepImage1,
+.stepImage2,
+.stepImage3,
+.stepImage4 {
+  position: absolute;
+  left: 11%;
+  width: 5.5rem;
+  z-index: 2;
+}
+
+.stepImage1 {
+  top: 24%;
+}
+
+.stepImage2 {
+  top: 42%;
+}
+
+.stepImage3 {
+  top: 60%;
+}
+
+.stepImage4 {
+  top: 77%;
+}
+
+.arrowRight1,
+.arrowRight2,
+.arrowLeft {
+  position: absolute;
+  width: 2.3rem;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.arrowRight1 {
+  top: 33%;
+  left: 25%;
+}
+
+.arrowLeft {
+  top: 52%;
+  left: 3%;
+}
+
+.arrowRight2 {
+  top: 70%;
+  left: 25%;
+}
+
+.stepText1,
+.stepText2,
+.stepText3,
+.stepText4 {
+  position: absolute;
+  left: 35%;
+  z-index: 2;
+  width: 42%;
+}
+
+.stepText1 {
+  top: 27%;
+}
+
+.stepText2 {
+  top: 43%;
+}
+
+.stepText3 {
+  top: 60%;
+}
+
+.stepText4 {
+  top: 78%;
+}
+
+.stepText1 h2,
+.stepText2 h2,
+.stepText3 h2,
+.stepText4 h2 {
+  font-family: var(--font-heading);
+  color: var(--autumn-orange);
+  font-size: 1.8rem;
+  margin: 0 0 0.4rem 0;
+}
+
+.stepText1 p,
+.stepText2 p,
+.stepText3 p,
+.stepText4 p {
+  font-size: 1.25rem;
+
+  color: var(--autumn-orange);
+}
+
+.timeline {
+  position: absolute;
+  right: 10%;
+  top: 27.5%;
+  width: 3px;
+  height: 53%;
+  background-color: var(--autumn-orange);
+}
+
+.timeline span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--autumn-orange);
+}
+
+.timeline span:nth-child(1) {
+  top: 0;
+}
+
+.timeline span:nth-child(2) {
+  top: 31%;
+}
+
+.timeline span:nth-child(3) {
+  top: 62%;
+}
+
+.timeline span:nth-child(4) {
+  bottom: 0;
+}
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 10;
+
+  border: none;
+  background: none;
+  color: var(--autumn-orange);
+
+  font-size: 3.5rem;
+  line-height: 1;
+  cursor: pointer;
+}

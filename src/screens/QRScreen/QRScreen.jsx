@@ -10,8 +10,13 @@ import star8 from "../../assets/images/illustrations/star8.svg";
 import star3 from "../../assets/images/illustrations/star3.svg";
 import star2 from "../../assets/images/illustrations/star2.svg";
 
+import { useState } from "react";
+import QrGuide from "../components/QrGuide/QrGuide";
+
 // Sidste skærm i flowet – viser karakterens QR-kode så brugeren kan scanne videre
 export default function QRScreen({ character, onBack }) {
+  //åbner guiden igen
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
   // Henter den valgte karakters dilemma- og QR-indhold fra datafilen
   const content = sideQuests[character];
 
@@ -83,6 +88,16 @@ export default function QRScreen({ character, onBack }) {
         src={content.qr.qrCodeImage}
         alt="QR-kode"
       />
+
+      <button onClick={() => setIsGuideOpen(true)}>
+        SE GUIDE
+      </button>
+
+      <QrGuide
+        isOpen={isGuideOpen}
+        onClose={() => setIsGuideOpen(false)}
+      />
+
     </section>
   );
 }
