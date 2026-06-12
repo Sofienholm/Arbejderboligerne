@@ -88,11 +88,15 @@ export default function QRScreen({ character, onBack }) {
         src={content.qr.qrCodeImage}
         alt="QR-kode"
       />
-
-      <button onClick={() => setIsGuideOpen(true)}>
+      {/* Knap der åbner guiden */}
+      <button
+        className={styles.guideButton}
+        onClick={() => setIsGuideOpen(true)}
+      >
         SE GUIDE
       </button>
 
+      {/* Guide der slider op */}
       <QrGuide
         isOpen={isGuideOpen}
         onClose={() => setIsGuideOpen(false)}
