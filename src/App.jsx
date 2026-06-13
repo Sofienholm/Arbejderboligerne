@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./App.module.css";
 
@@ -16,6 +16,21 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState("start");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
+
+  useEffect(() => {
+    const imageModules = import.meta.glob(
+      "./assets/images/**/*.{svg,png,jpg,jpeg,webp}",
+      {
+        eager: true,
+        import: "default",
+      }
+    );
+
+    Object.values(imageModules).forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   // Sender brugeren helt tilbage til start (bruges af InaktivReset)
   const nulstilOplevelse = () => {
